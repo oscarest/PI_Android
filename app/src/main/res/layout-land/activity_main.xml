@@ -27,8 +27,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="98dp"
+            android:layout_marginTop="97dp"
+            android:layout_marginEnd="34dp"
+            android:layout_toStartOf="@+id/editText1"
             android:text="Usuario"
             android:textSize="17sp" />
 
@@ -37,8 +38,11 @@
             android:layout_width="158dp"
             android:layout_height="35dp"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="122dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="87dp"
+            android:layout_marginEnd="173dp"
+            android:layout_marginRight="173dp"
             android:ems="10"
             android:inputType="textPersonName" />
 
@@ -47,8 +51,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/editText1"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="2dp"
+            android:layout_alignStart="@+id/textView1"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="7dp"
             android:text="Contraseña"
             android:textSize="17sp" />
 
@@ -57,43 +62,32 @@
             android:layout_width="158dp"
             android:layout_height="35dp"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="183dp"
+            android:layout_marginTop="122dp"
+            android:layout_toStartOf="@+id/textView4"
             android:ems="10"
             android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/button1"
-            android:layout_width="158dp"
-            android:layout_height="39dp"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="242dp"
+            android:layout_marginStart="-79dp"
+            android:layout_marginBottom="103dp"
+            android:layout_toEndOf="@+id/textView"
             android:text="@string/boton1"
             android:textSize="15sp" />
 
         <Button
             android:id="@+id/button2"
-            android:layout_width="158dp"
-            android:layout_height="39dp"
+            android:layout_width="127dp"
+            android:layout_height="38dp"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="197dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginBottom="103dp"
+            android:layout_toEndOf="@+id/textView3"
             android:text="Cancelar"
             android:textSize="11sp" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="86dp"
-            android:layout_marginLeft="86dp"
-            android:layout_marginTop="339dp"
-            android:autoLink="https://www.google.es/"
-            android:text="Registro" />
 
         <TextView
             android:id="@+id/textView4"
@@ -106,6 +100,19 @@
             android:layout_marginEnd="45dp"
             android:layout_marginRight="45dp"
             android:text="Contraseña olvidada" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="92dp"
+            android:layout_marginLeft="92dp"
+            android:layout_marginTop="242dp"
+            android:autoLink="https://www.google.es/"
+            android:text="Registro" />
 
     </RelativeLayout>
 
