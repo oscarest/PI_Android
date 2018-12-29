@@ -111,8 +111,9 @@
             android:layout_marginStart="92dp"
             android:layout_marginLeft="92dp"
             android:layout_marginTop="242dp"
-            android:autoLink="https://www.google.es/"
+
             android:text="Registro" />
+        <!-- android:autoLink="https://www.google.es/"-->
 
     </RelativeLayout>
 

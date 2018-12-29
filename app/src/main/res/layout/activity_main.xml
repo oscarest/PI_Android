@@ -92,8 +92,12 @@
             android:layout_marginStart="86dp"
             android:layout_marginLeft="86dp"
             android:layout_marginTop="339dp"
-            android:autoLink="https://www.google.es/"
             android:text="Registro" />
+        <!--
+            android:autoLink="https://www.google.es/"
+            -->
+
+
 
         <TextView
             android:id="@+id/textView4"

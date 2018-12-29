@@ -1,11 +1,7 @@
 package com.studium.xxracso40xx.pi_android;
 
-import android.content.Intent;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.method.LinkMovementMethod;
-import android.view.View;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,7 +10,7 @@ TextView registro;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        registro = findViewById(R.id.textView3);
+       /* registro = findViewById(R.id.textView3);
         registro.setMovementMethod(LinkMovementMethod.getInstance());
         registro.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -23,5 +19,6 @@ TextView registro;
                 startActivity(browserIntent);
             }
         });
+        */
     }
 }
