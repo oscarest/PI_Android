@@ -1,26 +1,28 @@
 package com.studium.xxracso40xx.pi_android;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 public class pruebaMYSQL extends AppCompatActivity {
 
     private static final String url = "jdbc:mysql://192.168.1.196:3306/tiendecita";
-    private static final String user = "root";
-    private static final String pass = "Studium2018;";
+    private static final String user = "oscar";
+    private static final String pass = "Studium";
     EditText edit1, edit2;
     Button boton1, boton2;
     Intent intent;
+    Boolean boo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,16 +33,15 @@ public class pruebaMYSQL extends AppCompatActivity {
         boton1 = findViewById(R.id.button1);
         boton2 = findViewById(R.id.button2);
         intent = new Intent(this, Principal.class);
-
-        boton1.setOnClickListener(new View.OnClickListener()
+       /* boton2.setOnClickListener(new View.OnClickListener()
         {
 
             @Override
             public void onClick(View v)
             {
-                /*ConnectMySql connectMySql = new ConnectMySql();
+                ConnectMySql connectMySql = new ConnectMySql();
                 connectMySql.execute("");
-                */
+
                 String sentencia = "SELECT * FROM usuarios Where nombreUsuario='" + edit1.getText() +"' and claveUsuario='"+ edit2.getText() +"'";
                 System.out.println(edit1.getText());
                 //Cargar los controladores para el acceso a la BD
@@ -70,16 +71,29 @@ public class pruebaMYSQL extends AppCompatActivity {
                 }
 
             }
+
         });
-        boton2.setOnClickListener(new View.OnClickListener() {
+        */
+
+        boton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
+                ConnectMySql connectMySql = new ConnectMySql();
+                connectMySql.execute("");
+                if(boo=true)
+                {
+                    startActivity(intent);
+                }
+                else
+                {
 
+                }
             }
         });
     }
-    /*
+
+
     private class ConnectMySql extends AsyncTask<String, Void, String>
     {
         String res = "";
@@ -99,15 +113,22 @@ public class pruebaMYSQL extends AppCompatActivity {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection(url, user, pass);
                 System.out.println("Databaseection success");
-
+                String sentencia = "SELECT * FROM usuarios Where nombreUsuario='" + edit1.getText() +"' and claveUsuario='"+ edit2.getText() +"'";
                 String result = "Database Connection Successful\n";
                 Statement st = con.createStatement();
-                ResultSet rs = st.executeQuery("select * from articulos");
-                ResultSetMetaData rsmd = rs.getMetaData();
-
-                while (rs.next())
+                ResultSet rs = st.executeQuery(sentencia);
+                //ResultSetMetaData rsmd = rs.getMetaData();
+                rs.next();
+                if(rs.getRow()==0)
                 {
-                    result += rs.getString(1).toString() + "\n";
+                    boo = true;
+                    //startActivity(intent);
+
+                }
+                else
+                {
+                    boo = false;
+                    //edit1.setText("HEEEEEEEE");
                 }
                 res = result;
             } catch (Exception e) {
@@ -119,9 +140,9 @@ public class pruebaMYSQL extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result)
         {
-            txtData.setText(result);
+            edit1.setText(result);
         }
     }
-    */
+
 
 }

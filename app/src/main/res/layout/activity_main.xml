@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="98dp"
+            android:layout_marginTop="91dp"
             android:text="Usuario"
             android:textSize="17sp" />
 
@@ -38,7 +38,7 @@
             android:layout_height="35dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="122dp"
+            android:layout_marginTop="117dp"
             android:ems="10"
             android:inputType="textPersonName" />
 
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/editText1"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="7dp"
             android:text="Contraseña"
             android:textSize="17sp" />
 
@@ -58,7 +58,7 @@
             android:layout_height="35dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="183dp"
+            android:layout_marginTop="190dp"
             android:ems="10"
             android:inputType="textPassword" />
 
@@ -68,7 +68,7 @@
             android:layout_height="39dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="242dp"
+            android:layout_marginBottom="282dp"
             android:text="@string/boton1"
             android:textSize="15sp" />
 
@@ -78,7 +78,7 @@
             android:layout_height="39dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="197dp"
+            android:layout_marginBottom="237dp"
             android:text="Cancelar"
             android:textSize="11sp" />
 
@@ -89,9 +89,9 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="87dp"
-            android:layout_marginLeft="87dp"
-            android:layout_marginTop="373dp"
+            android:layout_marginStart="88dp"
+            android:layout_marginLeft="88dp"
+            android:layout_marginTop="415dp"
             android:text="Registro" />
         <!--
             android:autoLink="https://www.google.es/"
@@ -105,7 +105,7 @@
             android:layout_alignTop="@+id/textView3"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="-3dp"
             android:layout_marginEnd="45dp"
             android:layout_marginRight="45dp"
             android:text="Contraseña olvidada" />
