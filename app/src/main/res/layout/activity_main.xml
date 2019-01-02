@@ -60,7 +60,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="183dp"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPassword" />
 
         <Button
             android:id="@+id/button1"
@@ -89,14 +89,13 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="86dp"
-            android:layout_marginLeft="86dp"
-            android:layout_marginTop="339dp"
+            android:layout_marginStart="87dp"
+            android:layout_marginLeft="87dp"
+            android:layout_marginTop="373dp"
             android:text="Registro" />
         <!--
             android:autoLink="https://www.google.es/"
             -->
-
 
 
         <TextView
