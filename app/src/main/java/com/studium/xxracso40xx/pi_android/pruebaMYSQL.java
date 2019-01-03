@@ -22,7 +22,7 @@ public class pruebaMYSQL extends AppCompatActivity {
     EditText edit1, edit2;
     Button boton1, boton2;
     Intent intent;
-    Boolean boo;
+    Boolean boo = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,14 +81,24 @@ public class pruebaMYSQL extends AppCompatActivity {
             {
                 ConnectMySql connectMySql = new ConnectMySql();
                 connectMySql.execute("");
-                if(boo=true)
+                if(boo==true)
                 {
+                    Toast toast1 = Toast.makeText(getApplicationContext(),"Datos validados correctamente", Toast.LENGTH_SHORT);
+                    toast1.show();
                     startActivity(intent);
                 }
                 else
                 {
-
+                    Toast toast2 = Toast.makeText(getApplicationContext(),"Datos introducidos erróneos", Toast.LENGTH_SHORT);
+                    toast2.show();
                 }
+            }
+        });
+        boton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+              System.exit(0);
             }
         });
     }
@@ -98,12 +108,13 @@ public class pruebaMYSQL extends AppCompatActivity {
     {
         String res = "";
 
-        @Override
+       /* @Override
         protected void onPreExecute() {
             super.onPreExecute();
             Toast.makeText(pruebaMYSQL.this, "Please wait...", Toast.LENGTH_SHORT)
                     .show();
         }
+        */
 
         @Override
         protected String doInBackground(String... params) {
@@ -112,9 +123,7 @@ public class pruebaMYSQL extends AppCompatActivity {
                 edit2.getText();
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection(url, user, pass);
-                System.out.println("Databaseection success");
                 String sentencia = "SELECT * FROM usuarios Where nombreUsuario='" + edit1.getText() +"' and claveUsuario='"+ edit2.getText() +"'";
-                String result = "Database Connection Successful\n";
                 Statement st = con.createStatement();
                 ResultSet rs = st.executeQuery(sentencia);
                 //ResultSetMetaData rsmd = rs.getMetaData();
@@ -122,25 +131,19 @@ public class pruebaMYSQL extends AppCompatActivity {
                 if(rs.getRow()==0)
                 {
                     boo = true;
-                    //startActivity(intent);
-
                 }
                 else
                 {
                     boo = false;
-                    //edit1.setText("HEEEEEEEE");
                 }
-                res = result;
             } catch (Exception e) {
                 e.printStackTrace();
-                res = e.toString();
             }
             return res;
         }
         @Override
         protected void onPostExecute(String result)
         {
-            edit1.setText(result);
         }
     }
 
