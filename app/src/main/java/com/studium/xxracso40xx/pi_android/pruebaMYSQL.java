@@ -23,6 +23,7 @@ public class pruebaMYSQL extends AppCompatActivity {
     Button boton1, boton2;
     Intent intent;
     Boolean boo = false;
+    int tipoUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +84,12 @@ public class pruebaMYSQL extends AppCompatActivity {
                 connectMySql.execute("");
                 if(boo==true)
                 {
+                    /*
+                    if(tipoUsuario==1)
+                    {
+
+                    }
+                    */
                     Toast toast1 = Toast.makeText(getApplicationContext(),"Datos validados correctamente", Toast.LENGTH_SHORT);
                     toast1.show();
                     startActivity(intent);
@@ -124,6 +131,8 @@ public class pruebaMYSQL extends AppCompatActivity {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection(url, user, pass);
                 String sentencia = "SELECT * FROM usuarios Where nombreUsuario='" + edit1.getText() +"' and claveUsuario='"+ edit2.getText() +"'";
+                String sentencia1 = "SELECT * FROM usuarios";
+
                 Statement st = con.createStatement();
                 ResultSet rs = st.executeQuery(sentencia);
                 //ResultSetMetaData rsmd = rs.getMetaData();
@@ -136,6 +145,10 @@ public class pruebaMYSQL extends AppCompatActivity {
                 {
                     boo = false;
                 }
+                /*rs = st.executeQuery(sentencia1);
+                rs.next();
+                tipoUsuario = rs.getInt("tipoUsuario");
+                */
             } catch (Exception e) {
                 e.printStackTrace();
             }
