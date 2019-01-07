@@ -22,7 +22,10 @@
         <activity android:name=".Principal" />
         <activity android:name=".Canciones" />
         <activity android:name=".Nosotros" />
-        <activity android:name=".Perfil"></activity>
+        <activity android:name=".Perfil" />
+        <activity android:name=".Registro" />
+        <activity android:name=".Contrasena_Seguridad" />
+        <activity android:name=".Contrasena_Cambio"></activity>
     </application>
 
 </manifest>

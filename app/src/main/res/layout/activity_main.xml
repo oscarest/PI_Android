@@ -30,7 +30,8 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="91dp"
             android:text="Usuario"
-            android:textSize="17sp" />
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editText1"
@@ -50,7 +51,8 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="7dp"
             android:text="Contraseña"
-            android:textSize="17sp" />
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editText2"
@@ -68,46 +70,36 @@
             android:layout_height="39dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="282dp"
+            android:layout_marginBottom="247dp"
             android:text="@string/boton1"
             android:textSize="15sp" />
 
         <Button
-            android:id="@+id/button2"
-            android:layout_width="158dp"
-            android:layout_height="39dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="237dp"
-            android:text="Cancelar"
-            android:textSize="11sp" />
-
-        <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/button6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="88dp"
-            android:layout_marginLeft="88dp"
-            android:layout_marginTop="415dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginLeft="68dp"
+            android:layout_marginTop="406dp"
             android:text="Registro" />
         <!--
             android:autoLink="https://www.google.es/"
             -->
 
 
-        <TextView
-            android:id="@+id/textView4"
+        <Button
+            android:id="@+id/button7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/textView3"
+            android:layout_alignTop="@+id/button6"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="-3dp"
-            android:layout_marginEnd="45dp"
-            android:layout_marginRight="45dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="29dp"
+            android:layout_marginRight="29dp"
             android:text="Contraseña olvidada" />
 
     </RelativeLayout>

@@ -20,10 +20,14 @@ public class pruebaMYSQL extends AppCompatActivity {
     private static final String user = "oscar";
     private static final String pass = "Studium";
     EditText edit1, edit2;
-    Button boton1, boton2;
+    Button boton1;
     Intent intent;
     Boolean boo = false;
     int tipoUsuario;
+    Button registro;
+    Button contrasena;
+    Intent intent1;
+    Intent intent2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +36,11 @@ public class pruebaMYSQL extends AppCompatActivity {
         edit1 = findViewById(R.id.editText1);
         edit2 = findViewById(R.id.editText2);
         boton1 = findViewById(R.id.button1);
-        boton2 = findViewById(R.id.button2);
         intent = new Intent(this, Principal.class);
+        registro = findViewById(R.id.button6);
+        contrasena = findViewById(R.id.button7);
+        intent1 = new Intent(this, Registro.class);
+        intent2 = new Intent(this,Contrasena_Seguridad.class);
        /* boton2.setOnClickListener(new View.OnClickListener()
         {
 
@@ -75,7 +82,20 @@ public class pruebaMYSQL extends AppCompatActivity {
 
         });
         */
-
+        registro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(intent1);
+            }
+        });
+        contrasena.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(intent2);
+            }
+        });
         boton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -99,13 +119,6 @@ public class pruebaMYSQL extends AppCompatActivity {
                     Toast toast2 = Toast.makeText(getApplicationContext(),"Datos introducidos erróneos", Toast.LENGTH_SHORT);
                     toast2.show();
                 }
-            }
-        });
-        boton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-              System.exit(0);
             }
         });
     }
