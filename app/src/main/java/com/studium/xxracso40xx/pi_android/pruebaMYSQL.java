@@ -119,10 +119,12 @@ public class pruebaMYSQL extends AppCompatActivity {
                 }
                 else
                 {
+                    Toast toast2 = Toast.makeText(getApplicationContext(),"Datos introducidos erróneos", Toast.LENGTH_SHORT);
+                    toast2.show();
+                }
 
-                } Toast toast2 = Toast.makeText(getApplicationContext(),"Datos introducidos erróneos", Toast.LENGTH_SHORT);
-                toast2.show();
             }
+
         });
     }
 
