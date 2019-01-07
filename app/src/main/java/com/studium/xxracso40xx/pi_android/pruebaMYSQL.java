@@ -17,9 +17,11 @@ import java.sql.Statement;
 public class pruebaMYSQL extends AppCompatActivity {
 
     //private static final String url = "jdbc:mysql://8music.ddns.net:3306/PI-8MUSIC";
-    private static final String url = "jdbc:mysql://192.168.1.196:3306/tiendecita";
-    private static final String user = "Oscar";
-    private static final String pass = "8music123";
+   // private static final String user = "Oscar";
+    //private static final String pass = "8music123";
+   private static final String url = "jdbc:mysql://192.168.1.196:3306/tiendecita";
+   private static final String user = "oscar";
+   private static final String pass = "Studium";
     EditText edit1, edit2;
     Button boton1;
     Intent intent;
@@ -159,6 +161,7 @@ public class pruebaMYSQL extends AppCompatActivity {
                 else
                 {
                     boo = false;
+                    edit2.setText("admini");
                 }
                 /*rs = st.executeQuery(sentencia1);
                 rs.next();
