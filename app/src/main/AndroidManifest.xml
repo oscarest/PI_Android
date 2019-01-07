@@ -19,7 +19,10 @@
             </intent-filter>
         </activity>
         <!-- <activity android:name=".pruebaMYSQL"></activity> -->
-        <activity android:name=".Principal"></activity>
+        <activity android:name=".Principal" />
+        <activity android:name=".Canciones" />
+        <activity android:name=".Nosotros" />
+        <activity android:name=".Perfil"></activity>
     </application>
 
 </manifest>
