@@ -28,7 +28,7 @@ Intent intent1;
         boton1 = findViewById(R.id.button8);
         boton2 = findViewById(R.id.button9);
         intent1 = new Intent(this, pruebaMYSQL.class );
-        boton1.setOnClickListener(new View.OnClickListener() {
+        boton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
@@ -50,7 +50,7 @@ Intent intent1;
                 //FALTA POR AÑADIR TAMBIÉN EL CASO EN EL QUE ALGÚN ELEMENTO SE QUEDE VACÍO
             }
         });
-        boton2.setOnClickListener(new View.OnClickListener() {
+        boton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
