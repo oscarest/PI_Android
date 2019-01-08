@@ -1,6 +1,7 @@
 package com.studium.xxracso40xx.pi_android;
 
 import android.content.Intent;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -28,7 +29,11 @@ public class Canciones extends AppCompatActivity {
         intent1 = new Intent(this, Nosotros.class);
         intent2 = new Intent(this, Perfil.class);
         intent3 = new Intent(this, Principal.class);
-        boton1.setOnClickListener(new View.OnClickListener() {
+        ViewPager viewPager = findViewById(R.id.view_pager);
+        viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+    }
+
+        /*boton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
@@ -57,5 +62,6 @@ public class Canciones extends AppCompatActivity {
 
 
 
-    }
+
+    }*/
     }

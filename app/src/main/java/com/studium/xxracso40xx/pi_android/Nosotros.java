@@ -37,9 +37,9 @@ public class Nosotros extends AppCompatActivity {
         });
         boton2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 startActivity(intent1);
-
             }
         });
         boton3.setOnClickListener(new View.OnClickListener() {
