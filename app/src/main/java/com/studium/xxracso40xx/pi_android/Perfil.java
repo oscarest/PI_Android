@@ -20,6 +20,8 @@ public class Perfil extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_canciones);
+        //overridePendingTransition(android.R.anim.replace, android.R.anim.replaceto);
+        overridePendingTransition(R.anim.replace, R.anim.replaceto);
         boton1 = findViewById(R.id.button3);
         boton2 = findViewById(R.id.button4);
         boton3 = findViewById(R.id.button5);

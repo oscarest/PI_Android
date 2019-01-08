@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     EditText edit1, edit2;
     Button boton1;
     Intent intent;
-    Boolean boo = false;
+    Boolean boo = true;
     //int tipoUsuario;
     Button registro;
     Button contrasena;
