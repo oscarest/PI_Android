@@ -151,7 +151,7 @@ public class pruebaMYSQL extends AppCompatActivity {
                String sentencia = "SELECT * FROM Usuarios Where nickUsuario='" + edit1.getText() +"' and claveUsuario='"+ edit2.getText() +"'";
                //Esta sirve para pruebas local
                 //String sentencia = "SELECT * FROM usuarios Where nombreUsuario='" + edit1.getText() +"' and claveUsuario='"+ edit2.getText() +"'";
-               // String sentencia1 = "SELECT * FROM Usuarios";
+               //String sentencia1 = "SELECT * FROM Usuarios";
                 Statement st = con.createStatement();
                 ResultSet rs = st.executeQuery(sentencia);
                 //ResultSetMetaData rsmd = rs.getMetaData();
@@ -164,10 +164,10 @@ public class pruebaMYSQL extends AppCompatActivity {
                 {
                     boo = false;
                 }
-                /*rs = st.executeQuery(sentencia1);
-                rs.next();
-                tipoUsuario = rs.getInt("tipoUsuario");
-                */
+               // rs = st.executeQuery(sentencia1);
+                //rs.next();
+                //tipoUsuario = rs.getInt("tipoUsuario");
+                //edit1.setText(tipoUsuario);
             } catch (Exception e) {
                 e.printStackTrace();
             }
