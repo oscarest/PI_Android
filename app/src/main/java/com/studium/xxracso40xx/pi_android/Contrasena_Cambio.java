@@ -25,7 +25,7 @@ EditText edit2;
         boton2 = findViewById(R.id.button11);
         edit1 = findViewById(R.id.editText7);
         edit2 = findViewById(R.id.editText9);
-        intent1 = new Intent(this, pruebaMYSQL.class);
+        intent1 = new Intent(this, MainActivity.class);
         boton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
