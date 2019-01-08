@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -19,9 +18,9 @@ public class pruebaMYSQL extends AppCompatActivity {
     //private static final String url = "jdbc:mysql://8music.ddns.net:3306/PI-8MUSIC";
    // private static final String user = "Oscar";
     //private static final String pass = "8music123";
-   private static final String url = "jdbc:mysql://192.168.1.196:3306/tiendecita";
-   private static final String user = "oscar";
-   private static final String pass = "Studium";
+   private static final String url = "jdbc:mysql://8music.ddns.net:3306/PI-8MUSIC";
+   private static final String user = "Oscar";
+   private static final String pass = "8music123";
     EditText edit1, edit2;
     Button boton1;
     Intent intent;
@@ -121,6 +120,7 @@ public class pruebaMYSQL extends AppCompatActivity {
                 {
                     Toast toast2 = Toast.makeText(getApplicationContext(),"Datos introducidos erróneos", Toast.LENGTH_SHORT);
                     toast2.show();
+                    edit2.setText("");
                 }
 
             }
@@ -148,10 +148,10 @@ public class pruebaMYSQL extends AppCompatActivity {
                 edit2.getText();
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection(url, user, pass);
-               // String sentencia = "SELECT * FROM Usuarios Where nickUsuario='" + edit1.getText() +"' and claveUsuario='"+ edit2.getText() +"'";
+               String sentencia = "SELECT * FROM Usuarios Where nickUsuario='" + edit1.getText() +"' and claveUsuario='"+ edit2.getText() +"'";
                //Esta sirve para pruebas local
-                String sentencia = "SELECT * FROM usuarios Where nombreUsuario='" + edit1.getText() +"' and claveUsuario='"+ edit2.getText() +"'";
-                String sentencia1 = "SELECT * FROM Usuarios";
+                //String sentencia = "SELECT * FROM usuarios Where nombreUsuario='" + edit1.getText() +"' and claveUsuario='"+ edit2.getText() +"'";
+               // String sentencia1 = "SELECT * FROM Usuarios";
                 Statement st = con.createStatement();
                 ResultSet rs = st.executeQuery(sentencia);
                 //ResultSetMetaData rsmd = rs.getMetaData();
@@ -163,7 +163,6 @@ public class pruebaMYSQL extends AppCompatActivity {
                 else
                 {
                     boo = false;
-                    edit2.setText("admini");
                 }
                 /*rs = st.executeQuery(sentencia1);
                 rs.next();
@@ -179,6 +178,4 @@ public class pruebaMYSQL extends AppCompatActivity {
         {
         }
     }
-
-
 }
