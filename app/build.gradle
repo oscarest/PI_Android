@@ -31,13 +31,3 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation files('src/main/java/com/studium/xxracso40xx/pi_android/mysql-connector-java-5.1.46.jar')
 }
-configurations.all {
-    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-        def requested = details.requested
-        if (requested.group == 'com.android.support') {
-            if (!requested.name.startsWith("multidex")) {
-                details.useVersion '28.0.0'
-            }
-        }
-    }
-}
