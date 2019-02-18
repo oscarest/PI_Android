@@ -37,9 +37,9 @@
         android:id="@+id/imageView2"
         android:layout_width="106dp"
         android:layout_height="100dp"
+        android:layout_alignEnd="@+id/imageView"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="168dp"
+        android:layout_marginTop="201dp"
         app:srcCompat="@drawable/pokemon" />
 
     <TextView
@@ -48,8 +48,8 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/textView5"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="1dp"
-        android:layout_marginBottom="219dp"
+        android:layout_marginStart="-1dp"
+        android:layout_marginBottom="243dp"
         android:text="Canción 2" />
 
     <ImageView

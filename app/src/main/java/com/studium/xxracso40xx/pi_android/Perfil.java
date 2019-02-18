@@ -37,20 +37,23 @@ public class Perfil extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        boton2.setOnClickListener(new View.OnClickListener() {
+        boton2.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
                 startActivity(intent1);
 
             }
         });
-        boton3.setOnClickListener(new View.OnClickListener() {
+        boton3.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
                 startActivity(intent2);
             }
         });
-        boton4.setOnClickListener(new View.OnClickListener() {
+        boton4.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
                 startActivity(intent3);
