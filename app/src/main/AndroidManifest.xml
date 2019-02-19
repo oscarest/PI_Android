@@ -17,8 +17,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!-- <activity android:name=".pruebaMYSQL"></activity> -->
+        </activity> <!-- <activity android:name=".pruebaMYSQL"></activity> -->
         <activity android:name=".Principal" />
         <activity android:name=".Canciones" />
         <activity android:name=".Nosotros" />

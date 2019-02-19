@@ -25,7 +25,7 @@ public class Principal extends AppCompatActivity
         boton1 = findViewById(R.id.button3);
         boton2 = findViewById(R.id.button4);
         boton3 = findViewById(R.id.button5);
-        intent = new Intent(this, Canciones.class);
+        intent = new Intent(this, ScrollviewPrueba.class);
         intent1 = new Intent(this, Nosotros.class);
         intent2 = new Intent(this, Perfil.class);
         boton1.setOnClickListener(new View.OnClickListener() {
