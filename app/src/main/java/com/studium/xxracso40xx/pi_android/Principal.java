@@ -14,6 +14,7 @@ public class Principal extends AppCompatActivity
     Intent intent;
     Intent intent1;
     Intent intent2;
+    Te
 
 
 
