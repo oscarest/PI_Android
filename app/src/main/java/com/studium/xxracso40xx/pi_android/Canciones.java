@@ -29,8 +29,8 @@ public class Canciones extends AppCompatActivity {
         intent1 = new Intent(this, Nosotros.class);
         intent2 = new Intent(this, Perfil.class);
         intent3 = new Intent(this, Principal.class);
-        ViewPager viewPager = findViewById(R.id.view_pager);
-        viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+       // ViewPager viewPager = findViewById(R.id.view_pager);
+        //viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
         boton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
