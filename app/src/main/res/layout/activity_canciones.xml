@@ -73,10 +73,11 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="26dp"
-        android:layout_marginLeft="26dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginLeft="22dp"
         android:layout_marginBottom="54dp"
         android:text="Inicio"
+        android:background="@android:color/transparent"
         android:textSize="10sp" />
 
     <Button
@@ -86,23 +87,11 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="95dp"
-        android:layout_marginLeft="95dp"
-        android:layout_marginBottom="57dp"
+        android:layout_marginStart="158dp"
+        android:layout_marginLeft="158dp"
+        android:layout_marginBottom="58dp"
         android:text="Canciones"
-        android:textSize="10sp" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="204dp"
-        android:layout_marginLeft="204dp"
-        android:layout_marginBottom="57dp"
-        android:text="Nosotros"
+        android:background="@android:color/transparent"
         android:textSize="10sp" />
 
     <Button
@@ -112,9 +101,10 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="299dp"
-        android:layout_marginLeft="299dp"
+        android:layout_marginStart="325dp"
+        android:layout_marginLeft="325dp"
         android:layout_marginBottom="54dp"
+        android:background="@android:color/transparent"
         android:text="Perfil"
         android:textSize="10sp" />
 

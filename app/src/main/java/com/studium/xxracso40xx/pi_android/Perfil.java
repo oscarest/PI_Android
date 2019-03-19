@@ -9,11 +9,9 @@ import android.widget.Button;
 public class Perfil extends AppCompatActivity {
 
     Button boton1;
-    Button boton2;
     Button boton3;
     Button boton4;
     Intent intent;
-    Intent intent1;
     Intent intent2;
     Intent intent3;
     @Override
@@ -23,11 +21,9 @@ public class Perfil extends AppCompatActivity {
         //overridePendingTransition(android.R.anim.replace, android.R.anim.replaceto);
         overridePendingTransition(R.anim.replace, R.anim.replaceto);
         boton1 = findViewById(R.id.button3);
-        boton2 = findViewById(R.id.button4);
         boton3 = findViewById(R.id.button5);
         boton4 = findViewById(R.id.button);
         intent = new Intent(this, Canciones.class);
-        intent1 = new Intent(this, Nosotros.class);
         intent2 = new Intent(this, Perfil.class);
         intent3 = new Intent(this, Principal.class);
         boton1.setOnClickListener(new View.OnClickListener() {
@@ -35,14 +31,6 @@ public class Perfil extends AppCompatActivity {
             public void onClick(View v)
             {
                 startActivity(intent);
-            }
-        });
-        boton2.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v) {
-                startActivity(intent1);
-
             }
         });
         boton3.setOnClickListener(new View.OnClickListener()

@@ -5,7 +5,11 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Canciones extends AppCompatActivity {
     Button boton1;
@@ -22,33 +26,31 @@ public class Canciones extends AppCompatActivity {
         setContentView(R.layout.activity_canciones);
         overridePendingTransition(R.anim.replace, R.anim.replaceto);
         boton1 = findViewById(R.id.button3);
-        boton2 = findViewById(R.id.button4);
         boton3 = findViewById(R.id.button5);
         boton4 = findViewById(R.id.button);
         intent = new Intent(this, Canciones.class);
-        intent1 = new Intent(this, Nosotros.class);
         intent2 = new Intent(this, Perfil.class);
         intent3 = new Intent(this, Principal.class);
-       // ViewPager viewPager = findViewById(R.id.view_pager);
+        /*List<String> list = new ArrayList<String>();
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        CardAdapter listadoDeCards = new CardAdapter(getApplicationContext(), R.layout.list_item_card);
+        listadoDeCards.add("hola");
+        listView.setAdapter(listadoDeCards);
+        */
+        // ViewPager viewPager = findViewById(R.id.view_pager);
         //viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
         boton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-                startActivity(intent);
-            }
-        });
-        boton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(intent1);
-
+                startActivity(intent2);
             }
         });
         boton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(intent2);
+                startActivity(intent);
             }
         });
         boton4.setOnClickListener(new View.OnClickListener() {
