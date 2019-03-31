@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 
 public class Perfil extends AppCompatActivity {
-
     Button boton1;
     Button boton3;
     Button boton4;

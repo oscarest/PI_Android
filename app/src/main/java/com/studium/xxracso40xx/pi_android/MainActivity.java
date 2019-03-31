@@ -7,11 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -98,9 +101,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+
     }
-
-
    /* private class ConnectMySql extends AsyncTask<String, Void, String>
     {
         String res = "";
