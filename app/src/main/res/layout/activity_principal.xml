@@ -5,7 +5,8 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Principal" >
+    android:background="@drawable/degradado_app8music"
+    tools:context=".Principal">
 
     <Button
         android:id="@+id/button"
