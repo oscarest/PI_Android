@@ -40,14 +40,13 @@ public class CardAdapter extends ArrayAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
         if (row == null) {
-            LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            /*LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = inflater.inflate(R.layout.activity_list_card, parent, false);
             CardViewHolder viewHolder = new CardViewHolder();
-            viewHolder.line1 = row.findViewById(R.id.line1);
+            viewHolder.line1 = row.findViewById(R.id.imageView8);
             viewHolder.line1.setText("buenas");
-            RatingBar rb = row.findViewById(R.id.ratingBar);
-            rb.setRating(3);
             row.setTag(viewHolder);
+            */
         }
         return row;
     }

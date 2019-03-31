@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
 public class Principal extends AppCompatActivity
 {
@@ -14,6 +15,8 @@ public class Principal extends AppCompatActivity
     Intent intent;
     Intent intent1;
     Intent intent2;
+    public ListView listView;
+
 
 
 
@@ -26,6 +29,7 @@ public class Principal extends AppCompatActivity
         boton3 = findViewById(R.id.button5);
         intent = new Intent(this, Canciones.class);
         intent2 = new Intent(this, Perfil.class);
+        listView = findViewById(R.id.card_listView);
         boton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -40,4 +44,20 @@ public class Principal extends AppCompatActivity
             }
         });
     }
+    public void mostrarTodo()
+    {
+        CardAdapter listadoDeCards = new CardAdapter(getApplicationContext(), R.layout.activity_list_card);
+        /*List prod = new ArrayList<>();
+        //prod.add("");
+        if (prod == null) {
+            listView.setAdapter(null);
+        } else {
+            for (Lugar p : lstProd) {
+                listadoDeCards.add(p);
+            }
+            */
+        listView.setAdapter(listadoDeCards);
+    }
+
+    //}
 }

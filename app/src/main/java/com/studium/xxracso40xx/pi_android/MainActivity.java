@@ -1,12 +1,17 @@
 package com.studium.xxracso40xx.pi_android;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
     //private static final String url = "jdbc:mysql://8music.ddns.net:3306/PI-8MUSIC";
     //private static final String user = "Oscar";
     //private static final String pass = "8music123";
-    EditText editTextMainUsuario, editTextMainContraseña;
-    Button buttonMainIniciarSesion;
+    EditText edit1, edit2;
+    Button boton1;
     Intent intent;
     Boolean boo = true;
     //int tipoUsuario;
@@ -30,12 +35,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        editTextMainUsuario = findViewById(R.id.editTextMainUsuario);
-        editTextMainContraseña = findViewById(R.id.editTextMainContraseña);
-        buttonMainIniciarSesion = findViewById(R.id.buttonMainIniciarSesion);
+        edit1 = findViewById(R.id.editText1);
+        edit2 = findViewById(R.id.editText2);
+        boton1 = findViewById(R.id.button1);
         intent = new Intent(this, Principal.class);
-        registro = findViewById(R.id.buttonMainRegistro);
-        contrasena = findViewById(R.id.buttonMainContraseñaOlvidada);
+        registro = findViewById(R.id.button6);
+        contrasena = findViewById(R.id.button7);
         intent1 = new Intent(this, Registro.class);
         intent2 = new Intent(this,Contrasena_Seguridad.class);
 
@@ -53,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent2);
             }
         });
-        buttonMainIniciarSesion.setOnClickListener(new View.OnClickListener() {
+        boton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
@@ -75,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     Toast toast2 = Toast.makeText(getApplicationContext(),"Datos introducidos erróneos", Toast.LENGTH_SHORT);
                     toast2.show();
-                    editTextMainContraseña.setText("");
+                    edit2.setText("");
                 }
                 */
                 if(boo==true)
@@ -88,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     Toast toast2 = Toast.makeText(getApplicationContext(),"Datos introducidos erróneos", Toast.LENGTH_SHORT);
                     toast2.show();
-                    editTextMainContraseña.setText("");
+                    edit2.setText("");
                 }
             }
 
@@ -111,13 +116,13 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             try {
-                editTextMainUsuario.getText();
-                editTextMainContraseña.getText();
+                edit1.getText();
+                edit2.getText();
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection(url, user, pass);
-               String sentencia = "SELECT * FROM Usuarios Where nickUsuario='" + editTextMainUsuario.getText() +"' and claveUsuario='"+ editTextMainContraseña.getText() +"'";
+               String sentencia = "SELECT * FROM Usuarios Where nickUsuario='" + edit1.getText() +"' and claveUsuario='"+ edit2.getText() +"'";
                //Esta sirve para pruebas local
-                //String sentencia = "SELECT * FROM usuarios Where nombreUsuario='" + editTextMainUsuario.getText() +"' and claveUsuario='"+ editTextMainContraseña.getText() +"'";
+                //String sentencia = "SELECT * FROM usuarios Where nombreUsuario='" + edit1.getText() +"' and claveUsuario='"+ edit2.getText() +"'";
                //String sentencia1 = "SELECT * FROM Usuarios";
                 Statement st = con.createStatement();
                 ResultSet rs = st.executeQuery(sentencia);
@@ -134,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
                // rs = st.executeQuery(sentencia1);
                 //rs.next();
                 //tipoUsuario = rs.getInt("tipoUsuario");
-                //editTextMainUsuario.setText(tipoUsuario);
+                //edit1.setText(tipoUsuario);
             } catch (Exception e) {
                 e.printStackTrace();
             }
