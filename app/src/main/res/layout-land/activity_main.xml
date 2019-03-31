@@ -9,7 +9,7 @@
     tools:context=".MainActivity" >
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewMain8MUSIC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -19,13 +19,13 @@
         android:text="8MUSIC"
         android:textSize="40sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/TextView2"
+        app:layout_constraintBottom_toTopOf="@+id/TextViewMainContraseña"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textViewMainUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -35,16 +35,16 @@
         android:layout_marginEnd="128dp"
         android:layout_marginRight="128dp"
         android:layout_marginBottom="23dp"
-        android:layout_toStartOf="@+id/editText1"
+        android:layout_toStartOf="@+id/editTextMainUsuario"
         android:text="Usuario"
         android:textSize="17sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText1"
-        app:layout_constraintEnd_toStartOf="@+id/TextView2"
+        app:layout_constraintBottom_toTopOf="@+id/editTextMainUsuario"
+        app:layout_constraintEnd_toStartOf="@+id/TextViewMainContraseña"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/editTextMainUsuario"
         android:layout_width="158dp"
         android:layout_height="35dp"
         android:layout_alignParentTop="true"
@@ -57,54 +57,54 @@
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/editText2"
+        app:layout_constraintEnd_toStartOf="@+id/editTextMainContraseña"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/TextView2"
+        android:id="@+id/TextViewMainContraseña"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText1"
-        android:layout_alignStart="@+id/textView1"
+        android:layout_below="@+id/editTextMainUsuario"
+        android:layout_alignStart="@+id/textViewMainUsuario"
         android:layout_marginTop="32dp"
         android:text="Contraseña"
         android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.657"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewMain8MUSIC" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/editTextMainContraseña"
         android:layout_width="158dp"
         android:layout_height="35dp"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="167dp"
         android:layout_marginRight="167dp"
-        android:layout_toStartOf="@+id/button7"
+        android:layout_toStartOf="@+id/buttonMainContraseñaOlvidada"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editText1"
+        app:layout_constraintStart_toEndOf="@+id/editTextMainUsuario"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/buttonMainIniciarSesion"
         android:layout_width="wrap_content"
         android:layout_height="38dp"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="16dp"
-        android:layout_toEndOf="@+id/textView"
+        android:layout_toEndOf="@+id/textViewMain8MUSIC"
         android:text="@string/boton1"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/button7"
+        app:layout_constraintBottom_toTopOf="@+id/buttonMainContraseñaOlvidada"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.37"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText1" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextMainUsuario" />
 
     <Button
         android:id="@+id/button2"
@@ -117,29 +117,29 @@
         android:layout_marginEnd="198dp"
         android:layout_marginRight="198dp"
         android:layout_marginBottom="16dp"
-        android:layout_toEndOf="@+id/button6"
+        android:layout_toEndOf="@+id/buttonMainRegistro"
         android:text="Cancelar"
         android:textSize="11sp"
-        app:layout_constraintBottom_toTopOf="@+id/button7"
+        app:layout_constraintBottom_toTopOf="@+id/buttonMainContraseñaOlvidada"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button1"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintStart_toEndOf="@+id/buttonMainIniciarSesion"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMainContraseña" />
 
     <TextView
-        android:id="@+id/button7"
+        android:id="@+id/buttonMainContraseñaOlvidada"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/button6"
+        android:layout_alignTop="@+id/buttonMainRegistro"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="52dp"
         android:text="Contraseña olvidada"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button1"
+        app:layout_constraintTop_toBottomOf="@+id/buttonMainIniciarSesion"
         tools:layout_editor_absoluteX="277dp" />
 
     <TextView
-        android:id="@+id/button6"
+        android:id="@+id/buttonMainRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -152,5 +152,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button7" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonMainContraseñaOlvidada" />
 </android.support.constraint.ConstraintLayout>
