@@ -47,6 +47,7 @@ public class Principal extends AppCompatActivity
     public void mostrarTodo()
     {
         CardAdapter listadoDeCards = new CardAdapter(getApplicationContext(), R.layout.activity_list_card);
+        listadoDeCards.add("hola");
         /*List prod = new ArrayList<>();
         //prod.add("");
         if (prod == null) {
@@ -58,6 +59,5 @@ public class Principal extends AppCompatActivity
             */
         listView.setAdapter(listadoDeCards);
     }
-
     //}
 }
