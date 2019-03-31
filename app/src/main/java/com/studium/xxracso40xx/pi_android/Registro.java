@@ -19,14 +19,14 @@ Intent intent1;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
         //edit1=fecha
-        edit1 = findViewById(R.id.editText8);
-        edit2 = findViewById(R.id.editText);
-        edit3 = findViewById(R.id.editText3);
-        edit4 = findViewById(R.id.editText4);
-        edit5 = findViewById(R.id.editText5);
-        edit6 = findViewById(R.id.editText6);
-        boton1 = findViewById(R.id.button8);
-        boton2 = findViewById(R.id.button9);
+        edit1 = findViewById(R.id.editTextRegistroFechaDeNacimiento);
+        edit2 = findViewById(R.id.editTextRegistroNombre);
+        edit3 = findViewById(R.id.editTextRegistroApellidos);
+        edit4 = findViewById(R.id.editTextRegistroNombreUsuario);
+        edit5 = findViewById(R.id.editTextRegistroEmail);
+        edit6 = findViewById(R.id.editTextRegistroDireccion);
+        boton1 = findViewById(R.id.buttonCancelar);
+        boton2 = findViewById(R.id.buttonConfirmar);
         intent1 = new Intent(this, MainActivity.class );
         boton2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +67,7 @@ Intent intent1;
     }
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.editText8:
+            case R.id.editTextRegistroFechaDeNacimiento:
                 showDatePickerDialog();
                 break;
         }
