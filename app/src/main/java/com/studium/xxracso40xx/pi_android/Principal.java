@@ -56,7 +56,7 @@ public class Principal extends AppCompatActivity
                 listadoDeCards.add(p);
             }
             */
-        .setAdapter(listadoDeCards);
+        listView.setAdapter(listadoDeCards);
     }
 
     //}
