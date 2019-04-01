@@ -1,15 +1,10 @@
 package com.studium.xxracso40xx.pi_android;
 
 import android.content.Intent;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Canciones extends AppCompatActivity {
     Button boton1;
@@ -25,9 +20,9 @@ public class Canciones extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_canciones);
         overridePendingTransition(R.anim.replace, R.anim.replaceto);
-        boton1 = findViewById(R.id.button3);
-        boton3 = findViewById(R.id.button5);
-        boton4 = findViewById(R.id.button);
+        boton1 = findViewById(R.id.buttonPerfilCanciones);
+        boton3 = findViewById(R.id.buttonPerfilPerfil);
+        boton4 = findViewById(R.id.buttonPerfilInicio);
         intent = new Intent(this, Canciones.class);
         intent2 = new Intent(this, Perfil.class);
         intent3 = new Intent(this, Principal.class);

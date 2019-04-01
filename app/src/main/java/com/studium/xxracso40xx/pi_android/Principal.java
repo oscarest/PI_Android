@@ -25,8 +25,8 @@ public class Principal extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
         overridePendingTransition(R.anim.replace, R.anim.replaceto);
-        boton1 = findViewById(R.id.button3);
-        boton3 = findViewById(R.id.button5);
+        boton1 = findViewById(R.id.buttonPerfilCanciones);
+        boton3 = findViewById(R.id.buttonPerfilPerfil);
         intent = new Intent(this, Canciones.class);
         intent2 = new Intent(this, Perfil.class);
         listView = findViewById(R.id.card_listView);

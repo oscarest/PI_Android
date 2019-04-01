@@ -5,7 +5,8 @@
     android:id="@+id/relativeLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Registro" >
+    android:background="@drawable/degradado_app8music"
+    tools:context=".Registro">
 
     <EditText
         android:id="@+id/editTextRegistroNombre"
@@ -162,6 +163,7 @@
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginBottom="30dp"
+        android:background="@android:color/transparent"
         android:text="Cancelar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonConfirmar"
@@ -178,6 +180,7 @@
         android:layout_marginEnd="77dp"
         android:layout_marginRight="77dp"
         android:layout_marginBottom="30dp"
+        android:background="@android:color/transparent"
         android:text="Confirmar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
