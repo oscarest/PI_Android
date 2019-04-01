@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
                     Toast toast1 = Toast.makeText(getApplicationContext(),"Datos validados correctamente", Toast.LENGTH_SHORT);
                     toast1.show();
-                    startActivity(intent);
+                    startActivity(intentPrincipal);
                 }
                 else
                 {

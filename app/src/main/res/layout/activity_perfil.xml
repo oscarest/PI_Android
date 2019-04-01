@@ -10,7 +10,7 @@
 
 
     <Button
-        android:id="@+id/buttonPerfilInicio"
+        android:id="@+id/buttonPrincipalInicio"
         android:layout_width="62dp"
         android:layout_height="36dp"
         android:layout_alignParentStart="true"
@@ -25,7 +25,7 @@
         android:text="Inicio"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonPerfilCanciones"
+        app:layout_constraintEnd_toStartOf="@+id/buttonCancionesCanciones"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -35,6 +35,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="84dp"
+        android:layout_marginLeft="84dp"
         android:layout_marginEnd="84dp"
         android:layout_marginRight="84dp"
         android:layout_marginBottom="16dp"
@@ -42,8 +44,8 @@
         android:text="Canciones"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonPerfilPerfil"
-        app:layout_constraintStart_toEndOf="@+id/buttonPerfilInicio" />
+        app:layout_constraintEnd_toStartOf="@+id/buttonCancionesPerfil"
+        app:layout_constraintStart_toEndOf="@+id/buttonPrincipalInicio" />
 
     <Button
         android:id="@+id/buttonPerfilPerfil"
@@ -60,7 +62,7 @@
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonPerfilCanciones" />
+        app:layout_constraintStart_toEndOf="@+id/buttonCancionesCanciones" />
 
     <ImageView
         android:id="@+id/imageViewPerfilFoto"

@@ -7,7 +7,7 @@
     tools:context=".Principal">
 
     <Button
-        android:id="@+id/buttonPerfilInicio"
+        android:id="@+id/buttonCancionesInicio"
         android:layout_width="62dp"
         android:layout_height="36dp"
         android:layout_alignParentStart="true"
@@ -16,12 +16,12 @@
         android:layout_marginStart="22dp"
         android:layout_marginLeft="22dp"
         android:layout_marginBottom="54dp"
-        android:text="Inicio"
         android:background="@android:color/transparent"
+        android:text="Inicio"
         android:textSize="10sp" />
 
     <Button
-        android:id="@+id/buttonPerfilCanciones"
+        android:id="@+id/buttonCancionesCanciones"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_alignParentStart="true"
@@ -35,7 +35,7 @@
         android:textSize="10sp" />
 
     <Button
-        android:id="@+id/buttonPerfilPerfil"
+        android:id="@+id/buttonCancionesPerfil"
         android:layout_width="62dp"
         android:layout_height="36dp"
         android:layout_alignParentStart="true"
