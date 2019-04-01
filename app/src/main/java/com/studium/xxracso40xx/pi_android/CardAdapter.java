@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -40,13 +41,15 @@ public class CardAdapter extends ArrayAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
         if (row == null) {
-            /*LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = inflater.inflate(R.layout.activity_list_card, parent, false);
             CardViewHolder viewHolder = new CardViewHolder();
-            viewHolder.line1 = row.findViewById(R.id.imageView8);
+            /*viewHolder.line1 = row.findViewById(R.id.imageView8);
             viewHolder.line1.setText("buenas");
-            row.setTag(viewHolder);
             */
+            ImageView img = row.findViewById(R.id.imageView5);
+            img.setImageResource(R.drawable.megaman);
+            row.setTag(viewHolder);
         }
         return row;
     }
