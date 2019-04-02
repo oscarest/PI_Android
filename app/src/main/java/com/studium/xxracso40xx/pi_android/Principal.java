@@ -5,15 +5,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
 public class Principal extends AppCompatActivity
 {
-    Button boton1;
-    Button boton2;
-    Button boton3;
-    Intent intent;
-    Intent intent1;
-    Intent intent2;
+    Button buttonPerfilCanciones;
+    Button buttonPrincipalPerfil;
+    Intent intentCanciones;
+    Intent intentPerfil;
+    public ListView listviewPrincipal;
+
 
 
 
@@ -22,22 +23,43 @@ public class Principal extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
         overridePendingTransition(R.anim.replace, R.anim.replaceto);
-        boton1 = findViewById(R.id.button3);
-        boton3 = findViewById(R.id.button5);
-        intent = new Intent(this, Canciones.class);
-        intent2 = new Intent(this, Perfil.class);
-        boton1.setOnClickListener(new View.OnClickListener() {
+        buttonPerfilCanciones = findViewById(R.id.buttonPerfilCanciones);
+        buttonPrincipalPerfil = findViewById(R.id.buttonPrincipalPerfil);
+        intentCanciones = new Intent(this, Canciones.class);
+        intentPerfil = new Intent(this, Perfil.class);
+        listviewPrincipal = findViewById(R.id.listviewPrincipal);
+
+        buttonPerfilCanciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-             startActivity(intent);
+             startActivity(intentCanciones);
             }
         });
-        boton3.setOnClickListener(new View.OnClickListener() {
+        buttonPrincipalPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(intent2);
+                startActivity(intentPerfil);
             }
         });
     }
-}
+    /*
+    public void mostrarTodo()
+    {
+        CardAdapter listadoDeCards = new CardAdapter(getApplicationContext(), R.layout.activity_list_card);
+        List prod = new ArrayList<>();
+        //prod.add("");
+        if (prod == null) {
+            listviewPrincipal.setAdapter(null);
+        } else {
+            for (Lugar p : lstProd) {
+                listadoDeCards.add(p);
+            }
+
+        listviewPrincipal.setAdapter(listadoDeCards);
+    }
+
+    //}
+    */
+    }
+

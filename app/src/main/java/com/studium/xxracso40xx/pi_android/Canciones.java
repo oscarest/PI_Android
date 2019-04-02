@@ -1,62 +1,46 @@
 package com.studium.xxracso40xx.pi_android;
 
 import android.content.Intent;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Canciones extends AppCompatActivity {
-    Button boton1;
-    Button boton2;
-    Button boton3;
-    Button boton4;
-    Intent intent;
-    Intent intent1;
-    Intent intent2;
-    Intent intent3;
+    Button buttonCancionesCanciones;
+    Button buttonCancionesPerfil;
+    Button buttonCancionesInicio;
+    Intent intentPrincipal;
+    Intent intentPerfil;
+    Intent intentCanciones;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_canciones);
         overridePendingTransition(R.anim.replace, R.anim.replaceto);
-        boton1 = findViewById(R.id.button3);
-        boton3 = findViewById(R.id.button5);
-        boton4 = findViewById(R.id.button);
-        intent = new Intent(this, Canciones.class);
-        intent2 = new Intent(this, Perfil.class);
-        intent3 = new Intent(this, Principal.class);
-        /*List<String> list = new ArrayList<String>();
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, list);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        CardAdapter listadoDeCards = new CardAdapter(getApplicationContext(), R.layout.list_item_card);
-        listadoDeCards.add("hola");
-        listView.setAdapter(listadoDeCards);
-        */
-        // ViewPager viewPager = findViewById(R.id.view_pager);
-        //viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
-        boton1.setOnClickListener(new View.OnClickListener() {
+        buttonCancionesCanciones = findViewById(R.id.buttonCancionesCanciones);
+        buttonCancionesPerfil = findViewById(R.id.buttonCancionesPerfil);
+        buttonCancionesInicio = findViewById(R.id.buttonCancionesInicio);
+        intentPrincipal = new Intent(this, Canciones.class);
+        intentPerfil = new Intent(this, Perfil.class);
+        intentCanciones = new Intent(this, Principal.class);
+        buttonCancionesCanciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-                startActivity(intent2);
+                startActivity(intentCanciones);
             }
         });
-        boton3.setOnClickListener(new View.OnClickListener() {
+        buttonCancionesPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(intent);
+                startActivity(intentPerfil);
             }
         });
-        boton4.setOnClickListener(new View.OnClickListener() {
+        buttonCancionesInicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(intent3);
+                startActivity(intentPrincipal);
             }
         });
     }

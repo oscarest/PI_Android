@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 
 public class Perfil extends AppCompatActivity {
-
     Button boton1;
     Button boton3;
     Button boton4;
@@ -20,9 +19,9 @@ public class Perfil extends AppCompatActivity {
         setContentView(R.layout.activity_canciones);
         //overridePendingTransition(android.R.anim.replace, android.R.anim.replaceto);
         overridePendingTransition(R.anim.replace, R.anim.replaceto);
-        boton1 = findViewById(R.id.button3);
-        boton3 = findViewById(R.id.button5);
-        boton4 = findViewById(R.id.button);
+        boton1 = findViewById(R.id.buttonCancionesCanciones);
+        boton3 = findViewById(R.id.buttonCancionesPerfil);
+        boton4 = findViewById(R.id.buttonPrincipalInicio);
         intent = new Intent(this, Canciones.class);
         intent2 = new Intent(this, Perfil.class);
         intent3 = new Intent(this, Principal.class);

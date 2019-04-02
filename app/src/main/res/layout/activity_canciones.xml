@@ -6,68 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".Principal">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="5dp">
-
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scrollbars="none">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imageView8"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/ochenta" />
-
-                <ImageView
-                    android:id="@+id/imageView9"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/ochenta" />
-
-                <ImageView
-                    android:id="@+id/imageView10"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/ochenta" />
-
-                <ImageView
-                    android:id="@+id/imageView11"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/ochenta" />
-
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    app:srcCompat="@drawable/awar" />
-
-                <ImageView
-                    android:id="@+id/imageView7"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/ochenta" />
-            </LinearLayout>
-            <!-- Your content here -->
-        </HorizontalScrollView>
-    </ScrollView>
-
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonCancionesInicio"
         android:layout_width="62dp"
         android:layout_height="36dp"
         android:layout_alignParentStart="true"
@@ -76,12 +16,12 @@
         android:layout_marginStart="22dp"
         android:layout_marginLeft="22dp"
         android:layout_marginBottom="54dp"
-        android:text="Inicio"
         android:background="@android:color/transparent"
+        android:text="Inicio"
         android:textSize="10sp" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonCancionesCanciones"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_alignParentStart="true"
@@ -95,7 +35,7 @@
         android:textSize="10sp" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/buttonCancionesPerfil"
         android:layout_width="62dp"
         android:layout_height="36dp"
         android:layout_alignParentStart="true"

@@ -11,24 +11,24 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class Registro extends AppCompatActivity {
-EditText edit1, edit2, edit3, edit4, edit5, edit6;
-Button boton1, boton2;
+EditText editTextRegistroFechaDeNacimiento, editTextRegistroNombre, editTextRegistroApellidos, editTextRegistroNombreUsuario, editTextRegistroEmail, editTextRegistroDireccion;
+Button buttonCancelar, buttonConfirmar;
 Intent intent1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
-        //edit1=fecha
-        edit1 = findViewById(R.id.editText8);
-        edit2 = findViewById(R.id.editText);
-        edit3 = findViewById(R.id.editText3);
-        edit4 = findViewById(R.id.editText4);
-        edit5 = findViewById(R.id.editText5);
-        edit6 = findViewById(R.id.editText6);
-        boton1 = findViewById(R.id.button8);
-        boton2 = findViewById(R.id.button9);
+        //editTextMainUsuario=fecha
+        editTextRegistroFechaDeNacimiento = findViewById(R.id.editTextRegistroFechaDeNacimiento);
+        editTextRegistroNombre = findViewById(R.id.editTextRegistroNombre);
+        editTextRegistroApellidos = findViewById(R.id.editTextRegistroApellidos);
+        editTextRegistroNombreUsuario = findViewById(R.id.editTextRegistroNombreUsuario);
+        editTextRegistroEmail = findViewById(R.id.editTextRegistroEmail);
+        editTextRegistroDireccion = findViewById(R.id.editTextRegistroDireccion);
+        buttonCancelar = findViewById(R.id.buttonCancelar);
+        buttonConfirmar = findViewById(R.id.buttonConfirmar);
         intent1 = new Intent(this, MainActivity.class );
-        boton2.setOnClickListener(new View.OnClickListener() {
+        buttonConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
@@ -36,12 +36,12 @@ Intent intent1;
                 Toast toast = Toast.makeText(getApplicationContext(),"Se ha registrado correctamente", Toast.LENGTH_SHORT);
                 toast.show();
                //Borrar los datos solo si ha funcionado correctamente el registro
-                edit1.setText("");
-                edit2.setText("");
-                edit3.setText("");
-                edit4.setText("");
-                edit5.setText("");
-                edit6.setText("");
+                editTextRegistroFechaDeNacimiento.setText("");
+                editTextRegistroNombre.setText("");
+                editTextRegistroApellidos.setText("");
+                editTextRegistroNombreUsuario.setText("");
+                editTextRegistroEmail.setText("");
+                editTextRegistroDireccion.setText("");
                 startActivity(intent1);
                 /*
                 Toast toast1 = Toast.makeText(getApplicationContext(),"Ha ocurrido un error en el registro", Toast.LENGTH_SHORT);
@@ -50,16 +50,16 @@ Intent intent1;
                 //FALTA POR AÑADIR TAMBIÉN EL CASO EN EL QUE ALGÚN ELEMENTO SE QUEDE VACÍO
             }
         });
-        boton1.setOnClickListener(new View.OnClickListener() {
+        buttonCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-                edit1.setText("");
-                edit2.setText("");
-                edit3.setText("");
-                edit4.setText("");
-                edit5.setText("");
-                edit6.setText("");
+                editTextRegistroFechaDeNacimiento.setText("");
+                editTextRegistroNombre.setText("");
+                editTextRegistroApellidos.setText("");
+                editTextRegistroNombreUsuario.setText("");
+                editTextRegistroEmail.setText("");
+                editTextRegistroDireccion.setText("");
                 startActivity(intent1);
             }
         });
@@ -67,7 +67,7 @@ Intent intent1;
     }
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.editText8:
+            case R.id.editTextRegistroFechaDeNacimiento:
                 showDatePickerDialog();
                 break;
         }
@@ -80,7 +80,7 @@ Intent intent1;
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 // +1 because january is zero
                 final String selectedDate = day + " / " + (month+1) + " / " + year;
-                edit1.setText(selectedDate);
+                editTextRegistroFechaDeNacimiento.setText(selectedDate);
             }
         });
         newFragment.show(getSupportFragmentManager(), "datePicker");
