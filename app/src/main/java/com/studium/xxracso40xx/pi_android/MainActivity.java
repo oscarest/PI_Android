@@ -57,37 +57,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                /*ConnectMySql connectMySql = new ConnectMySql();
-                connectMySql.execute("");
+
                 if(boo==true)
                 {
 
-                    if(tipoUsuario==1)
-                    {
 
-                    }
-
-                    Toast toast1 = Toast.makeText(getApplicationContext(),"Datos validados correctamente", Toast.LENGTH_SHORT);
-                    toast1.show();
-                    startActivity(intentPrincipal);
-                }
-                else
-                {
-                    Toast toast2 = Toast.makeText(getApplicationContext(),"Datos introducidos erróneos", Toast.LENGTH_SHORT);
-                    toast2.show();
-                    editTextMainContraseña.setText("");
-                }
-                */
-                if(boo==true)
-                {
-                    Toast toast1 = Toast.makeText(getApplicationContext(),"Datos validados correctamente", Toast.LENGTH_SHORT);
-                    toast1.show();
                     startActivity(intent);
                 }
                 else
                 {
-                    Toast toast2 = Toast.makeText(getApplicationContext(),"Datos introducidos erróneos", Toast.LENGTH_SHORT);
-                    toast2.show();
+
                     editTextMainContraseña.setText("");
                 }
             }

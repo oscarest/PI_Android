@@ -9,7 +9,7 @@ import android.widget.ListView;
 
 public class Principal extends AppCompatActivity
 {
-    Button buttonPerfilCanciones;
+    Button buttonPrincipalCanciones;
     Button buttonPrincipalPerfil;
     Intent intentCanciones;
     Intent intentPerfil;
@@ -23,19 +23,21 @@ public class Principal extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
         overridePendingTransition(R.anim.replace, R.anim.replaceto);
-        buttonPerfilCanciones = findViewById(R.id.buttonPerfilCanciones);
+        buttonPrincipalCanciones = findViewById(R.id.buttonPrincipalCanciones);
         buttonPrincipalPerfil = findViewById(R.id.buttonPrincipalPerfil);
         intentCanciones = new Intent(this, Canciones.class);
         intentPerfil = new Intent(this, Perfil.class);
         listviewPrincipal = findViewById(R.id.listviewPrincipal);
 
-        buttonPerfilCanciones.setOnClickListener(new View.OnClickListener() {
+        buttonPrincipalCanciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
              startActivity(intentCanciones);
             }
         });
+
+
         buttonPrincipalPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
