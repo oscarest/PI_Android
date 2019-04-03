@@ -1,12 +1,19 @@
 package com.studium.xxracso40xx.pi_android;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
     Button contrasena;
     Intent intent1;
     Intent intent2;
+
+    String URL= "http://8music.ddns.net/modelo/login.php";
+    JSONParser jsonParser=new JSONParser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,70 +68,64 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v)
             {
 
-                if(boo==true)
-                {
-
-
-                    startActivity(intent);
-                }
-                else
-                {
-
-                    editTextMainContraseña.setText("");
-                }
+                AttemptLogin attemptLogin= new AttemptLogin();
+                attemptLogin.execute(editTextMainUsuario.getText().toString(),editTextMainContraseña.getText().toString());
             }
-
         });
+
+
     }
 
-
-   /* private class ConnectMySql extends AsyncTask<String, Void, String>
-    {
-        String res = "";
+    private class AttemptLogin extends AsyncTask<String, String, JSONObject> {
 
         @Override
+
         protected void onPreExecute() {
+
             super.onPreExecute();
-            Toast.makeText(pruebaMYSQL.this, "Please wait...", Toast.LENGTH_SHORT)
-                    .show();
+
         }
 
-
         @Override
-        protected String doInBackground(String... params) {
+
+        protected JSONObject doInBackground(String... args) {
+
+
+
+            String email = args[1];
+            String password = args[0];
+
+
+            ArrayList params = new ArrayList();
+            params.add(new BasicNameValuePair("password", password));
+            if(email.length()>0)
+                params.add(new BasicNameValuePair("email",email));
+
+            JSONObject json = jsonParser.makeHttpRequest(URL, "POST", params);
+
+
+            return json;
+
+        }
+
+        protected void onPostExecute(JSONObject result) {
+
+            // dismiss the dialog once product deleted
+            //Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();
+
             try {
-                editTextMainUsuario.getText();
-                editTextMainContraseña.getText();
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection con = DriverManager.getConnection(url, user, pass);
-               String sentencia = "SELECT * FROM Usuarios Where nickUsuario='" + editTextMainUsuario.getText() +"' and claveUsuario='"+ editTextMainContraseña.getText() +"'";
-               //Esta sirve para pruebas local
-                //String sentencia = "SELECT * FROM usuarios Where nombreUsuario='" + editTextMainUsuario.getText() +"' and claveUsuario='"+ editTextMainContraseña.getText() +"'";
-               //String sentencia1 = "SELECT * FROM Usuarios";
-                Statement st = con.createStatement();
-                ResultSet rs = st.executeQuery(sentencia);
-                //ResultSetMetaData rsmd = rs.getMetaData();
-                rs.next();
-                if(rs.getRow()==0)
-                {
-                    boo = true;
+                if (result != null) {
+                    Toast.makeText(getApplicationContext(),result.getString("message"),Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Unable to retrieve any data from server", Toast.LENGTH_LONG).show();
                 }
-                else
-                {
-                    boo = false;
-                }
-               // rs = st.executeQuery(sentencia1);
-                //rs.next();
-                //tipoUsuario = rs.getInt("tipoUsuario");
-                //editTextMainUsuario.setText(tipoUsuario);
-            } catch (Exception e) {
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
-            return res;
+
+
         }
-        @Override
-        protected void onPostExecute(String result)
-        {
-        }
-        */
+
+    }
+
 }
