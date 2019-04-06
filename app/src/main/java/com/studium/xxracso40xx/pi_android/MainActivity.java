@@ -1,19 +1,21 @@
 package com.studium.xxracso40xx.pi_android;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import org.apache.http.message.BasicNameValuePair;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -67,16 +69,40 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
+                ClassConnection connection = new ClassConnection();
+                try {
+                    String resultado = connection.execute("").get();
+                    JSONArray jsonArray = new JSONArray(resultado);
+                    //Index= fila que estamos leyendo del php
+                    JSONObject jsonObject = jsonArray.getJSONObject(0);
 
-                AttemptLogin attemptLogin= new AttemptLogin();
+                    String primerNombre= jsonObject.getString("idUsuario");
+                    String contrasenaUsuario= jsonObject.getString("contrasenaUsuario");
+
+                    if(editTextMainUsuario.getText().toString()==primerNombre )
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+               /* AttemptLogin attemptLogin= new AttemptLogin();
                 attemptLogin.execute(editTextMainUsuario.getText().toString(),editTextMainContraseña.getText().toString());
+                */
             }
         });
-
-
     }
 
-    private class AttemptLogin extends AsyncTask<String, String, JSONObject> {
+    /*private class AttemptLogin extends AsyncTask<String, String, JSONObject> {
 
         @Override
 
@@ -126,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        */
     }
 
-}
+
