@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 //Recordar pedir contraseña en el archivo php
                 //EN EL CASO DE QUE NO HAYA NINGUNO SE CONTROLA CON Y SI ES 0 LO RECIBIDO O ALGO ASÍ
                 //HACER QUE EN EL PHP SE DEVUELVA EL USUARIO WHERE USUARIO Y CONTRASEÑA SON LOS QUE HA INTRODUCIDO EL USUARIO
-                new DB_Apache().execute("get-product.php?id=" + editTextMainUsuario.getText().toString());// + "&contrasenaUsuario=" + editTextMainContraseña.getText().toString());
+                new DB_Apache().execute("get-product.php?id=" + editTextMainUsuario.getText().toString() + "&clave=" + editTextMainContraseña.getText().toString());
 
                /* ClassConnection connection = new ClassConnection();
                 try {
@@ -154,31 +154,32 @@ public class MainActivity extends AppCompatActivity {
                                 , response.getJSONObject(i).getString("nickUsuario")
                                 , response.getJSONObject(i).getString("claveUsuario")
                                 , response.getJSONObject(i).getInt("tipoUsuario")
-                                , response.getJSONObject(i).getLong("algunaSuscripcionUsuario")
+                                , response.getJSONObject(i).getInt("algunaSuscripcionUsuario")
                         ));
                     }
 
                     //SE PUEDE HACER CON EL OBJETO DEL MODELO COMO PODEMOS OBSERVAR PREVIAMENTE
                     //PERO TAMBIÉN TENEMOS QUE VER LA POSIBILIDAD DE GUARDAR DIRECTAMENTE LA STRING COMO MOSTRAREMOS
                     //EN EL CÓDIGO A CONTINUACIÓN
-                     /*   String nameJson = response.getJSONObject(1).getString("nombreUsuario");
-                        String contrasenaJson = response.getJSONObject(2).getString("contrasena_usuario");
-                    if(nameJson!="")
+                        //String nameJson = response.getJSONObject(1).getString("nombreUsuario");
+                        //String contrasenaJson = response.getJSONObject(2).getString("contrasena_usuario");
+                    if(!lst.isEmpty())
                     {
                         startActivity(intent);
                     }
                     }
-                    */
-                    StringBuilder result = new StringBuilder();
+
+                    /*StringBuilder result = new StringBuilder();
                     for (Usuarios p : lst) {
                         result.append(p.toString() + "\n");
                     }
                     editTextMainUsuario.setText(result);
-                }
-
-            } catch (JSONException e) {
-                e.printStackTrace();
+                    */
+                } catch (JSONException e1) {
+                e1.printStackTrace();
             }
+
+        }
         }
 
     /*private class AttemptLogin extends AsyncTask<String, String, JSONObject> {
@@ -212,6 +213,4 @@ public class MainActivity extends AppCompatActivity {
         }
         */
     }
-}
-
 

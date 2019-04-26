@@ -6,7 +6,7 @@ public class Usuarios {
         private String nickUsuario;
         private String nombre;
         private Integer cantidad;
-        private Long idSeccion;
+        private Integer idSeccion;
 
         public Usuarios() {
             this.idUsuario = null;
@@ -16,7 +16,7 @@ public class Usuarios {
             this.idSeccion = null;
         }
 
-        public Usuarios(Long idUsuario, String nickUsuario, String nombre, Integer cantidad, Long idSeccion) {
+        public Usuarios(Long idUsuario, String nickUsuario, String nombre, Integer cantidad, Integer idSeccion) {
             this.idUsuario = idUsuario;
             this.nickUsuario = nickUsuario;
             this.nombre = nombre;
@@ -57,11 +57,11 @@ public class Usuarios {
             this.cantidad = cantidad;
         }
 
-        public Long getIdSeccion() {
+        public Integer getIdSeccion() {
             return idSeccion;
         }
 
-        public void setIdSeccion(Long idSeccion) {
+        public void setIdSeccion(Integer idSeccion) {
             this.idSeccion = idSeccion;
         }
 
