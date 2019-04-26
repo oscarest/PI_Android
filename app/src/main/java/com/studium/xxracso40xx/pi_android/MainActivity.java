@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 //Recordar pedir contraseña en el archivo php
                 //EN EL CASO DE QUE NO HAYA NINGUNO SE CONTROLA CON Y SI ES 0 LO RECIBIDO O ALGO ASÍ
                 //HACER QUE EN EL PHP SE DEVUELVA EL USUARIO WHERE USUARIO Y CONTRASEÑA SON LOS QUE HA INTRODUCIDO EL USUARIO
-                new DB_Apache().execute("get-product.php?id=" + editTextMainUsuario.getText().toString() + "&clave=" + editTextMainContraseña.getText().toString());
+                new DB_Apache().execute("get-product.php?nick=" + editTextMainUsuario.getText().toString() + "&clave=" + editTextMainContraseña.getText().toString());
 
                /* ClassConnection connection = new ClassConnection();
                 try {
