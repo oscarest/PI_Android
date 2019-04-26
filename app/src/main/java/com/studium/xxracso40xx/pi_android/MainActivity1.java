@@ -71,7 +71,7 @@ public class MainActivity1 extends AppCompatActivity {
                     JSONArray response = new JSONArray(json);
 
                     List<Usuarios> lst = new ArrayList<Usuarios>();
-                    for (int i = 0; i < response.length(); i++) {
+                    /*for (int i = 0; i < response.length(); i++) {
                         lst.add(new Usuarios(
                                 response.getJSONObject(i).getLong("idUsuario")
                                 , response.getJSONObject(i).getString("claveUsuario")
@@ -79,6 +79,8 @@ public class MainActivity1 extends AppCompatActivity {
                                 , response.getJSONObject(i).getLong("algunaSuscripcionUsuario")
                         ));
                     }
+                    */
+
 
                     StringBuilder result = new StringBuilder();
                     for (Usuarios p : lst) {
