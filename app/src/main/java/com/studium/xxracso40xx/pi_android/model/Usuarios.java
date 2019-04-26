@@ -23,6 +23,10 @@ public class Usuarios {
             this.cantidad = cantidad;
             this.idSeccion = idSeccion;
         }
+        public Usuarios(Long idUsuario)
+        {
+        this.idUsuario = idUsuario;
+        }
 
         public Long getIdUsuario() {
             return idUsuario;

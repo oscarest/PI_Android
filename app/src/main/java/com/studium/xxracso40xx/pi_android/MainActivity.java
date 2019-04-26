@@ -151,10 +151,10 @@ public class MainActivity extends AppCompatActivity {
                     for (int i = 0; i < response.length(); i++) {
                         lst.add(new Usuarios(
                                 response.getJSONObject(i).getLong("idUsuario")
-                                , response.getJSONObject(i).getString("nickUsuario")
+                               /* , response.getJSONObject(i).getString("nickUsuario")
                                 , response.getJSONObject(i).getString("claveUsuario")
                                 , response.getJSONObject(i).getInt("tipoUsuario")
-                                , response.getJSONObject(i).getInt("algunaSuscripcionUsuario")
+                                , response.getJSONObject(i).getInt("algunaSuscripcionUsuario")*/
                         ));
                     }
 
