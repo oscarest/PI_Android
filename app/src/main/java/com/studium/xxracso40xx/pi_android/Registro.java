@@ -30,6 +30,8 @@ public class Registro extends AppCompatActivity {
 EditText editTextRegistroFechaDeNacimiento, editTextRegistroContrasena, editTextRegistroNombre, editTextRegistroApellidos, editTextRegistroNombreUsuario, editTextRegistroEmail, editTextRegistroDireccion;
 Button buttonCancelar, buttonConfirmar;
 Intent intent1;
+String test;
+String test2;
     private String APIserver = "http://8music.ddns.net/webserviceAndroid/";
     Intent intent;
     @Override
@@ -55,9 +57,11 @@ Intent intent1;
                 Toast toast = Toast.makeText(getApplicationContext(),"Se ha registrado correctamente", Toast.LENGTH_SHORT);
                 toast.show();
                //Borrar los datos solo si ha funcionado correctamente el registro
+                test = editTextRegistroDireccion.getText().toString();
+                test2 = test.replace(" ", "%");
                 new Registro.DB_Apache().execute("set-user.php?nick=" + editTextRegistroNombreUsuario.getText().toString() + "&clave=" + editTextRegistroContrasena.getText().toString()
                                                 + "&nombreUsuario=" + editTextRegistroNombre.getText().toString() + "&apellidoUsuario=" + editTextRegistroApellidos.getText().toString()
-                                                + "&emailUsuario=" + editTextRegistroEmail.getText().toString() + "&direccionUsuario=" + editTextRegistroDireccion.getText().toString()
+                                                + "&emailUsuario=" + editTextRegistroEmail.getText().toString() + "&direccionUsuario=" + test2
                                                 + "&fechaNacimientoUsuario=" + editTextRegistroFechaDeNacimiento.getText().toString());
                 editTextRegistroFechaDeNacimiento.setText("");
                 editTextRegistroNombre.setText("");
