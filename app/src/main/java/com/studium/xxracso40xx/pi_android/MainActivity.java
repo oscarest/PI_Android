@@ -31,7 +31,7 @@ import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String APIserver = "http://8music.ddns.net/modelo/";
+    private String APIserver = "http://8music.ddns.net/webserviceAndroid/";
     //private static final String url = "jdbc:mysql://8music.ddns.net:3306/PI-8MUSIC";
     // private static final String user = "Oscar";
     //private static final String pass = "8music123";
