@@ -55,7 +55,10 @@ Intent intent1;
                 Toast toast = Toast.makeText(getApplicationContext(),"Se ha registrado correctamente", Toast.LENGTH_SHORT);
                 toast.show();
                //Borrar los datos solo si ha funcionado correctamente el registro
-                new Registro.DB_Apache().execute("set-user.php?nick=" + editTextRegistroNombreUsuario.getText().toString() + "&clave=" + editTextRegistroContrasena.getText().toString());
+                new Registro.DB_Apache().execute("set-user.php?nick=" + editTextRegistroNombreUsuario.getText().toString() + "&clave=" + editTextRegistroContrasena.getText().toString()
+                                                + "&nombreUsuario=" + editTextRegistroNombre.getText().toString() + "&apellidoUsuario=" + editTextRegistroApellidos.getText().toString()
+                                                + "&emailUsuario=" + editTextRegistroEmail.getText().toString() + "&direccionUsuario=" + editTextRegistroDireccion.getText().toString()
+                                                + "&fechaNacimientoUsuario=" + editTextRegistroFechaDeNacimiento.getText().toString());
                 editTextRegistroFechaDeNacimiento.setText("");
                 editTextRegistroNombre.setText("");
                 editTextRegistroApellidos.setText("");
@@ -124,7 +127,7 @@ Intent intent1;
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 // +1 because january is zero
-                final String selectedDate = day + " / " + (month+1) + " / " + year;
+                final String selectedDate = year + "-" + (month+1) + "-" + day;
                 editTextRegistroFechaDeNacimiento.setText(selectedDate);
             }
         });
