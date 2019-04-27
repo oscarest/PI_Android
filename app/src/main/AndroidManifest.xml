@@ -13,6 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
+        android:usesCleartextTraffic="true"
+
 
         >
         <activity android:name=".list_card" />
@@ -29,6 +31,7 @@
         <activity android:name=".Registro" />
         <activity android:name=".Contrasena_Seguridad" />
         <activity android:name=".Contrasena_Cambio" />
+        <uses-library android:name="org.apache.http.legacy"/>
     </application>
 
 </manifest>

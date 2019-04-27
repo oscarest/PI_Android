@@ -85,35 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 //HACER QUE EN EL PHP SE DEVUELVA EL USUARIO WHERE USUARIO Y CONTRASEÑA SON LOS QUE HA INTRODUCIDO EL USUARIO
                 new DB_Apache().execute("get-product.php?nick=" + editTextMainUsuario.getText().toString() + "&clave=" + editTextMainContraseña.getText().toString());
 
-               /* ClassConnection connection = new ClassConnection();
-                try {
-                    String resultado = connection.execute("").get();
-                    JSONArray jsonArray = new JSONArray(resultado);
-                    //Index= fila que estamos leyendo del php
-                    JSONObject jsonObject = jsonArray.getJSONObject(0);
 
-                    String primerNombre= jsonObject.getString("idUsuario");
-                    String contrasenaUsuario= jsonObject.getString("contrasenaUsuario");
-
-                    if(editTextMainUsuario.getText().toString()==primerNombre )
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-				*/
-               /* AttemptLogin attemptLogin= new AttemptLogin();
-                attemptLogin.execute(editTextMainUsuario.getText().toString(),editTextMainContraseña.getText().toString());
-                */
             }
         });
     }
@@ -169,48 +141,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                     }
 
-                    /*StringBuilder result = new StringBuilder();
-                    for (Usuarios p : lst) {
-                        result.append(p.toString() + "\n");
-                    }
-                    editTextMainUsuario.setText(result);
-                    */
                 } catch (JSONException e1) {
                 e1.printStackTrace();
             }
 
         }
         }
-
-    /*private class AttemptLogin extends AsyncTask<String, String, JSONObject> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-        @Override
-        protected JSONObject doInBackground(String... args) {
-            String email = args[1];
-            String password = args[0];
-            ArrayList params = new ArrayList();
-            params.add(new BasicNameValuePair("password", password));
-            if(email.length()>0)
-                params.add(new BasicNameValuePair("email",email));
-            JSONObject json = jsonParser.makeHttpRequest(URL, "POST", params);
-            return json;
-        }
-        protected void onPostExecute(JSONObject result) {
-            // dismiss the dialog once product deleted
-            //Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();
-            try {
-                if (result != null) {
-                    Toast.makeText(getApplicationContext(),result.getString("message"),Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Unable to retrieve any data from server", Toast.LENGTH_LONG).show();
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        */
     }
 
