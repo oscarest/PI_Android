@@ -27,13 +27,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Registro extends AppCompatActivity {
-EditText editTextRegistroFechaDeNacimiento, editTextRegistroContrasena, editTextRegistroNombre, editTextRegistroApellidos, editTextRegistroNombreUsuario, editTextRegistroEmail, editTextRegistroDireccion;
+EditText editTextRegistroFechaDeNacimiento, editTextRegistroPregunta, editTextRegistroContrasena, editTextRegistroNombre, editTextRegistroApellidos, editTextRegistroNombreUsuario, editTextRegistroEmail, editTextRegistroDireccion;
 Button buttonCancelar, buttonConfirmar;
 Intent intent1;
-String test;
-String test2;
+String nombre, apellidos, direccion;
     private String APIserver = "http://8music.ddns.net/webserviceAndroid/";
-    Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +44,7 @@ String test2;
         editTextRegistroEmail = findViewById(R.id.editTextRegistroEmail);
         editTextRegistroDireccion = findViewById(R.id.editTextRegistroDireccion);
         editTextRegistroContrasena = findViewById(R.id.editTextRegistroContrasena);
+        editTextRegistroPregunta = findViewById(R.id.editTextRegistroPregunta);
         buttonCancelar = findViewById(R.id.buttonCancelar);
         buttonConfirmar = findViewById(R.id.buttonConfirmar);
         intent1 = new Intent(this, MainActivity.class );
@@ -53,28 +52,54 @@ String test2;
             @Override
             public void onClick(View v)
             {
-                //Poner aquí toda la funcionalidad
-                Toast toast = Toast.makeText(getApplicationContext(),"Se ha registrado correctamente", Toast.LENGTH_SHORT);
-                toast.show();
+
                //Borrar los datos solo si ha funcionado correctamente el registro
-                test = editTextRegistroDireccion.getText().toString();
-                test2 = test.replace(" ", "%");
-                new Registro.DB_Apache().execute("set-user.php?nick=" + editTextRegistroNombreUsuario.getText().toString() + "&clave=" + editTextRegistroContrasena.getText().toString()
-                                                + "&nombreUsuario=" + editTextRegistroNombre.getText().toString() + "&apellidoUsuario=" + editTextRegistroApellidos.getText().toString()
-                                                + "&emailUsuario=" + editTextRegistroEmail.getText().toString() + "&direccionUsuario=" + test2
-                                                + "&fechaNacimientoUsuario=" + editTextRegistroFechaDeNacimiento.getText().toString());
-                editTextRegistroFechaDeNacimiento.setText("");
-                editTextRegistroNombre.setText("");
-                editTextRegistroApellidos.setText("");
-                editTextRegistroNombreUsuario.setText("");
-                editTextRegistroEmail.setText("");
-                editTextRegistroDireccion.setText("");
-                startActivity(intent1);
-                /*
-                Toast toast1 = Toast.makeText(getApplicationContext(),"Ha ocurrido un error en el registro", Toast.LENGTH_SHORT);
-                toast1.show();
-                 */
-                //FALTA POR AÑADIR TAMBIÉN EL CASO EN EL QUE ALGÚN ELEMENTO SE QUEDE VACÍO
+                direccion = editTextRegistroDireccion.getText().toString().replace(" ", "+");
+                nombre = editTextRegistroNombre.getText().toString().replace(" ", "+");
+                apellidos = editTextRegistroApellidos.getText().toString().replace(" ", "+");
+
+
+                if(nombre.isEmpty() || apellidos.isEmpty() || direccion.isEmpty() || editTextRegistroNombreUsuario.getText().toString().isEmpty() ||
+                        editTextRegistroContrasena.getText().toString().isEmpty() || editTextRegistroEmail.getText().toString().isEmpty() ||
+                        editTextRegistroFechaDeNacimiento.getText().toString().isEmpty() || editTextRegistroPregunta.getText().toString().isEmpty()
+
+                  ){
+
+                    Toast toast1 = Toast.makeText(getApplicationContext(),"Uno o varios campos están vacíos", Toast.LENGTH_SHORT);
+                    toast1.show();
+
+                }else{
+
+                    try{
+
+                        new Registro.DB_Apache().execute("set-user.php?nick=" + editTextRegistroNombreUsuario.getText().toString() + "&clave=" + editTextRegistroContrasena.getText().toString()
+                                + "&nombreUsuario=" + nombre + "&apellidoUsuario=" + apellidos
+                                + "&emailUsuario=" + editTextRegistroEmail.getText().toString() + "&direccionUsuario=" + direccion
+                                + "&fechaNacimientoUsuario=" + editTextRegistroFechaDeNacimiento.getText().toString()
+                                + "&pregunta=" + editTextRegistroPregunta.getText().toString());
+
+                        editTextRegistroFechaDeNacimiento.setText("");
+                        editTextRegistroNombre.setText("");
+                        editTextRegistroApellidos.setText("");
+                        editTextRegistroNombreUsuario.setText("");
+                        editTextRegistroEmail.setText("");
+                        editTextRegistroDireccion.setText("");
+                        editTextRegistroPregunta.setText("");
+                        startActivity(intent1);
+
+                        Toast toast1 = Toast.makeText(getApplicationContext(),"Se ha realizado el registro correctamente", Toast.LENGTH_SHORT);
+                        toast1.show();
+
+                    }finally {
+
+
+
+                    }
+
+
+                }
+
+
             }
         });
         buttonCancelar.setOnClickListener(new View.OnClickListener() {
