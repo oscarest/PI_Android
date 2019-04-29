@@ -14,47 +14,49 @@ import java.io.IOException;
 
 public class ReproductorMusica extends AppCompatActivity {
 
-    Button playBtn;
-    SeekBar positionBar;
-    SeekBar volumeBar;
-    TextView elapsedTimeLabel;
-    TextView remainingTimeLabel;
-    MediaPlayer mp;
-    int totalTime;
+    Button botonIniciar;
+    SeekBar BarraPosicion;
+    SeekBar BarraVolumen;
+    TextView tiempoTranscurrido;
+    TextView tiempoRestante;
+    MediaPlayer reproductorMusica;
+    int tiempoTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reproductor_musica);
 
-        playBtn =findViewById(R.id.playBtn);
-        elapsedTimeLabel = findViewById(R.id.elapsedTimeLabel);
-        remainingTimeLabel =findViewById(R.id.remainingTimeLabel);
-        positionBar = findViewById(R.id.positionBar);
+        botonIniciar =findViewById(R.id.botonIniciar);
+        tiempoTranscurrido = findViewById(R.id.tiempoTranscurrido);
+        tiempoRestante =findViewById(R.id.tiempoRestante);
+        BarraPosicion = findViewById(R.id.BarraPosicion);
+        BarraVolumen =findViewById(R.id.BarraVolumen);
+
 
         // Media Player
-        mp = new MediaPlayer();
+        reproductorMusica = new MediaPlayer();
         try {
-            mp.setDataSource("https://www.android-examples.com/wp-content/uploads/2016/04/Thunder-rumble.mp3");
-            mp.prepare();
+            reproductorMusica.setDataSource("https://www.android-examples.com/wp-content/uploads/2016/04/Thunder-rumble.mp3");
+            reproductorMusica.prepare();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        mp.setLooping(true);
-        mp.seekTo(0);
-        mp.setVolume(0.5f, 0.5f);
-        totalTime = mp.getDuration();
+        reproductorMusica.setLooping(true);
+        reproductorMusica.seekTo(0);
+        reproductorMusica.setVolume(0.5f, 0.5f);
+        tiempoTotal = reproductorMusica.getDuration();
         positionBar();
         VolumeBar();
-        // Thread (Update positionBar & timeLabel)
+        // Thread (Update BarraPosicion & timeLabel)
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while (mp != null) {
+                while (reproductorMusica != null) {
                     try {
                         Message msg = new Message();
-                        msg.what = mp.getCurrentPosition();
+                        msg.what = reproductorMusica.getCurrentPosition();
                         handler.sendMessage(msg);
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {}
@@ -67,55 +69,55 @@ public class ReproductorMusica extends AppCompatActivity {
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            int currentPosition = msg.what;
-            // Update positionBar.
-            positionBar.setProgress(currentPosition);
+            int posicionActual = msg.what;
+            // Update BarraPosicion.
+            BarraPosicion.setProgress(posicionActual);
 
             // Update Labels.
-            String elapsedTime = createTimeLabel(currentPosition);
-            elapsedTimeLabel.setText(elapsedTime);
-            String remainingTime = createTimeLabel(totalTime-currentPosition);
-            remainingTimeLabel.setText("- " + remainingTime);
+            String tiempoTranscurrido = CrearTextViewTiempo(posicionActual);
+            ReproductorMusica.this.tiempoTranscurrido.setText(tiempoTranscurrido);
+            String tiempoRestante = CrearTextViewTiempo(tiempoTotal -posicionActual);
+            ReproductorMusica.this.tiempoRestante.setText("- " + tiempoRestante);
         }
     };
 
-    public String createTimeLabel(int time) {
-        String timeLabel = "";
-        int min = time / 1000 / 60;
-        int sec = time / 1000 % 60;
+    public String CrearTextViewTiempo(int tiempo) {
+        String tiempoTextView = "";
+        int min = tiempo / 1000 / 60;
+        int seg = tiempo / 1000 % 60;
 
-        timeLabel = min + ":";
-        if (sec < 10) timeLabel += "0";
-        timeLabel += sec;
+        tiempoTextView = min + ":";
+        if (seg < 10) tiempoTextView += "0";
+        tiempoTextView += seg;
 
-        return timeLabel;
+        return tiempoTextView;
     }
 
-    public void playBtnClick(View view) {
+    public void BotonIniciar(View view) {
 
-        if (!mp.isPlaying()) {
+        if (!reproductorMusica.isPlaying()) {
             // Stopping
-            mp.start();
-            playBtn.setBackgroundResource(R.drawable.stop);
+            reproductorMusica.start();
+            botonIniciar.setBackgroundResource(R.drawable.stop);
 
         } else {
             // Playing
-            mp.pause();
-            playBtn.setBackgroundResource(R.drawable.play);
+            reproductorMusica.pause();
+            botonIniciar.setBackgroundResource(R.drawable.play);
         }
 
     }
     public void positionBar()
     {
         // Position Bar
-        positionBar.setMax(totalTime);
-        positionBar.setOnSeekBarChangeListener(
+        BarraPosicion.setMax(tiempoTotal);
+        BarraPosicion.setOnSeekBarChangeListener(
                 new SeekBar.OnSeekBarChangeListener() {
                     @Override
-                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    public void onProgressChanged(SeekBar seekBar, int progeso, boolean fromUser) {
                         if (fromUser) {
-                            mp.seekTo(progress);
-                            positionBar.setProgress(progress);
+                            reproductorMusica.seekTo(progeso);
+                            BarraPosicion.setProgress(progeso);
                         }
                     }
 
@@ -134,13 +136,12 @@ public class ReproductorMusica extends AppCompatActivity {
     public void VolumeBar()
     {
         // Volume Bar
-        volumeBar =findViewById(R.id.volumeBar);
-        volumeBar.setOnSeekBarChangeListener(
+        BarraVolumen.setOnSeekBarChangeListener(
                 new SeekBar.OnSeekBarChangeListener() {
                     @Override
-                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                        float volumeNum = progress / 100f;
-                        mp.setVolume(volumeNum, volumeNum);
+                    public void onProgressChanged(SeekBar seekBar, int progeso, boolean fromUser) {
+                        float volumeNum = progeso / 100f;
+                        reproductorMusica.setVolume(volumeNum, volumeNum);
                     }
 
                     @Override
@@ -156,5 +157,20 @@ public class ReproductorMusica extends AppCompatActivity {
         );
 
     }
-
+    /*@Override
+    protected void onDestroy() {
+        super.onDestroy();
+        killMediaPlayer();
+    }
+    private void killMediaPlayer() {
+        if(reproductorMusica!=null) {
+            try {
+                reproductorMusica.release();
+            }
+            catch(Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+*/
 }

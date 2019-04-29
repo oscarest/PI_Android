@@ -15,7 +15,7 @@
         android:src="@drawable/awar" />
 
     <SeekBar
-        android:id="@+id/positionBar"
+        android:id="@+id/BarraPosicion"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"/>
@@ -24,13 +24,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/elapsedTimeLabel"
+            android:id="@+id/tiempoTranscurrido"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0:11"
             android:layout_marginLeft="40dp"/>
         <TextView
-            android:id="@+id/remainingTimeLabel"
+            android:id="@+id/tiempoRestante"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="-1:49"
@@ -38,12 +38,12 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/playBtn"
+        android:id="@+id/botonIniciar"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:background="@drawable/play"
         android:layout_marginTop="40dp"
-        android:onClick="playBtnClick"/>
+        android:onClick="BotonIniciar"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,7 +56,7 @@
             android:layout_height="18dp"
             android:src="@drawable/sound"/>
         <SeekBar
-            android:id="@+id/volumeBar"
+            android:id="@+id/BarraVolumen"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:progress="50"
