@@ -1,8 +1,12 @@
 package com.studium.xxracso40xx.pi_android;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -106,10 +110,15 @@ public class ReproductorMusica extends AppCompatActivity {
         }
 
     }
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public void positionBar()
     {
         // Position Bar
         BarraPosicion.setMax(tiempoTotal);
+       //ESTAS DOS LÍNEAS NECESITAN MÍNIMO LA API JELLY BEAN PARA FUNCIONAR
+        BarraPosicion.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+        BarraPosicion.getThumb().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
         BarraPosicion.setOnSeekBarChangeListener(
                 new SeekBar.OnSeekBarChangeListener() {
                     @Override
