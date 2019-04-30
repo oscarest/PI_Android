@@ -25,6 +25,7 @@ public class ReproductorMusica extends AppCompatActivity {
     MediaPlayer reproductorMusica;
     int tiempoTotal;
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
