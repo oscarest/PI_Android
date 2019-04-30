@@ -16,7 +16,6 @@ public class ReproductorMusica extends AppCompatActivity {
 
     Button botonIniciar;
     SeekBar BarraPosicion;
-    SeekBar BarraVolumen;
     TextView tiempoTranscurrido;
     TextView tiempoRestante;
     MediaPlayer reproductorMusica;
@@ -31,7 +30,7 @@ public class ReproductorMusica extends AppCompatActivity {
         tiempoTranscurrido = findViewById(R.id.tiempoTranscurrido);
         tiempoRestante =findViewById(R.id.tiempoRestante);
         BarraPosicion = findViewById(R.id.BarraPosicion);
-        BarraVolumen =findViewById(R.id.BarraVolumen);
+        //BarraVolumen =findViewById(R.id.BarraVolumen);
 
 
         // Media Player
@@ -48,7 +47,7 @@ public class ReproductorMusica extends AppCompatActivity {
         reproductorMusica.setVolume(0.5f, 0.5f);
         tiempoTotal = reproductorMusica.getDuration();
         positionBar();
-        VolumeBar();
+        //VolumeBar();
         // Thread (Update BarraPosicion & timeLabel)
         new Thread(new Runnable() {
             @Override
@@ -133,7 +132,7 @@ public class ReproductorMusica extends AppCompatActivity {
                 }
         );
     }
-    public void VolumeBar()
+    /*public void VolumeBar()
     {
         // Volume Bar
         BarraVolumen.setOnSeekBarChangeListener(
@@ -156,7 +155,10 @@ public class ReproductorMusica extends AppCompatActivity {
                 }
         );
 
+
     }
+    */
+
     /*@Override
     protected void onDestroy() {
         super.onDestroy();
