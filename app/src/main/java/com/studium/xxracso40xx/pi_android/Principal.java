@@ -45,6 +45,7 @@ public class Principal extends AppCompatActivity
             }
         });
     }
+    //CAMBIAR EL CÓDIGO DE ABAJO PARA QUE SE PUEDA HACER MEDIANTE LISTVIEW, HORIZONTAL SCROLL O HACERLO MEDIANTE DOS SCROLLS
     /*
     public void mostrarTodo()
     {
