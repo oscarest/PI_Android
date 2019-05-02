@@ -17,37 +17,28 @@ public class Canciones extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_canciones);
-        overridePendingTransition(R.anim.replace, R.anim.replaceto);
-        buttonCancionesCanciones = findViewById(R.id.buttonCancionesCanciones);
+        //overridePendingTransition(R.anim.replace, R.anim.replaceto);
         buttonCancionesPerfil = findViewById(R.id.buttonCancionesPerfil);
         buttonCancionesInicio = findViewById(R.id.buttonCancionesInicio);
-        intentPrincipal = new Intent(this, Canciones.class);
+        intentPrincipal = new Intent(this, Principal.class);
         intentPerfil = new Intent(this, Perfil.class);
-        intentCanciones = new Intent(this, Principal.class);
-        buttonCancionesCanciones.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(intentCanciones);
-            }
-        });
         buttonCancionesPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
                 startActivity(intentPerfil);
+                overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
             }
         });
         buttonCancionesInicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
                 startActivity(intentPrincipal);
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+
             }
         });
+
     }
-
-
-
-
-
-
     }

@@ -48,6 +48,12 @@
         android:text="Perfil"
         android:textSize="10sp" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="78dp"
+        android:layout_height="60dp"
+        app:srcCompat="@drawable/awar" />
+
     <!--
         <ImageView
             android:id="@+id/imageView4"

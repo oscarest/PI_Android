@@ -17,7 +17,6 @@ import android.widget.TextView;
 import java.io.IOException;
 
 public class ReproductorMusica extends AppCompatActivity {
-
     Button botonIniciar;
     SeekBar BarraPosicion;
     TextView tiempoTranscurrido;
@@ -30,7 +29,6 @@ public class ReproductorMusica extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reproductor_musica);
-
         botonIniciar =findViewById(R.id.botonIniciar);
         tiempoTranscurrido = findViewById(R.id.tiempoTranscurrido);
         tiempoRestante =findViewById(R.id.tiempoRestante);

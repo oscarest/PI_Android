@@ -11,39 +11,33 @@ public class Perfil extends AppCompatActivity {
     Button boton3;
     Button boton4;
     Intent intent;
-    Intent intent2;
     Intent intent3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_canciones);
+        setContentView(R.layout.activity_perfil);
         //overridePendingTransition(android.R.anim.replace, android.R.anim.replaceto);
-        overridePendingTransition(R.anim.replace, R.anim.replaceto);
-        boton1 = findViewById(R.id.buttonCancionesCanciones);
-        boton3 = findViewById(R.id.buttonCancionesPerfil);
+        boton1 = findViewById(R.id.buttonPerfilCanciones);
         boton4 = findViewById(R.id.buttonPrincipalInicio);
         intent = new Intent(this, Canciones.class);
-        intent2 = new Intent(this, Perfil.class);
         intent3 = new Intent(this, Principal.class);
         boton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
+                finish();
                 startActivity(intent);
-            }
-        });
-        boton3.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v) {
-                startActivity(intent2);
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
             }
         });
         boton4.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v) {
+                finish();
                 startActivity(intent3);
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+
             }
         });
     }

@@ -14,16 +14,16 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ReproductorMusica"></activity>
+        <activity android:name=".ReproductorMusica" />
         <activity android:name=".list_card" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Principal">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- <activity android:name=".pruebaMYSQL"></activity> -->
-        <activity android:name=".Principal" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".Canciones" />
         <activity android:name=".Perfil" />
         <activity android:name=".Registro" />
@@ -32,5 +32,4 @@
 
         <uses-library android:name="org.apache.http.legacy" />
     </application>
-
 </manifest>
