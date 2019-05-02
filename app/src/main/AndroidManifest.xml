@@ -16,7 +16,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".ReproductorMusica" />
         <activity android:name=".list_card" />
-        <activity android:name=".Principal">
+        <activity android:name=".PagerView">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,6 +25,7 @@
         </activity> <!-- <activity android:name=".pruebaMYSQL"></activity> -->
         <activity android:name=".MainActivity" />
         <activity android:name=".Canciones" />
+        <activity android:name=".Principal" />
         <activity android:name=".Perfil" />
         <activity android:name=".Registro" />
         <activity android:name=".Contrasena_Seguridad" />
