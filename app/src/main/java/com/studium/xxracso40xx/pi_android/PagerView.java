@@ -3,6 +3,7 @@ package com.studium.xxracso40xx.pi_android;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Adapter;
 
 public class PagerView extends AppCompatActivity
 {
