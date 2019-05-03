@@ -124,7 +124,14 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                         Message msg = new Message();
                         msg.what = mServ.PosicionActual();
                         handler.sendMessage(msg);
-                        Thread.sleep(1000);
+
+                        //Si la variable "REPETICION" es true, habrá modo repetición. falta añadir el botón para que si el botón está pulsado, se ponga
+                        //REPETICION como true
+                        if(mServ.PosicionActual()== mServ.posicionFinal() || App.REPETICION==true)
+                        {
+                            mServ.mPlayer.setLooping(true);
+                        }
+                            Thread.sleep(1000);
                     } catch (InterruptedException e) {}
                 }
             }
