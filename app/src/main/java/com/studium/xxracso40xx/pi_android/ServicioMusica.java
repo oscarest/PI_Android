@@ -43,13 +43,23 @@ public class ServicioMusica extends Service {
         player.seekTo(App.tiempoActualCancionActual*1000);
         player.setLooping(false);
         player.setVolume(0.5f, 0.5f);
-        player.start();
         App.tiempoTotalCancionActual = player.getDuration();
-        new Thread(new Runnable() {
+        player.start();
+       new Thread(new Runnable() {
             @Override
             public void run() {
                 while (player != null) {
                     try {
+                       /* if(App.tiempoActualCancionActual== player.getCurrentPosition()-1)
+                        {
+                            App.tiempoActualCancionActual = player.getCurrentPosition();
+                        }
+                        //Ha ocurrido un salto en el ReproductorMusica, cambiando la variable en App
+                        else
+                        {
+                            //player.seekTo(App.tiempoActualCancionActual*1000);
+                        }
+                        */
                         App.tiempoActualCancionActual = player.getCurrentPosition();
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {}
@@ -65,7 +75,7 @@ public class ServicioMusica extends Service {
 
 
     public int IniciarCancion(){
-        this.player.start();
+        //this.player.start();
         return 0;
     }
     @Override
@@ -80,7 +90,5 @@ public class ServicioMusica extends Service {
     public int getTiempoTotal(){
         return player.getDuration();
     }
-
-
 
 }

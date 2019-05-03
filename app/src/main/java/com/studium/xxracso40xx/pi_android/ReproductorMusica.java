@@ -37,14 +37,14 @@ public class ReproductorMusica extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        startService(new Intent(this, ServicioMusica.class));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reproductor_musica);
+        startService(new Intent(this, ServicioMusica.class));
         botonIniciar =findViewById(R.id.botonIniciar);
         tiempoTranscurrido = findViewById(R.id.tiempoTranscurrido);
         tiempoRestante =findViewById(R.id.tiempoRestante);
         BarraPosicion = findViewById(R.id.BarraPosicion);
-            //BarraVolumen =findViewById(R.id.BarraVolumen);
+        //BarraVolumen =findViewById(R.id.BarraVolumen);
 
 
         // Media Player
@@ -86,7 +86,6 @@ public class ReproductorMusica extends AppCompatActivity {
             int posicionActual = msg.what;
             // Update BarraPosicion.
             BarraPosicion.setProgress(posicionActual);
-
             // Update Labels.
             String tiempoTranscurrido = CrearTextViewTiempo(posicionActual);
             ReproductorMusica.this.tiempoTranscurrido.setText(tiempoTranscurrido);
@@ -108,15 +107,7 @@ public class ReproductorMusica extends AppCompatActivity {
     }
 
     public void BotonIniciar(View view) {
-
-        if(mBound==false)
-        {
-            mService.IniciarCancion();
-        }
-        else
-        {
-            contadorPrueba=0;
-        }
+            // mService.IniciarCancion();
 
         /*if (!reproductorMusica.isPlaying()) {
             // Stopping
@@ -139,13 +130,12 @@ public class ReproductorMusica extends AppCompatActivity {
        //ESTAS DOS LÍNEAS NECESITAN MÍNIMO LA API JELLY BEAN PARA FUNCIONAR
         BarraPosicion.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
         BarraPosicion.getThumb().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
-
         BarraPosicion.setOnSeekBarChangeListener(
                 new SeekBar.OnSeekBarChangeListener() {
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int progeso, boolean fromUser) {
                         if (fromUser) {
-                            mService.getMediaPlayer().seekTo(progeso);
+                           // mService.getMediaPlayer().seekTo(progeso);
                             BarraPosicion.setProgress(progeso);
                         }
                     }
