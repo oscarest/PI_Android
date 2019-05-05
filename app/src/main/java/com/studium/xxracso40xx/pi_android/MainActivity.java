@@ -138,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
                     if(!lst.isEmpty())
                     {
                         startActivity(intent);
+                        finish();
                     }
                     }
 

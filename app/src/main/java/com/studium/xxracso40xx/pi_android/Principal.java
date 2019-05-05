@@ -21,6 +21,11 @@ public class Principal extends AppCompatActivity
     float x1,x2,y1,y2;
 
 
+    @Override
+    public void onBackPressed() {
+// super.onBackPressed();
+// Not calling **super**, disables back button in current screen.
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
