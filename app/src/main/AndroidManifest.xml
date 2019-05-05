@@ -16,7 +16,8 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".PagerView" />
         <activity android:name=".list_card" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".ReproductorMusicaV2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
