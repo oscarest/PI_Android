@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         registro = findViewById(R.id.buttonMainRegistro);
         contrasena = findViewById(R.id.buttonMainContraseñaOlvidada);
         intent1 = new Intent(this, Registro.class);
-        intent2 = new Intent(this, Contrasena_Seguridad.class);
+        intent2 = new Intent(this, Contrasena_info.class);
 
         registro.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private class DB_Apache extends AsyncTask<String, Void, Boolean> {
+    public class DB_Apache extends AsyncTask<String, Void, Boolean> {
 
         private String json;
 

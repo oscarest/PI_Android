@@ -7,41 +7,43 @@
     tools:context=".Contrasena_Cambio">
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/editTextContrasenaCambio"
         android:layout_width="257dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="63dp"
+        android:layout_marginTop="71dp"
         android:ems="10"
         android:hint="Introduzca la nueva contraseña"
         android:inputType="textPassword" />
 
     <EditText
-        android:id="@+id/editText9"
+        android:id="@+id/editTextContrasenaCambioVerificacion"
         android:layout_width="257dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/editText7"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="132dp"
+        android:layout_below="@+id/editTextContrasenaCambio"
+        android:layout_alignStart="@+id/editTextContrasenaCambio"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="38dp"
         android:ems="10"
         android:hint="Repita la contraseña"
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/button10"
+        android:id="@+id/buttonContrasenaCambioCancelar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/editText7"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="227dp"
+        android:layout_below="@+id/editTextContrasenaCambioVerificacion"
+        android:layout_alignStart="@+id/editTextContrasenaCambio"
+        android:layout_marginTop="28dp"
         android:text="Cancelar" />
 
     <Button
-        android:id="@+id/button11"
+        android:id="@+id/buttonContrasenaCambioAceptar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/button10"
-        android:layout_alignEnd="@+id/editText7"
+        android:layout_below="@+id/editTextContrasenaCambioVerificacion"
+        android:layout_alignEnd="@+id/editTextContrasenaCambio"
+        android:layout_marginTop="28dp"
         android:text="Confirmar" />
 </RelativeLayout>

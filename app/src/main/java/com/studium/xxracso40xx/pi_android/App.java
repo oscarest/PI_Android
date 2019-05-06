@@ -8,6 +8,17 @@ public class App
     public static Boolean SALTADOBARRACANCION=false;
     public static Boolean REPETICION = true;
     public static int ID_USUARIO;
+
+
+    //ATRIBUTOS PARA CAMBIOS DE CONTRASEÑA
+
+
+    public static String correoUsuario="";
+    public static String respuestaContrasena="";
+
+
+
+
     //CREAR OBJETO DEBAJO PARA LAS CANCIONES DE LAS CUALES PODAMOS REVISIR TODOS LOS ELEMTOS TIPO DURACIÓN, NOMBRE, ETC.
 
 }
