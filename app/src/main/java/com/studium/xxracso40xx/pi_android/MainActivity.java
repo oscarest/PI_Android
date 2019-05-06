@@ -130,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
                         ));
                     }
 
+
                     //SE PUEDE HACER CON EL OBJETO DEL MODELO COMO PODEMOS OBSERVAR PREVIAMENTE
                     //PERO TAMBIÉN TENEMOS QUE VER LA POSIBILIDAD DE GUARDAR DIRECTAMENTE LA STRING COMO MOSTRAREMOS
                     //EN EL CÓDIGO A CONTINUACIÓN
@@ -137,6 +138,10 @@ public class MainActivity extends AppCompatActivity {
                         //String contrasenaJson = response.getJSONObject(2).getString("contrasena_usuario");
                     if(!lst.isEmpty())
                     {
+                        //FALTA ENVIAR EL ID A "APP" PARA PODER UTLIZAR ESE ID PARA RECOGER TODAS LAS CANCIONES QUE ESTE USUARIO TIENE GUARDADAS
+                        //JUNTO CON OTROS DATOS QUE DESEEMOS DEL USUARIO.
+                            int i=0;
+                            App.ID_USUARIO= lst.get(i).getIdSeccion();
                         startActivity(intent);
                         finish();
                     }
