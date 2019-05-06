@@ -67,9 +67,8 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
 
     public void pauseMusic() {
         if (mPlayer.isPlaying()) {
-            mPlayer.pause();
             length = mPlayer.getCurrentPosition();
-
+            mPlayer.pause();
         }
     }
     public int PosicionActual()
@@ -91,7 +90,7 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
             else
             {
                 mPlayer.pause();
-                mPlayer.seekTo(App.tiempoActualCancionActual);
+                mPlayer.seekTo(length);
                 mPlayer.start();
             }
 

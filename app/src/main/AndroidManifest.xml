@@ -34,7 +34,6 @@
 
         <uses-library android:name="org.apache.http.legacy" />
 
-        <service android:name=".ServicioMusica" />
         <service
             android:name=".MusicService"
             android:enabled="true" />

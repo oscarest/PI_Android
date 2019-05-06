@@ -9,6 +9,5 @@ public class App
     public static Boolean REPETICION = true;
     public static int ID_USUARIO;
     //CREAR OBJETO DEBAJO PARA LAS CANCIONES DE LAS CUALES PODAMOS REVISIR TODOS LOS ELEMTOS TIPO DURACIÓN, NOMBRE, ETC.
-    //ESTOS DATOS SE IRÁN REPARTIENDO ENTRE "ServicioMusica" Y "ReproductorMusica".
 
 }

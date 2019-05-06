@@ -62,6 +62,8 @@ public class ReproductorMusicaV2 extends AppCompatActivity
         BarraPosicion.setMax(mServ.posicionFinal());
         //ESTAS DOS LÍNEAS NECESITAN MÍNIMO LA API JELLY BEAN PARA FUNCIONAR
         BarraPosicion.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+        //LA LÍNEA DE ABAJO ES PARA CAMBIAR LOS COLORES DE LA BARRA DE PROGESO. HAY QUE LIMITAR LA API PARA ELLO POR EOS ESTÁ COMENTADA POR
+        //EL MOMENTO LA LÍNEA DE CÓDIGO.
         //BarraPosicion.getThumb().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
         BarraPosicion.setOnSeekBarChangeListener(
                 new SeekBar.OnSeekBarChangeListener() {
