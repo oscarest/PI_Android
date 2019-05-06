@@ -15,6 +15,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -108,11 +109,13 @@ public class ReproductorMusicaV2 extends AppCompatActivity
         }
         else if(contador==1)
         {
+            botonIniciar.setBackgroundResource(R.drawable.play);
             mServ.pauseMusic();
             contador++;
         }
         else if(contador==2)
         {
+            botonIniciar.setBackgroundResource(R.drawable.stop);
             mServ.resumeMusic();
             contador=1;
         }
