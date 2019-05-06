@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".Principal">
 
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonCancionesCanciones"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:descendantFocusability="blocksDescendants" />
+
     <Button
         android:id="@+id/buttonCancionesInicio"
         android:layout_width="62dp"
@@ -30,8 +39,8 @@
         android:layout_marginStart="158dp"
         android:layout_marginLeft="158dp"
         android:layout_marginBottom="58dp"
-        android:text="Canciones"
         android:background="@android:color/transparent"
+        android:text="Canciones"
         android:textSize="10sp" />
 
     <Button
@@ -47,12 +56,6 @@
         android:background="@android:color/transparent"
         android:text="Perfil"
         android:textSize="10sp" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="78dp"
-        android:layout_height="60dp"
-        app:srcCompat="@drawable/awar" />
 
     <!--
         <ImageView

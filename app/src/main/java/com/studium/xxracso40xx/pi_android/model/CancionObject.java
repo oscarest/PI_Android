@@ -1,26 +1,32 @@
 package com.studium.xxracso40xx.pi_android.model;
 
-public class Canciones {
+public class CancionObject {
     private Long idCancion;
     private String nombreCancion;
     private String urlCancion;
     private String urlImagenCancion;
 
-    public Canciones() {
+    public CancionObject() {
         this.idCancion = null;
         this.nombreCancion ="";
         this.urlCancion = "";
         this.urlImagenCancion="";
     }
 
-    public Canciones(Long idUsuario, String nombreCancion, String urlCancion, String urlImagenCancion) {
+    public CancionObject(Long idUsuario, String nombreCancion, String urlCancion, String urlImagenCancion) {
         this.idCancion = idUsuario;
         this.nombreCancion = nombreCancion;
         this.urlCancion = urlCancion;
         this.urlImagenCancion = urlImagenCancion;
 
     }
-    public Canciones(Long idCancion)
+    public CancionObject(String nombreCancion, String urlCancion, String urlImagenCancion) {
+        this.nombreCancion = nombreCancion;
+        this.urlCancion = urlCancion;
+        this.urlImagenCancion = urlImagenCancion;
+
+    }
+    public CancionObject(Long idCancion)
     {
         this.idCancion = idCancion;
     }
