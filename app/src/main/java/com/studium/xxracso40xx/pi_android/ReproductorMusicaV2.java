@@ -217,5 +217,10 @@ public class ReproductorMusicaV2 extends AppCompatActivity
             imageView.setImageBitmap(result);
         }
     }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        doUnbindService();
+    }
 
 }
