@@ -120,7 +120,6 @@ public class ReproductorMusicaV2 extends AppCompatActivity
             music.setClass(this,MusicService.class);
             startService(music);
             App.contadorReproductorMusica++;
-            positionBar();
         }
         else if(App.contadorReproductorMusica==1)
         {
@@ -134,27 +133,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
             mServ.resumeMusic();
             App.contadorReproductorMusica=1;
         }
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    try {
-                        Message msg = new Message();
-                        msg.what = mServ.PosicionActual();
-                        handler.sendMessage(msg);
 
-                        //Si la variable "REPETICION" es true, habrá modo repetición. falta añadir el botón para que si el botón está pulsado, se ponga
-                        //REPETICION como true
-                        if(mServ.PosicionActual()== mServ.posicionFinal() || App.REPETICION==true)
-                        {
-                            mServ.mPlayer.setLooping(true);
-                        }
-                            Thread.sleep(1000);
-                    } catch (InterruptedException e) {}
-                }
-            }
-        }).start();
-        //mServ.stopMusic();
     }
     private ServiceConnection Scon =new ServiceConnection(){
 
@@ -223,8 +202,50 @@ public class ReproductorMusicaV2 extends AppCompatActivity
         doUnbindService();
     }
     @Override
+    public void onPause() {
+
+        super.onPause();
+    }
+    @Override
     public void onResume() {
         super.onResume();
+        if(App.contadorReproductorMusica==1)
+        {
+            botonIniciar.setBackgroundResource(R.drawable.stop);
+        }
+        else if(App.contadorReproductorMusica==2)
+        {
+            botonIniciar.setBackgroundResource(R.drawable.play);
+        }
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        if(mServ==null)
+                        {
+
+                        }
+                        else
+                        {
+
+                            Message msg = new Message();
+                            msg.what = mServ.PosicionActual();
+                            handler.sendMessage(msg);
+
+                            //Si la variable "REPETICION" es true, habrá modo repetición. falta añadir el botón para que si el botón está pulsado, se ponga
+                            //REPETICION como true
+                            if (mServ.PosicionActual() == mServ.posicionFinal() || App.REPETICION == true) {
+                                mServ.mPlayer.setLooping(true);
+                            }
+                            positionBar();
+                        }
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {}
+                }
+            }
+        }).start();
     }
 
 }
