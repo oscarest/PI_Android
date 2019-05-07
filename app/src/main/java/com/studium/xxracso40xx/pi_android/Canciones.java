@@ -38,6 +38,7 @@ public class Canciones extends AppCompatActivity {
     private String APIserver = "http://8music.ddns.net/webserviceAndroid/";
     private ListAdapter adapter;
     ArrayList<CancionObject> canciones = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,20 +99,26 @@ public class Canciones extends AppCompatActivity {
         //CABE DESTACAR QUE FUNCIONA CORRECTAMENTE LOS DATOS SI SE INTRODUCEN DE FORMA MANUAL
         //TAMBIÉN CABE DESTACAR QUE SE DEBE OPTIMIZAR LA DESCARGA DE FOTOS E INTRODUCIR LAS MISMAS EN EL CACHE
         //Hacer un for que recibe vaya añadiendo uno a uno todos los elementos que se reciban de la base de datos.
+        /*
         canciones.add(new CancionObject("Buenas", "https://ccrma.stanford.edu/~jos/mp3/viola.mp3", "https://www.absaonline.mx/pub/media/catalog/product/cache/1/image/500x608/e9c3970ab036de70892d86c6d221abfe/2/0/20812_TL222.png"));
         canciones.add(new CancionObject("Buenasaasdas", "https://ccrma.stanford.edu/~jos/mp3/gtr-wah.mp3", "https://image.made-in-china.com/3f2j10wdqTSaMRhGri/Accurate-One-Step-Pregnancy-Te.jpg"));
         canciones.add(new CancionObject("Buer234asnas", "https://ccrma.stanford.edu/~jos/mp3/trumpet.mp3", "https://www.dhresource.com/100x100s/f2-albu-g5-M01-54-A1-rBVaJFngIveAC1bUAAI1p63w2TE474.jpg/puntas-de-prueba-de-prueba-universales-de.jpg"));
+        */
+        new Canciones.DB_Apache().execute("get-canciones.php?");
+
+
         adapter = new ListAdapter(this, canciones);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
+
                 App.nombreCancionSeleccionada= canciones.get(position).getNombreCancion();
                 App.urlCancionSeleccionada= canciones.get(position).getUrlCancion();
                 App.urlImagenCancionSeleccionada= canciones.get(position).getUrlImagenCancion();
                 startActivity(intentReproductorMusica);
-                Toast.makeText(Canciones.this, "Click:" + position, Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -156,6 +163,7 @@ public class Canciones extends AppCompatActivity {
                                 , response.getJSONObject(i).getString("claveUsuario")
                                 , response.getJSONObject(i).getInt("tipoUsuario")
                                 , response.getJSONObject(i).getInt("algunaSuscripcionUsuario")*/
+
                         ));
                     }
 
@@ -167,8 +175,7 @@ public class Canciones extends AppCompatActivity {
                     if(!canciones.isEmpty())
                     {
                         mostrarList();
-                        //startActivity(intentContrasenaSeguridad);
-                        //finish();
+
                     }
                 }
 
