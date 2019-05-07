@@ -2,10 +2,8 @@ package com.studium.xxracso40xx.pi_android;
 
 public class App
 {
-    public static String urlCancionActual="http://www.android-examples.com/wp-content/uploads/2016/04/Thunder-rumble.mp3";
-    public static int tiempoTotalCancionActual=0;
+    public static String urlCancionActual=null;
     public static int tiempoActualCancionActual=0;
-    public static Boolean SALTADOBARRACANCION=false;
     public static Boolean REPETICION = false;
     public static int ID_USUARIO;
     public static int contadorReproductorMusica=0;

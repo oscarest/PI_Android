@@ -82,11 +82,10 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int progeso, boolean fromUser) {
                         if (fromUser) {
-                            App.SALTADOBARRACANCION=true;
                             App.tiempoActualCancionActual=progeso;
                             mServ.resumeMusic();
                             // mService.getMediaPlayer().seekTo(progeso);
-                            BarraPosicion.setProgress(progeso);
+                            BarraPosicion.setProgress(App.tiempoActualCancionActual);
                         }
                     }
 
@@ -130,7 +129,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
         else if(App.contadorReproductorMusica==2)
         {
             botonIniciar.setBackgroundResource(R.drawable.stop);
-            mServ.resumeMusic();
+            mServ.mPlayer.start();
             App.contadorReproductorMusica=1;
         }
 
@@ -250,7 +249,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                             }
                             positionBar();
                         }
-                        Thread.sleep(1000);
+                        Thread.sleep(500);
                     } catch (InterruptedException e) {}
                 }
             }

@@ -36,6 +36,7 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
 
         mPlayer = new MediaPlayer();
         try {
+            App.urlCancionActual=App.urlCancionSeleccionada;
             mPlayer.setDataSource(App.urlCancionActual);
             mPlayer.prepare();
         } catch (IOException e) {
@@ -80,28 +81,19 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
         return mPlayer.getDuration();
     }
     public void resumeMusic() {
-        if (mPlayer.isPlaying() == false)
-        {
-            if(App.SALTADOBARRACANCION==false)
+            if(mPlayer.isPlaying())
             {
-                mPlayer.seekTo(length);
+                mPlayer.pause();
+                mPlayer.seekTo(App.tiempoActualCancionActual);
                 mPlayer.start();
             }
             else
             {
-                mPlayer.pause();
-                mPlayer.seekTo(length);
-                mPlayer.start();
+                mPlayer.seekTo(App.tiempoActualCancionActual);
             }
 
-        }
-        else
-        {
-            mPlayer.pause();
-            mPlayer.seekTo(App.tiempoActualCancionActual);
-            mPlayer.start();
-        }
     }
+
 
     public void stopMusic() {
         mPlayer.stop();
