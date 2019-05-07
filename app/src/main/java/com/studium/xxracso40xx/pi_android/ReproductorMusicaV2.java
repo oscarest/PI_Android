@@ -236,8 +236,17 @@ public class ReproductorMusicaV2 extends AppCompatActivity
 
                             //Si la variable "REPETICION" es true, habrá modo repetición. falta añadir el botón para que si el botón está pulsado, se ponga
                             //REPETICION como true
-                            if (mServ.PosicionActual() == mServ.posicionFinal() || App.REPETICION == true) {
+                            if (App.REPETICION == true) {
                                 mServ.mPlayer.setLooping(true);
+                            }
+                            //MÉTODO SIN REPETICIÓN
+                            if(App.REPETICION==false && mServ.mPlayer.isPlaying()==false && App.contadorReproductorMusica==1)
+                            {
+                                botonIniciar.setBackgroundResource(R.drawable.play);
+                                mServ.mPlayer.pause();
+                                mServ.mPlayer.seekTo(0);
+                                BarraPosicion.setProgress(0);
+                                App.contadorReproductorMusica++;
                             }
                             positionBar();
                         }

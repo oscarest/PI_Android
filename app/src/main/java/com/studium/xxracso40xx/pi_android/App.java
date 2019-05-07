@@ -6,7 +6,7 @@ public class App
     public static int tiempoTotalCancionActual=0;
     public static int tiempoActualCancionActual=0;
     public static Boolean SALTADOBARRACANCION=false;
-    public static Boolean REPETICION = true;
+    public static Boolean REPETICION = false;
     public static int ID_USUARIO;
     public static int contadorReproductorMusica=0;
     //ATRIBUTOS PARA SELECCIONAR CANCION EN LISTA DE CANCIONES
