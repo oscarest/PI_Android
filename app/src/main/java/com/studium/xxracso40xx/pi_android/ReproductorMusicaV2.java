@@ -8,6 +8,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
@@ -58,13 +61,14 @@ public class ReproductorMusicaV2 extends AppCompatActivity
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
+            int posicionFinal=  mServ.posicionFinal();
             int posicionActual = msg.what;
             // Update BarraPosicion.
             BarraPosicion.setProgress(posicionActual);
             // Update Labels.
             String tiempoTranscurrido = CrearTextViewTiempo(posicionActual);
             ReproductorMusicaV2.this.tiempoTranscurrido.setText(tiempoTranscurrido);
-            String tiempoRestante = CrearTextViewTiempo(mServ.posicionFinal() -posicionActual);
+            String tiempoRestante = CrearTextViewTiempo(posicionFinal-posicionActual);
             ReproductorMusicaV2.this.tiempoRestante.setText("- " + tiempoRestante);
         }
     };
@@ -113,21 +117,19 @@ public class ReproductorMusicaV2 extends AppCompatActivity
         return tiempoTextView;
     }
     public void BotonIniciar(View view) {
-        if(App.contadorReproductorMusica==0)
-        {
-            botonIniciar.setBackgroundResource(R.drawable.stop);
-            music.setClass(this,MusicService.class);
-            startService(music);
-            App.contadorReproductorMusica++;
-        }
-        else if(App.contadorReproductorMusica==1)
+        if(App.contadorReproductorMusica==1)
         {
             botonIniciar.setBackgroundResource(R.drawable.play);
-            mServ.pauseMusic();
+            if(mServ.mPlayer.isPlaying()==true)
+            {
+                mServ.pauseMusic();
+            }
             App.contadorReproductorMusica++;
         }
         else if(App.contadorReproductorMusica==2)
         {
+            music.setClass(this,MusicService.class);
+            startService(music);
             botonIniciar.setBackgroundResource(R.drawable.stop);
             mServ.mPlayer.start();
             App.contadorReproductorMusica=1;
@@ -202,8 +204,9 @@ public class ReproductorMusicaV2 extends AppCompatActivity
     }
     @Override
     public void onPause() {
-
         super.onPause();
+       //mServ.mPlayer.reset();
+        //mServ.mPlayer.release();
     }
     @Override
     public void onResume() {
@@ -216,7 +219,40 @@ public class ReproductorMusicaV2 extends AppCompatActivity
         {
             botonIniciar.setBackgroundResource(R.drawable.play);
         }
+       /* new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
 
+                    if(mServ==null)
+                    {
+
+                    }
+                    else if(App.urlCancionSeleccionada!=App.urlCancionActual && App.urlCancionSeleccionada!=null && App.urlCancionActual!=null)
+                    {
+                        mServ.posicionFinal();
+                        App.urlCancionActual=App.urlCancionSeleccionada;
+                       /* try {
+                            mServ.mPlayer = MediaPlayer.create(ReproductorMusicaV2.this, Uri.parse(App.urlCancionActual));
+                            mServ.mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                                @Override
+                                public void onPrepared(MediaPlayer mp)
+                                {
+                                    mServ.mPlayer.start();
+                                    mServ.mPlayer.seekTo(0);
+                                }
+                            });
+                        } catch (IllegalArgumentException e) {
+                            e.printStackTrace();
+                        } catch (IllegalStateException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }}
+        }).start();
+
+*/
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -228,9 +264,9 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                         }
                         else
                         {
-
+                            int posicionActual = mServ.PosicionActual();
                             Message msg = new Message();
-                            msg.what = mServ.PosicionActual();
+                            msg.what = posicionActual;
                             handler.sendMessage(msg);
 
                             //Si la variable "REPETICION" es true, habrá modo repetición. falta añadir el botón para que si el botón está pulsado, se ponga

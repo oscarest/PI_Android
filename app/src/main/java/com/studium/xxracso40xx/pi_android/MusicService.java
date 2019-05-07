@@ -4,6 +4,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnErrorListener;
+import android.net.Uri;
 import android.os.Binder;
 import android.os.IBinder;
 import android.widget.Toast;
@@ -30,24 +31,37 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
         return mBinder;
     }
 
+    public void crearCancion()
+    {
+        App.urlCancionActual=App.urlCancionSeleccionada;
+
+        try {
+            mPlayer = MediaPlayer.create(this, Uri.parse(App.urlCancionActual));
+        mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp)
+            {
+                mPlayer.start();
+                mPlayer.pause();
+            }
+        });
+    } catch (IllegalArgumentException e) {
+        e.printStackTrace();
+    } catch (IllegalStateException e) {
+        e.printStackTrace();
+    }
+    }
     @Override
     public void onCreate() {
         super.onCreate();
-
-        mPlayer = new MediaPlayer();
-        try {
-            App.urlCancionActual=App.urlCancionSeleccionada;
-            mPlayer.setDataSource(App.urlCancionActual);
-            mPlayer.prepare();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        crearCancion();
+        /*mPlayer.create(this, Uri.parse(App.urlCancionActual));
+        mPlayer.prepare();
         mPlayer.setOnErrorListener(this);
         if (mPlayer != null) {
             mPlayer.setLooping(false);
             mPlayer.setVolume(100, 100);
-        }
-
+        }*/
 
         mPlayer.setOnErrorListener(new OnErrorListener() {
 
@@ -62,7 +76,6 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        mPlayer.start();
         return START_NOT_STICKY;
     }
 
@@ -74,7 +87,7 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
     }
     public int PosicionActual()
     {
-        return mPlayer.getCurrentPosition();
+            return mPlayer.getCurrentPosition();
     }
     public int posicionFinal()
     {
@@ -93,14 +106,16 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
             }
 
     }
-
-
     public void stopMusic() {
         mPlayer.stop();
         mPlayer.release();
         mPlayer = null;
     }
-
+    /*public void finalizarServicio()
+    {
+        this.stopSelf();
+    }
+    */
     @Override
     public void onDestroy() {
         super.onDestroy();
