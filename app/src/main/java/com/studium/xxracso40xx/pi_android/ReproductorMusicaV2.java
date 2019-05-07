@@ -222,5 +222,11 @@ public class ReproductorMusicaV2 extends AppCompatActivity
         super.onDestroy();
         doUnbindService();
     }
+    @Override
+    public void onResume() {
+
+        super.onResume();
+        doBindService();
+    }
 
 }
