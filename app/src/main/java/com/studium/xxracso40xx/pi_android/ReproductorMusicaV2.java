@@ -32,7 +32,6 @@ public class ReproductorMusicaV2 extends AppCompatActivity
     TextView tiempoTranscurrido;
     TextView tiempoRestante;
     Intent music;
-    int contador=0;
     int tiempoTotal;
     ImageView imagenCancion;
     TextView nombreCancion;
@@ -115,24 +114,25 @@ public class ReproductorMusicaV2 extends AppCompatActivity
         return tiempoTextView;
     }
     public void BotonIniciar(View view) {
-        if(contador==0)
+        if(App.contadorReproductorMusica==0)
         {
+            botonIniciar.setBackgroundResource(R.drawable.stop);
             music.setClass(this,MusicService.class);
             startService(music);
-            contador++;
+            App.contadorReproductorMusica++;
             positionBar();
         }
-        else if(contador==1)
+        else if(App.contadorReproductorMusica==1)
         {
             botonIniciar.setBackgroundResource(R.drawable.play);
             mServ.pauseMusic();
-            contador++;
+            App.contadorReproductorMusica++;
         }
-        else if(contador==2)
+        else if(App.contadorReproductorMusica==2)
         {
             botonIniciar.setBackgroundResource(R.drawable.stop);
             mServ.resumeMusic();
-            contador=1;
+            App.contadorReproductorMusica=1;
         }
         new Thread(new Runnable() {
             @Override
@@ -224,9 +224,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
     }
     @Override
     public void onResume() {
-
         super.onResume();
-        doBindService();
     }
 
 }

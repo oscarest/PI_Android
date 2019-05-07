@@ -8,8 +8,7 @@ public class App
     public static Boolean SALTADOBARRACANCION=false;
     public static Boolean REPETICION = true;
     public static int ID_USUARIO;
-
-
+    public static int contadorReproductorMusica=0;
     //ATRIBUTOS PARA SELECCIONAR CANCION EN LISTA DE CANCIONES
     public static String nombreCancionSeleccionada=null;
     public static String urlCancionSeleccionada=null;
