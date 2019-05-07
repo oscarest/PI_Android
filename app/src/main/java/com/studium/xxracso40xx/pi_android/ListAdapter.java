@@ -30,7 +30,8 @@ public class ListAdapter extends BaseAdapter
     inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
     @Override
-    public int getCount() {
+    public int getCount()
+    {
         return canciones.size();
     }
 
