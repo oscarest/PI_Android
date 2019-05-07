@@ -268,7 +268,6 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                             Message msg = new Message();
                             msg.what = posicionActual;
                             handler.sendMessage(msg);
-
                             //Si la variable "REPETICION" es true, habrá modo repetición. falta añadir el botón para que si el botón está pulsado, se ponga
                             //REPETICION como true
                             if (App.REPETICION == true) {
@@ -277,13 +276,30 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                             //MÉTODO SIN REPETICIÓN
                             if(App.REPETICION==false && mServ.mPlayer.isPlaying()==false && App.contadorReproductorMusica==1)
                             {
-                                botonIniciar.setBackgroundResource(R.drawable.play);
+
+                                runOnUiThread(new Runnable() {
+
+                                    @Override
+                                    public void run() {
+
+                                        // Stuff that updates the UI
+                                        botonIniciar.setBackgroundResource(R.drawable.play);
+                                    }
+                                });
                                 mServ.mPlayer.pause();
                                 mServ.mPlayer.seekTo(0);
                                 BarraPosicion.setProgress(0);
                                 App.contadorReproductorMusica++;
                             }
-                            positionBar();
+                            runOnUiThread(new Runnable() {
+
+                                @Override
+                                public void run() {
+
+                                    // Stuff that updates the UI
+                                    positionBar();
+                                }
+                            });
                         }
                         Thread.sleep(500);
                     } catch (InterruptedException e) {}
