@@ -208,6 +208,15 @@ public class ReproductorMusicaV2 extends AppCompatActivity
        //mServ.mPlayer.reset();
         //mServ.mPlayer.release();
     }
+   /* @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        App.urlCancionActual=null;
+        App.urlImagenCancionSeleccionada=null;
+        App.nombreCancionSeleccionada=null;
+    }
+    */
     @Override
     public void onResume() {
         super.onResume();
@@ -306,6 +315,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                 }
             }
         }).start();
+
     }
 
 }

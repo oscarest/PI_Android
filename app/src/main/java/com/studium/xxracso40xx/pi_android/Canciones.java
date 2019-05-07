@@ -55,8 +55,7 @@ public class Canciones extends AppCompatActivity {
         //LO MEJOR SERÍA INTRODUCIR EL ID DEL USUARIO QUE ESTA LOGUEADO PARA PODER SACAR ESTAS CANCIONES.
         //COMENTADO HASTA QUE SE HAGA EL ARCHIVO .PHP
         //new Canciones.DB_Apache().execute("get-product.php?idUsuario=" + App.ID_USUARIO);
-        mostrarList();
-
+        new Canciones.DB_Apache().execute("get-canciones.php?");
         buttonCancionesPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,11 +101,7 @@ public class Canciones extends AppCompatActivity {
         /*
         canciones.add(new CancionObject("Buenas", "https://ccrma.stanford.edu/~jos/mp3/viola.mp3", "https://www.absaonline.mx/pub/media/catalog/product/cache/1/image/500x608/e9c3970ab036de70892d86c6d221abfe/2/0/20812_TL222.png"));
         canciones.add(new CancionObject("Buenasaasdas", "https://ccrma.stanford.edu/~jos/mp3/gtr-wah.mp3", "https://image.made-in-china.com/3f2j10wdqTSaMRhGri/Accurate-One-Step-Pregnancy-Te.jpg"));
-        canciones.add(new CancionObject("Buer234asnas", "https://ccrma.stanford.edu/~jos/mp3/trumpet.mp3", "https://www.dhresource.com/100x100s/f2-albu-g5-M01-54-A1-rBVaJFngIveAC1bUAAI1p63w2TE474.jpg/puntas-de-prueba-de-prueba-universales-de.jpg"));
         */
-        new Canciones.DB_Apache().execute("get-canciones.php?");
-
-
         adapter = new ListAdapter(this, canciones);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -152,10 +147,10 @@ public class Canciones extends AppCompatActivity {
             try {
                 if (isOk) {
                     JSONArray response = new JSONArray(json);
-
                     canciones = new ArrayList<>();
                     for (int i = 0; i < response.length(); i++) {
-                        canciones.add(new CancionObject(
+                        canciones.add(new CancionObject
+                                (
                                 response.getJSONObject(i).getString("nombreCancion"),
                                 response.getJSONObject(i).getString("urlCancion"),
                                 response.getJSONObject(i).getString("urlImagenCancion")
@@ -175,7 +170,6 @@ public class Canciones extends AppCompatActivity {
                     if(!canciones.isEmpty())
                     {
                         mostrarList();
-
                     }
                 }
 
@@ -185,4 +179,5 @@ public class Canciones extends AppCompatActivity {
 
         }
     }
+
 }
