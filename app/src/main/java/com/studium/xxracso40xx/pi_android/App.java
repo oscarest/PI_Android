@@ -2,7 +2,7 @@ package com.studium.xxracso40xx.pi_android;
 
 public class App
 {
-    public static String urlCancionActual="http://8music.ddns.net/songs/test.mp3";
+    public static String urlCancionActual="http://www.android-examples.com/wp-content/uploads/2016/04/Thunder-rumble.mp3";
     public static int tiempoTotalCancionActual=0;
     public static int tiempoActualCancionActual=0;
     public static Boolean SALTADOBARRACANCION=false;
@@ -10,6 +10,11 @@ public class App
     public static int ID_USUARIO;
 
 
+    //ATRIBUTOS PARA SELECCIONAR CANCION EN LISTA DE CANCIONES
+    public static String nombreCancionSeleccionada=null;
+    public static String urlCancionSeleccionada=null;
+    public static String urlImagenCancionSeleccionada=null;
+    public static String artistaCancionSeleccionada=null;
     //ATRIBUTOS PARA CAMBIOS DE CONTRASEÑA
 
 

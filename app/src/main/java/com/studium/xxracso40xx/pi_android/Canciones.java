@@ -33,6 +33,7 @@ public class Canciones extends AppCompatActivity {
     Button buttonCancionesInicio;
     Intent intentPrincipal;
     Intent intentPerfil;
+    Intent intentReproductorMusica;
     ListView list;
     private String APIserver = "http://8music.ddns.net/webserviceAndroid/";
     private ListAdapter adapter;
@@ -46,12 +47,14 @@ public class Canciones extends AppCompatActivity {
         buttonCancionesInicio = findViewById(R.id.buttonCancionesInicio);
         intentPrincipal = new Intent(this, Principal.class);
         intentPerfil = new Intent(this, Perfil.class);
+        intentReproductorMusica = new Intent(this, ReproductorMusicaV2.class);
         list = findViewById(R.id.list_view);
         //mostrarList();
         //DE AQUÍ LEEREMOS LOS DATOS PERSONALES DEL USUARIO QUE ESTÁ LOGUEADO PARA PODER SACAR LAS CANCIONES QUE ESTA PERSONA TIENE EN SU BIBLIOTECA.
         //LO MEJOR SERÍA INTRODUCIR EL ID DEL USUARIO QUE ESTA LOGUEADO PARA PODER SACAR ESTAS CANCIONES.
         //COMENTADO HASTA QUE SE HAGA EL ARCHIVO .PHP
         //new Canciones.DB_Apache().execute("get-product.php?idUsuario=" + App.ID_USUARIO);
+        mostrarList();
 
         buttonCancionesPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,12 +95,22 @@ public class Canciones extends AppCompatActivity {
     */
     public void mostrarList()
     {
+        //CABE DESTACAR QUE FUNCIONA CORRECTAMENTE LOS DATOS SI SE INTRODUCEN DE FORMA MANUAL
+        //TAMBIÉN CABE DESTACAR QUE SE DEBE OPTIMIZAR LA DESCARGA DE FOTOS E INTRODUCIR LAS MISMAS EN EL CACHE
         //Hacer un for que recibe vaya añadiendo uno a uno todos los elementos que se reciban de la base de datos.
+        //canciones.add(new CancionObject("Buenas", "url11", "https://www.absaonline.mx/pub/media/catalog/product/cache/1/image/500x608/e9c3970ab036de70892d86c6d221abfe/2/0/20812_TL222.png"));
+        //canciones.add(new CancionObject("Buenasaasdas", "ur1asdl11", "https://image.made-in-china.com/3f2j10wdqTSaMRhGri/Accurate-One-Step-Pregnancy-Te.jpg"));
+        //canciones.add(new CancionObject("Buer234asnas", "urgergewrgl11", "https://www.dhresource.com/100x100s/f2-albu-g5-M01-54-A1-rBVaJFngIveAC1bUAAI1p63w2TE474.jpg/puntas-de-prueba-de-prueba-universales-de.jpg"));
         adapter = new ListAdapter(this, canciones);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                App.nombreCancionSeleccionada= canciones.get(position).getNombreCancion();
+                App.urlCancionSeleccionada= canciones.get(position).getUrlCancion();
+                App.urlImagenCancionSeleccionada= canciones.get(position).getUrlImagenCancion();
+                startActivity(intentReproductorMusica);
                 Toast.makeText(Canciones.this, "Click:" + position, Toast.LENGTH_SHORT).show();
             }
         });

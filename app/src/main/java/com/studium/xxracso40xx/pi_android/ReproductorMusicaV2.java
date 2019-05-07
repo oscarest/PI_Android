@@ -4,8 +4,11 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,6 +22,9 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.io.InputStream;
+import java.net.URL;
+
 public class ReproductorMusicaV2 extends AppCompatActivity
 {
     Button botonIniciar;
@@ -28,6 +34,9 @@ public class ReproductorMusicaV2 extends AppCompatActivity
     Intent music;
     int contador=0;
     int tiempoTotal;
+    ImageView imagenCancion;
+    TextView nombreCancion;
+    TextView autorCancion;
     private boolean mIsBound = false;
     private MusicService mServ;
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -40,8 +49,12 @@ public class ReproductorMusicaV2 extends AppCompatActivity
         tiempoTranscurrido = findViewById(R.id.tiempoTranscurrido);
         tiempoRestante = findViewById(R.id.tiempoRestante);
         BarraPosicion = findViewById(R.id.BarraPosicion);
+        imagenCancion = findViewById(R.id.profile_image);
+        nombreCancion = findViewById(R.id.textViewNombreCancion);
+        autorCancion = findViewById(R.id.textViewArtistaCancion);
+        nombreCancion.setText(App.nombreCancionSeleccionada);
+        new ReproductorMusicaV2.DownLoadImageTask(imagenCancion).execute(App.urlImagenCancionSeleccionada);
         music = new Intent();
-
     }
     private Handler handler = new Handler() {
         @Override
@@ -167,6 +180,41 @@ public class ReproductorMusicaV2 extends AppCompatActivity
         {
             unbindService(Scon);
             mIsBound = false;
+        }
+    }
+    private class DownLoadImageTask extends AsyncTask<String,Void, Bitmap> {
+        ImageView imageView;
+
+        public DownLoadImageTask(ImageView imageView){
+            this.imageView = imageView;
+        }
+
+        /*
+            doInBackground(Params... params)
+                Override this method to perform a computation on a background thread.
+         */
+        protected Bitmap doInBackground(String...urls){
+            String urlOfImage = urls[0];
+            Bitmap logo = null;
+            try{
+                InputStream is = new URL(urlOfImage).openStream();
+                /*
+                    decodeStream(InputStream is)
+                        Decode an input stream into a bitmap.
+                 */
+                logo = BitmapFactory.decodeStream(is);
+            }catch(Exception e){ // Catch the download exception
+                e.printStackTrace();
+            }
+            return logo;
+        }
+
+        /*
+            onPostExecute(Result result)
+                Runs on the UI thread after doInBackground(Params...).
+         */
+        protected void onPostExecute(Bitmap result){
+            imageView.setImageBitmap(result);
         }
     }
 
