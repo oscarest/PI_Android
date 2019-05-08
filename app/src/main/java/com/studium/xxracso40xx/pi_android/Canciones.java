@@ -112,6 +112,7 @@ public class Canciones extends AppCompatActivity {
                 App.nombreCancionSeleccionada= canciones.get(position).getNombreCancion();
                 App.urlCancionSeleccionada= canciones.get(position).getUrlCancion();
                 App.urlImagenCancionSeleccionada= canciones.get(position).getUrlImagenCancion();
+                App.artistaCancionSeleccionada=canciones.get(position).getAutorCancion();
                 startActivity(intentReproductorMusica);
 
             }
@@ -152,8 +153,10 @@ public class Canciones extends AppCompatActivity {
                         canciones.add(new CancionObject
                                 (
                                 response.getJSONObject(i).getString("nombreCancion"),
+                                response.getJSONObject(i).getString("autorCancion"),
                                 response.getJSONObject(i).getString("urlCancion"),
                                 response.getJSONObject(i).getString("urlImagenCancion")
+
                                /* , response.getJSONObject(i).getString("nickUsuario")
                                 , response.getJSONObject(i).getString("claveUsuario")
                                 , response.getJSONObject(i).getInt("tipoUsuario")

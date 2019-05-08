@@ -3,6 +3,10 @@ package com.studium.xxracso40xx.pi_android.model;
 public class CancionObject {
     private Long idCancion;
     private String nombreCancion;
+
+
+
+    private String autorCancion;
     private String urlCancion;
     private String urlImagenCancion;
 
@@ -20,8 +24,9 @@ public class CancionObject {
         this.urlImagenCancion = urlImagenCancion;
 
     }
-    public CancionObject(String nombreCancion, String urlCancion, String urlImagenCancion) {
+    public CancionObject(String nombreCancion, String autorCancion, String urlCancion, String urlImagenCancion) {
         this.nombreCancion = nombreCancion;
+        this.autorCancion = autorCancion;
         this.urlCancion = urlCancion;
         this.urlImagenCancion = urlImagenCancion;
 
@@ -61,6 +66,13 @@ public class CancionObject {
 
     public void setUrlImagenCancion(String urlImagenCancion) {
         this.urlImagenCancion = urlImagenCancion;
+    }
+    public String getAutorCancion() {
+        return autorCancion;
+    }
+
+    public void setAutorCancion(String autorCancion) {
+        this.autorCancion = autorCancion;
     }
 
 }

@@ -55,6 +55,9 @@ public class ReproductorMusicaV2 extends AppCompatActivity
         nombreCancion = findViewById(R.id.textViewNombreCancion);
         autorCancion = findViewById(R.id.textViewArtistaCancion);
         nombreCancion.setText(App.nombreCancionSeleccionada);
+        autorCancion = findViewById(R.id.textViewArtistaCancion);
+        autorCancion.setText(App.artistaCancionSeleccionada);
+
         new ReproductorMusicaV2.DownLoadImageTask(imagenCancion).execute(App.urlImagenCancionSeleccionada);
         music = new Intent();
     }
