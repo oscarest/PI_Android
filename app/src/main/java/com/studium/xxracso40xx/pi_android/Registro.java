@@ -2,6 +2,7 @@ package com.studium.xxracso40xx.pi_android;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,12 +32,15 @@ EditText editTextRegistroFechaDeNacimiento, editTextRegistroPregunta, editTextRe
 Button buttonCancelar, buttonConfirmar;
 Intent intent1;
 String nombre, apellidos, direccion;
-    private String APIserver = "http://8music.ddns.net/webserviceAndroid/";
+    SharedPreferences settings;
+    public static  String PREFS = "User-";
+     private String APIserver = "http://8music.ddns.net/webserviceAndroid/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
         //editTextMainUsuario=fecha
+        settings = getSharedPreferences(PREFS, 0);
         editTextRegistroFechaDeNacimiento = findViewById(R.id.editTextRegistroFechaDeNacimiento);
         editTextRegistroNombre = findViewById(R.id.editTextRegistroNombre);
         editTextRegistroApellidos = findViewById(R.id.editTextRegistroApellidos);
@@ -77,6 +81,19 @@ String nombre, apellidos, direccion;
                                 + "&emailUsuario=" + editTextRegistroEmail.getText().toString() + "&direccionUsuario=" + direccion
                                 + "&fechaNacimientoUsuario=" + editTextRegistroFechaDeNacimiento.getText().toString()
                                 + "&pregunta=" + editTextRegistroPregunta.getText().toString());
+
+
+                        SharedPreferences.Editor editor = settings.edit();
+
+                        PREFS += editTextRegistroNombreUsuario.getText().toString();
+                        editor.putString("nombreUsuario",editTextRegistroNombre.getText().toString());
+                        editor.putString("apellidoUsuario", editTextRegistroApellidos.getText().toString());
+                        editor.putString("nickUsuario",editTextRegistroNombreUsuario.getText().toString());
+                        editor.putString("email", editTextRegistroEmail.getText().toString());
+                        editor.putString("fechaNacimientoUsuario", editTextRegistroFechaDeNacimiento.getText().toString());
+                        editor.putString("direccionUsuario", editTextRegistroDireccion.getText().toString());
+
+                        editor.commit();
 
                         editTextRegistroFechaDeNacimiento.setText("");
                         editTextRegistroNombre.setText("");
