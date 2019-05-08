@@ -122,10 +122,12 @@ public class ReproductorMusicaV2 extends AppCompatActivity
     public void BotonIniciar(View view) {
         if(App.contadorReproductorMusica==1)
         {
+            music.setClass(this,MusicService.class);
             botonIniciar.setBackgroundResource(R.drawable.play);
             if(mServ.mPlayer.isPlaying()==true)
             {
-                mServ.pauseMusic();
+                mServ.mPlayer.pause();
+                stopService(music);
             }
             App.contadorReproductorMusica++;
         }
@@ -274,7 +276,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                         {
 
                         }
-                        else
+                        else if(mServ.mPlayer!=null)
                         {
                             int posicionActual = mServ.PosicionActual();
                             Message msg = new Message();
