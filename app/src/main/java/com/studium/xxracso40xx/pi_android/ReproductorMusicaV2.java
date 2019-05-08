@@ -127,6 +127,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
             if(mServ.mPlayer.isPlaying()==true)
             {
                 mServ.mPlayer.pause();
+                //mServ.mPlayer.release();
                 stopService(music);
             }
             App.contadorReproductorMusica++;

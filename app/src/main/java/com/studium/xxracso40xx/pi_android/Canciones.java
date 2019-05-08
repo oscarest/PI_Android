@@ -35,6 +35,7 @@ public class Canciones extends AppCompatActivity {
     Intent intentPerfil;
     Intent intentReproductorMusica;
     ListView list;
+    Intent music;
     private String APIserver = "http://8music.ddns.net/webserviceAndroid/";
     private ListAdapter adapter;
     ArrayList<CancionObject> canciones = new ArrayList<>();
@@ -50,6 +51,7 @@ public class Canciones extends AppCompatActivity {
         intentPerfil = new Intent(this, Perfil.class);
         intentReproductorMusica = new Intent(this, ReproductorMusicaV2.class);
         list = findViewById(R.id.list_view);
+        music = new Intent();
         //mostrarList();
         //DE AQUÍ LEEREMOS LOS DATOS PERSONALES DEL USUARIO QUE ESTÁ LOGUEADO PARA PODER SACAR LAS CANCIONES QUE ESTA PERSONA TIENE EN SU BIBLIOTECA.
         //LO MEJOR SERÍA INTRODUCIR EL ID DEL USUARIO QUE ESTA LOGUEADO PARA PODER SACAR ESTAS CANCIONES.
@@ -108,7 +110,8 @@ public class Canciones extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-
+                music.setClass(Canciones.this,MusicService.class);
+                stopService(music);
                 App.nombreCancionSeleccionada= canciones.get(position).getNombreCancion();
                 App.urlCancionSeleccionada= canciones.get(position).getUrlCancion();
                 App.urlImagenCancionSeleccionada= canciones.get(position).getUrlImagenCancion();
