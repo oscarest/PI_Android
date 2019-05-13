@@ -43,7 +43,7 @@ public class Principal extends AppCompatActivity
         buttonPrincipalPerfil = findViewById(R.id.buttonPrincipalPerfil);
         intentCanciones = new Intent(this, Canciones.class);
         intentPerfil = new Intent(this, Perfil.class);
-        listviewPrincipal = findViewById(R.id.listviewPrincipal);
+        //listviewPrincipal = findViewById(R.id.listviewPrincipal);
         allSampleData = new ArrayList<SectionDataModel>();
         buttonPrincipalCanciones.setOnClickListener(new View.OnClickListener() {
             @Override
