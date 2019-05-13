@@ -14,26 +14,26 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ListSingleCardActivity"></activity>
-        <activity android:name=".ListItemActivity" />
-        <activity android:name=".Contrasena_info" />
-        <activity android:name=".list_canciones" />
-        <activity android:name=".PagerView" />
-        <activity android:name=".list_card" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".Principal">
+        <activity android:name=".ListSingleCardActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".ListItemActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".Contrasena_info" android:screenOrientation="portrait"/>
+        <activity android:name=".list_canciones" android:screenOrientation="portrait"/>
+        <activity android:name=".PagerView" android:screenOrientation="portrait"/>
+        <activity android:name=".list_card" android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".Principal" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- <activity android:name=".pruebaMYSQL"></activity> -->
-        <activity android:name=".ReproductorMusicaV2" />
-        <activity android:name=".Canciones" />
-        <activity android:name=".Perfil" />
-        <activity android:name=".Registro" />
-        <activity android:name=".Contrasena_Seguridad" />
-        <activity android:name=".Contrasena_Cambio" />
+        <activity android:name=".ReproductorMusicaV2" android:screenOrientation="portrait"/>
+        <activity android:name=".Canciones" android:screenOrientation="portrait"/>
+        <activity android:name=".Perfil" android:screenOrientation="portrait"/>
+        <activity android:name=".Registro" android:screenOrientation="portrait"/>
+        <activity android:name=".Contrasena_Seguridad" android:screenOrientation="portrait"/>
+        <activity android:name=".Contrasena_Cambio" android:screenOrientation="portrait"/>
 
         <uses-library android:name="org.apache.http.legacy" />
 
