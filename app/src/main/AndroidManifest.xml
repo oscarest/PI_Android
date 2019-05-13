@@ -14,12 +14,14 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Contrasena_info"></activity>
+        <activity android:name=".ListSingleCardActivity"></activity>
+        <activity android:name=".ListItemActivity" />
+        <activity android:name=".Contrasena_info" />
         <activity android:name=".list_canciones" />
         <activity android:name=".PagerView" />
         <activity android:name=".list_card" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Canciones">
+        <activity android:name=".Principal">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,7 +29,7 @@
             </intent-filter>
         </activity> <!-- <activity android:name=".pruebaMYSQL"></activity> -->
         <activity android:name=".ReproductorMusicaV2" />
-        <activity android:name=".Principal" />
+        <activity android:name=".Canciones" />
         <activity android:name=".Perfil" />
         <activity android:name=".Registro" />
         <activity android:name=".Contrasena_Seguridad" />

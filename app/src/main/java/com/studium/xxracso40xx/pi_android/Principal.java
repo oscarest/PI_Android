@@ -1,14 +1,19 @@
 package com.studium.xxracso40xx.pi_android;
 
 import android.content.Intent;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MotionEvent;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ListView;
+
+import com.studium.xxracso40xx.pi_android.model.CancionObject;
+import com.studium.xxracso40xx.pi_android.model.SectionDataModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Principal extends AppCompatActivity
@@ -19,6 +24,8 @@ public class Principal extends AppCompatActivity
     Intent intentPerfil;
     public ListView listviewPrincipal;
     float x1,x2,y1,y2;
+    private List<CancionObject> canciones;
+    ArrayList<SectionDataModel> allSampleData;
 
 
     @Override
@@ -37,6 +44,7 @@ public class Principal extends AppCompatActivity
         intentCanciones = new Intent(this, Canciones.class);
         intentPerfil = new Intent(this, Perfil.class);
         listviewPrincipal = findViewById(R.id.listviewPrincipal);
+        allSampleData = new ArrayList<SectionDataModel>();
         buttonPrincipalCanciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -57,8 +65,46 @@ public class Principal extends AppCompatActivity
 
             }
         });
+        //TODA ESTA PARTE ES PRUEBA DE RECYCLEVIEW
+
+
+
+        createDummyData();
+
+
+        RecyclerView my_recycler_view = (RecyclerView) findViewById(R.id.my_recycler_view);
+
+        my_recycler_view.setHasFixedSize(true);
+
+        RecyclerViewDataAdapter adapter = new RecyclerViewDataAdapter(this, allSampleData);
+
+        my_recycler_view.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
+        my_recycler_view.setAdapter(adapter);
+
 
     }
+
+    public void createDummyData() {
+        //Cambiar esto para crear tantas secciones como se hayan recogido de la base de datos.
+        for (int i = 1; i <= 5; i++) {
+
+            SectionDataModel dm = new SectionDataModel();
+
+            //Cambiar este header por el nombre del genero(recibido del servidor)
+            dm.setHeaderTitle("Section " + i);
+
+            ArrayList<CancionObject> singleItem = new ArrayList<CancionObject>();
+            for (int j = 0; j <= 5; j++) {
+                singleItem.add(new CancionObject("Item ", "asd", "URL " ,""));
+            }
+
+            dm.setAllItemsInSection(singleItem);
+
+            allSampleData.add(dm);
+        }
+    }
+
     //CAMBIAR EL CÓDIGO DE ABAJO PARA QUE SE PUEDA HACER MEDIANTE LISTVIEW, HORIZONTAL SCROLL O HACERLO MEDIANTE DOS SCROLLS
     /*
     public void mostrarTodo()
