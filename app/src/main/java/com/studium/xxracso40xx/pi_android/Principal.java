@@ -92,7 +92,7 @@ public class Principal extends AppCompatActivity
             SectionDataModel dm = new SectionDataModel();
 
             //Cambiar este header por el nombre del genero(recibido del servidor)
-            dm.setHeaderTitle("Section " + i);
+            dm.setHeaderTitle("Género " + i);
             ArrayList<CancionObject> singleItem = new ArrayList<CancionObject>();
             //  Aquí se introducirá las diferentes canciones que haya en cada genero.
             //  Cabe destacar que la lista variará dependiendo de los que haya en cada genero.
@@ -102,7 +102,6 @@ public class Principal extends AppCompatActivity
             }
 
             dm.setAllItemsInSection(singleItem);
-
             allSampleData.add(dm);
         }
     }

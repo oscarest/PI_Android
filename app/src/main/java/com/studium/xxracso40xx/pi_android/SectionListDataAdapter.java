@@ -26,6 +26,7 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
 
     private ArrayList<CancionObject> itemsList;
     private Context mContext;
+    Intent music;
 
     public SectionListDataAdapter(Context context, ArrayList<CancionObject> itemsList) {
         this.itemsList = itemsList;
@@ -36,6 +37,7 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
     public SingleItemRowHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_single_card, null);
         SingleItemRowHolder mh = new SingleItemRowHolder(v);
+        music = new Intent();
         return mh;
     }
 
@@ -57,6 +59,8 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
        holder.itemImage.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
+               music.setClass(v.getContext(),MusicService.class);
+               v.getContext().stopService(music);
                //Falta pasar todos los datos aquí a las variables previamente antes de entrar en el reproductor de musica.
                App.urlCancionSeleccionada= singleItem.getUrlCancion();
                App.urlImagenCancionSeleccionada = singleItem.getUrlImagenCancion();
