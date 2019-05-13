@@ -93,10 +93,9 @@ public class Principal extends AppCompatActivity
 
             //Cambiar este header por el nombre del genero(recibido del servidor)
             dm.setHeaderTitle("Section " + i);
-
             ArrayList<CancionObject> singleItem = new ArrayList<CancionObject>();
             for (int j = 0; j <= 5; j++) {
-                singleItem.add(new CancionObject("Item ", "asd", "URL " ,""));
+                singleItem.add(new CancionObject("Buenas", "Adolf", "https://ccrma.stanford.edu/~jos/mp3/trumpet.mp3", "https://www.dhresource.com/100x100s/f2-albu-g5-M01-54-A1-rBVaJFngIveAC1bUAAI1p63w2TE474.jpg/puntas-de-prueba-de-prueba-universales-de.jpg"));
             }
 
             dm.setAllItemsInSection(singleItem);

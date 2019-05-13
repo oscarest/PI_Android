@@ -3,6 +3,7 @@ package com.studium.xxracso40xx.pi_android;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +37,7 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
     @Override
     public void onBindViewHolder(SingleItemRowHolder holder, int i) {
 
-        CancionObject singleItem = itemsList.get(i);
+        final CancionObject singleItem = itemsList.get(i);
 
         holder.tvTitle.setText(singleItem.getNombreCancion());
 
@@ -47,6 +48,16 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
                 .centerCrop()
                 .error(R.drawable.bg)
                 .into(feedListRowHolder.thumbView);*/
+       holder.itemImage.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               //Falta pasar todos los datos aquí a las variables previamente antes de entrar en el reproductor de musica.
+               App.urlCancionSeleccionada= singleItem.getUrlCancion();
+               App.urlImagenCancionSeleccionada = singleItem.getUrlImagenCancion();
+               Intent intent = new Intent (v.getContext(), ReproductorMusicaV2.class);
+               v.getContext().startActivity(intent);
+           }
+       });
     }
 
     @Override
