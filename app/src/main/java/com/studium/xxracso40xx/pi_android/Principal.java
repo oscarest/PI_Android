@@ -20,8 +20,10 @@ public class Principal extends AppCompatActivity
 {
     Button buttonPrincipalCanciones;
     Button buttonPrincipalPerfil;
+    Button playMiniReproductor;
     Intent intentCanciones;
     Intent intentPerfil;
+    int contador=0;
     public ListView listviewPrincipal;
     float x1,x2,y1,y2;
     private List<CancionObject> canciones;
@@ -41,6 +43,7 @@ public class Principal extends AppCompatActivity
         //overridePendingTransition(R.anim.replace, R.anim.replaceto);
         buttonPrincipalCanciones = findViewById(R.id.buttonPrincipalCanciones);
         buttonPrincipalPerfil = findViewById(R.id.buttonPrincipalPerfil);
+        playMiniReproductor = findViewById(R.id.play_button);
         intentCanciones = new Intent(this, Canciones.class);
         intentPerfil = new Intent(this, Perfil.class);
         //listviewPrincipal = findViewById(R.id.listviewPrincipal);
@@ -62,6 +65,22 @@ public class Principal extends AppCompatActivity
                 finish();
                 startActivity(intentPerfil);
                 overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+
+            }
+        });
+        playMiniReproductor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(contador==0)
+                {
+                    playMiniReproductor.setBackgroundResource(R.drawable.stop);
+                    contador++;
+                }
+                else
+                {
+                    playMiniReproductor.setBackgroundResource(R.drawable.play);
+                    contador=0;
+                }
 
             }
         });
