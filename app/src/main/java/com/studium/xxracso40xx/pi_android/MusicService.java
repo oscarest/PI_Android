@@ -7,6 +7,7 @@ import android.media.MediaPlayer.OnErrorListener;
 import android.net.Uri;
 import android.os.Binder;
 import android.os.IBinder;
+import android.os.Message;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -33,6 +34,10 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
 
     public void crearCancion()
     {
+        if(App.urlCancionActual!=App.urlCancionSeleccionada)
+        {
+           App.tiempoActualCancionActual=0;
+        }
         App.urlCancionActual=App.urlCancionSeleccionada;
 
         try {
@@ -41,8 +46,32 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
             @Override
             public void onPrepared(MediaPlayer mp)
             {
+                mPlayer.seekTo(App.tiempoActualCancionActual);
                 mPlayer.start();
                 mPlayer.pause();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run()
+                    {
+                        while (true)
+                        {
+                            if(App.pararCancion==1)
+                            {
+                                if(mPlayer.isPlaying()) {
+                                    mPlayer.pause();
+                                }
+                            }
+                            else if(App.pararCancion==2)
+                            {
+                                if(!mPlayer.isPlaying())
+                                {
+                                    mPlayer.start();
+                                }
+                            }
+                        }
+                    }
+                }
+                ).start();
             }
         });
     } catch (IllegalArgumentException e) {

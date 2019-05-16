@@ -23,7 +23,7 @@ public class Principal extends AppCompatActivity
     Button playMiniReproductor;
     Intent intentCanciones;
     Intent intentPerfil;
-    int contador=0;
+    Intent music;
     public ListView listviewPrincipal;
     float x1,x2,y1,y2;
     private List<CancionObject> canciones;
@@ -71,15 +71,24 @@ public class Principal extends AppCompatActivity
         playMiniReproductor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(contador==0)
+                music = new Intent();
+                if(App.contadorReproductorMusica==1)
                 {
+                    /*music.setClass(Principal.this,MusicService.class);
+                    stopService(music);
+                    */
+                    App.pararCancion=1;
                     playMiniReproductor.setBackgroundResource(R.drawable.stop);
-                    contador++;
+                    App.contadorReproductorMusica++;
                 }
                 else
                 {
+                    /*music.setClass(Principal.this,MusicService.class);
+                    startService(music);
+                    */
+                    App.pararCancion=2;
                     playMiniReproductor.setBackgroundResource(R.drawable.play);
-                    contador=0;
+                    App.contadorReproductorMusica=1;
                 }
 
             }

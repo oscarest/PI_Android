@@ -117,7 +117,6 @@ public class Canciones extends AppCompatActivity {
                 App.urlImagenCancionSeleccionada= canciones.get(position).getUrlImagenCancion();
                 App.artistaCancionSeleccionada=canciones.get(position).getAutorCancion();
                 startActivity(intentReproductorMusica);
-
             }
         });
 

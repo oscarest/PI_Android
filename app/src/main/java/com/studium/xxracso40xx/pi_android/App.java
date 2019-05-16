@@ -26,6 +26,8 @@ public class App
     public static String fechaNacimientoUsuario="";
     public static String direccionUsuario="";
 
+    public static int pararCancion=0;
+
     //CREAR OBJETO DEBAJO PARA LAS CANCIONES DE LAS CUALES PODAMOS REVISIR TODOS LOS ELEMTOS TIPO DURACIÓN, NOMBRE, ETC.
 
 }
