@@ -34,10 +34,6 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
 
     public void crearCancion()
     {
-        if(App.urlCancionActual!=App.urlCancionSeleccionada)
-        {
-           App.tiempoActualCancionActual=0;
-        }
         App.urlCancionActual=App.urlCancionSeleccionada;
 
         try {
@@ -46,7 +42,6 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
             @Override
             public void onPrepared(MediaPlayer mp)
             {
-                mPlayer.seekTo(App.tiempoActualCancionActual);
                 mPlayer.start();
                 mPlayer.pause();
                 new Thread(new Runnable() {

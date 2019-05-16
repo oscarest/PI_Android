@@ -101,7 +101,7 @@ public class Principal extends AppCompatActivity
                     playMiniReproductor.setBackgroundResource(R.drawable.play);
                     App.contadorReproductorMusica++;
                 }
-                else
+                else if(App.contadorReproductorMusica==2)
                 {
                     /*music.setClass(Principal.this,MusicService.class);
                     startService(music);
@@ -110,7 +110,6 @@ public class Principal extends AppCompatActivity
                     playMiniReproductor.setBackgroundResource(R.drawable.stop);
                     App.contadorReproductorMusica=1;
                 }
-
             }
         });
     }
