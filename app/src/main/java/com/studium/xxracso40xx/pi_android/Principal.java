@@ -68,35 +68,8 @@ public class Principal extends AppCompatActivity
 
             }
         });
-        playMiniReproductor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                music = new Intent();
-                if(App.contadorReproductorMusica==1)
-                {
-                    /*music.setClass(Principal.this,MusicService.class);
-                    stopService(music);
-                    */
-                    App.pararCancion=1;
-                    playMiniReproductor.setBackgroundResource(R.drawable.stop);
-                    App.contadorReproductorMusica++;
-                }
-                else
-                {
-                    /*music.setClass(Principal.this,MusicService.class);
-                    startService(music);
-                    */
-                    App.pararCancion=2;
-                    playMiniReproductor.setBackgroundResource(R.drawable.play);
-                    App.contadorReproductorMusica=1;
-                }
 
-            }
-        });
         //TODA ESTA PARTE ES PRUEBA DE RECYCLEVIEW
-
-
-
         createDummyData();
 
 
@@ -112,7 +85,35 @@ public class Principal extends AppCompatActivity
 
 
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        playMiniReproductor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                music = new Intent();
+                if(App.contadorReproductorMusica==1)
+                {
+                    /*music.setClass(Principal.this,MusicService.class);
+                    stopService(music);
+                    */
+                    App.pararCancion=1;
+                    playMiniReproductor.setBackgroundResource(R.drawable.play);
+                    App.contadorReproductorMusica++;
+                }
+                else
+                {
+                    /*music.setClass(Principal.this,MusicService.class);
+                    startService(music);
+                    */
+                    App.pararCancion=2;
+                    playMiniReproductor.setBackgroundResource(R.drawable.stop);
+                    App.contadorReproductorMusica=1;
+                }
 
+            }
+        });
+    }
     public void createDummyData() {
         //Cambiar esto para crear tantas secciones como se hayan recogido de la base de datos.
         for (int i = 1; i <= 5; i++) {
