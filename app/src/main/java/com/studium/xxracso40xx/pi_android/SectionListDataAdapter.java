@@ -58,8 +58,10 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
        holder.itemImage.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               music.setClass(v.getContext(),MusicService.class);
-               v.getContext().stopService(music);
+               if(App.urlCancionSeleccionada!=singleItem.getUrlCancion() && App.urlCancionSeleccionada!=null) {
+                   music.setClass(v.getContext(),MusicService.class);
+                   v.getContext().stopService(music);
+               }
                //Falta pasar todos los datos aquí a las variables previamente antes de entrar en el reproductor de musica.
                App.urlCancionSeleccionada= singleItem.getUrlCancion();
                App.urlImagenCancionSeleccionada = singleItem.getUrlImagenCancion();
