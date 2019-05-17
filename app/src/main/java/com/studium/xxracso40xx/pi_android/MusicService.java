@@ -48,23 +48,25 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
                     @Override
                     public void run()
                     {
-                        while (true)
-                        {
-                            if(App.pararCancion==1)
+                            if(App.REPETICION==true)
                             {
-                                if(mPlayer.isPlaying()) {
-                                    mPlayer.pause();
-                                }
+                                mPlayer.setLooping(true);
                             }
-                            else if(App.pararCancion==2)
+                            if(App.pararCancion==2)
                             {
                                 if(!mPlayer.isPlaying())
                                 {
                                     mPlayer.start();
                                 }
                             }
-                        }
+                            else if(App.pararCancion==1)
+                            {
+                                if(mPlayer.isPlaying()) {
+                                    mPlayer.pause();
+                                }
+                            }
                     }
+
                 }
                 ).start();
             }
