@@ -316,7 +316,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                                 }
                             });
                         }
-                        Thread.sleep(500);
+                        Thread.sleep(250);
                     } catch (InterruptedException e) {}
                 }
             }

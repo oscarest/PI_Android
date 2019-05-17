@@ -21,7 +21,7 @@
         <activity android:name=".PagerView" android:screenOrientation="portrait"/>
         <activity android:name=".list_card" android:screenOrientation="portrait"/>
         <activity android:name=".MainActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".Principal" android:screenOrientation="portrait">
+        <activity android:name=".Canciones" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +29,7 @@
             </intent-filter>
         </activity> <!-- <activity android:name=".pruebaMYSQL"></activity> -->
         <activity android:name=".ReproductorMusicaV2" android:screenOrientation="portrait"/>
-        <activity android:name=".Canciones" android:screenOrientation="portrait"/>
+        <activity android:name=".Principal" android:screenOrientation="portrait"/>
         <activity android:name=".Perfil" android:screenOrientation="portrait"/>
         <activity android:name=".Registro" android:screenOrientation="portrait"/>
         <activity android:name=".Contrasena_Seguridad" android:screenOrientation="portrait"/>

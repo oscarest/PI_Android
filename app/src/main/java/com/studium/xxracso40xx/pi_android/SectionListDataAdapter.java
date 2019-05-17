@@ -46,7 +46,6 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
 
         new SectionListDataAdapter.DownLoadImageTask(holder.itemImage).execute(itemsList.get(i).getUrlImagenCancion());
         final CancionObject singleItem = itemsList.get(i);
-
         holder.tvTitle.setText(singleItem.getNombreCancion());
 
 

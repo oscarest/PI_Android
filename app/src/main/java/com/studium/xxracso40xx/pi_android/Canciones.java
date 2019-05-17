@@ -100,23 +100,27 @@ public class Canciones extends AppCompatActivity {
         //CABE DESTACAR QUE FUNCIONA CORRECTAMENTE LOS DATOS SI SE INTRODUCEN DE FORMA MANUAL
         //TAMBIÉN CABE DESTACAR QUE SE DEBE OPTIMIZAR LA DESCARGA DE FOTOS E INTRODUCIR LAS MISMAS EN EL CACHE
         //Hacer un for que recibe vaya añadiendo uno a uno todos los elementos que se reciban de la base de datos.
-        /*
-        canciones.add(new CancionObject("Buenas", "https://ccrma.stanford.edu/~jos/mp3/viola.mp3", "https://www.absaonline.mx/pub/media/catalog/product/cache/1/image/500x608/e9c3970ab036de70892d86c6d221abfe/2/0/20812_TL222.png"));
-        canciones.add(new CancionObject("Buenasaasdas", "https://ccrma.stanford.edu/~jos/mp3/gtr-wah.mp3", "https://image.made-in-china.com/3f2j10wdqTSaMRhGri/Accurate-One-Step-Pregnancy-Te.jpg"));
-        */
+
+        //canciones.add(new CancionObject("Buenas", "asd","https://ccrma.stanford.edu/~jos/mp3/viola.mp3", "https://www.absaonline.mx/pub/media/catalog/product/cache/1/image/500x608/e9c3970ab036de70892d86c6d221abfe/2/0/20812_TL222.png"));
+        //canciones.add(new CancionObject("Buenasaasdas", "asd", "https://ccrma.stanford.edu/~jos/mp3/gtr-wah.mp3", "https://image.made-in-china.com/3f2j10wdqTSaMRhGri/Accurate-One-Step-Pregnancy-Te.jpg"));
+
         adapter = new ListAdapter(this, canciones);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                music.setClass(Canciones.this,MusicService.class);
-                stopService(music);
-                App.nombreCancionSeleccionada= canciones.get(position).getNombreCancion();
-                App.urlCancionSeleccionada= canciones.get(position).getUrlCancion();
-                App.urlImagenCancionSeleccionada= canciones.get(position).getUrlImagenCancion();
-                App.artistaCancionSeleccionada=canciones.get(position).getAutorCancion();
-                startActivity(intentReproductorMusica);
+                if(App.urlCancionSeleccionada!=canciones.get(position).getUrlCancion() && App.urlCancionSeleccionada!=null) {
+                    music.setClass(Canciones.this, MusicService.class);
+                    stopService(music);
+                }
+                    App.nombreCancionSeleccionada = canciones.get(position).getNombreCancion();
+                    App.urlCancionSeleccionada = canciones.get(position).getUrlCancion();
+                    App.urlImagenCancionSeleccionada = canciones.get(position).getUrlImagenCancion();
+                    App.artistaCancionSeleccionada = canciones.get(position).getAutorCancion();
+                    startActivity(intentReproductorMusica);
+
+
             }
         });
 

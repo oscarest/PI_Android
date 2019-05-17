@@ -7,6 +7,7 @@ public class App
     public static Boolean REPETICION = false;
     public static int ID_USUARIO;
     public static int contadorReproductorMusica=1;
+    public static boolean cancionDiferenteActivityCanciones=false;
 
     //ATRIBUTOS PARA SELECCIONAR CANCION EN LISTA DE CANCIONES
     public static String nombreCancionSeleccionada=null;
