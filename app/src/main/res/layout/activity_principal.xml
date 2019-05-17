@@ -121,51 +121,55 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/songs_cover_one"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:src="@drawable/awar"
+            <LinearLayout
+                android:id="@+id/layoutTouch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="70dp"
+                android:layout_marginRight="70dp"
+                android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="202dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
-                app:layout_constraintStart_toEndOf="@+id/songs_cover_one"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/songs_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-condensed"
-                    android:lines="1"
-                    android:text="Cancion Nombre"
-                    android:textColor="@color/cardview_dark_background"
-                    android:textSize="22dp" />
+                <ImageView
+                    android:id="@+id/songs_cover_one"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/awar" />
 
-                <TextView
-                    android:id="@+id/songs_artist_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:lines="1"
-                    android:text="Autor Cancion" />
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="202dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="vertical">
 
+                    <TextView
+                        android:id="@+id/songs_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed"
+                        android:lines="1"
+                        android:text="Cancion Nombre"
+                        android:textColor="@color/cardview_dark_background"
+                        android:textSize="22dp" />
+
+                    <TextView
+                        android:id="@+id/songs_artist_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lines="1"
+                        android:text="Autor Cancion" />
+
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
