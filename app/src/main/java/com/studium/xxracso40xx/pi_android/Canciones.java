@@ -113,12 +113,20 @@ public class Canciones extends AppCompatActivity {
                 if(App.urlCancionSeleccionada!=canciones.get(position).getUrlCancion() && App.urlCancionSeleccionada!=null) {
                     music.setClass(Canciones.this, MusicService.class);
                     stopService(music);
-                }
                     App.nombreCancionSeleccionada = canciones.get(position).getNombreCancion();
                     App.urlCancionSeleccionada = canciones.get(position).getUrlCancion();
                     App.urlImagenCancionSeleccionada = canciones.get(position).getUrlImagenCancion();
                     App.artistaCancionSeleccionada = canciones.get(position).getAutorCancion();
                     startActivity(intentReproductorMusica);
+                    startService(music);
+                }
+                else {
+                    App.nombreCancionSeleccionada = canciones.get(position).getNombreCancion();
+                    App.urlCancionSeleccionada = canciones.get(position).getUrlCancion();
+                    App.urlImagenCancionSeleccionada = canciones.get(position).getUrlImagenCancion();
+                    App.artistaCancionSeleccionada = canciones.get(position).getAutorCancion();
+                    startActivity(intentReproductorMusica);
+                }
             }
         });
 

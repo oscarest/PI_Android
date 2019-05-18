@@ -38,7 +38,7 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
 
         try {
             mPlayer = MediaPlayer.create(this, Uri.parse(App.urlCancionActual));
-        mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp)
             {

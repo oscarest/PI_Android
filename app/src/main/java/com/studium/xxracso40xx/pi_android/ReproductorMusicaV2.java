@@ -266,7 +266,6 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                     }
                 }}
         }).start();
-
 */
         new Thread(new Runnable() {
             @Override
