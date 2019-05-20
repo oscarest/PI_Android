@@ -1,7 +1,11 @@
 package com.studium.xxracso40xx.pi_android;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.AsyncTask;
+import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -36,6 +40,8 @@ public class Canciones extends AppCompatActivity {
     Intent intentReproductorMusica;
     ListView list;
     Intent music;
+    private boolean mIsBound = false;
+    private MusicService mServ;
     private String APIserver = "http://8music.ddns.net/webserviceAndroid/";
     private ListAdapter adapter;
     ArrayList<CancionObject> canciones = new ArrayList<>();
@@ -110,27 +116,49 @@ public class Canciones extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                if(App.urlCancionSeleccionada!=canciones.get(position).getUrlCancion() && App.urlCancionSeleccionada!=null) {
-                    music.setClass(Canciones.this, MusicService.class);
-                    stopService(music);
-                    App.nombreCancionSeleccionada = canciones.get(position).getNombreCancion();
-                    App.urlCancionSeleccionada = canciones.get(position).getUrlCancion();
-                    App.urlImagenCancionSeleccionada = canciones.get(position).getUrlImagenCancion();
-                    App.artistaCancionSeleccionada = canciones.get(position).getAutorCancion();
-                    startActivity(intentReproductorMusica);
-                    startService(music);
+                App.nombreCancionSeleccionada = canciones.get(position).getNombreCancion();
+                App.urlCancionSeleccionada = canciones.get(position).getUrlCancion();
+                App.urlImagenCancionSeleccionada = canciones.get(position).getUrlImagenCancion();
+                App.artistaCancionSeleccionada = canciones.get(position).getAutorCancion();
+                if(App.urlCancionSeleccionada!=App.urlCancionActual && App.urlCancionActual!=null)
+                {
+                    App.contadorReproductorMusica=2;
+                    App.resetearCancion=true;
                 }
-                else {
-                    App.nombreCancionSeleccionada = canciones.get(position).getNombreCancion();
-                    App.urlCancionSeleccionada = canciones.get(position).getUrlCancion();
-                    App.urlImagenCancionSeleccionada = canciones.get(position).getUrlImagenCancion();
-                    App.artistaCancionSeleccionada = canciones.get(position).getAutorCancion();
+                else
+                    {
                     startActivity(intentReproductorMusica);
                 }
             }
         });
 
 
+    }
+    private ServiceConnection Scon =new ServiceConnection(){
+
+        public void onServiceConnected(ComponentName name, IBinder
+                binder) {
+            mServ = ((MusicService.ServiceBinder)binder).getService();
+        }
+
+        public void onServiceDisconnected(ComponentName name) {
+            mServ = null;
+        }
+    };
+
+    void doBindService(){
+        bindService(new Intent(this,MusicService.class),
+                Scon, Context.BIND_AUTO_CREATE);
+        mIsBound = true;
+    }
+
+    void doUnbindService()
+    {
+        if(mIsBound)
+        {
+            unbindService(Scon);
+            mIsBound = false;
+        }
     }
     private class DB_Apache extends AsyncTask<String, Void, Boolean> {
 
@@ -155,6 +183,7 @@ public class Canciones extends AppCompatActivity {
             }
             return true;
         }
+
 
         protected void onPostExecute(Boolean isOk) {
             try {
@@ -193,6 +222,19 @@ public class Canciones extends AppCompatActivity {
             }
 
         }
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (App.urlCancionActual != null) {
+            doBindService();
+        }
+    }
+    @Override
+    public void onDestroy() {
+
+        super.onDestroy();
+        doUnbindService();
     }
 
 }

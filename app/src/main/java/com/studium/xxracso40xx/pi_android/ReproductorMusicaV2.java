@@ -206,6 +206,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
          */
         protected void onPostExecute(Bitmap result){
             imageView.setImageBitmap(result);
+
         }
     }
     @Override

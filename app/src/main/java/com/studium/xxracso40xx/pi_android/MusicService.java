@@ -86,8 +86,8 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
                                 /* mPlayer.release();
                                  mPlayer = MediaPlayer.create(MusicService.this, Uri.parse(App.urlCancionActual));
                                 */
-                                 App.resetearCancion=false;
-                                mp.reset();
+                                App.resetearCancion=false;
+                                mPlayer.reset();
                                 mPlayer = MediaPlayer.create(MusicService.this, Uri.parse(App.urlCancionActual));
                                  mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                                      @Override
