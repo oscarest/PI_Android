@@ -47,9 +47,6 @@ public class MainActivity extends AppCompatActivity {
     Intent intent1;
     Intent intent2;
 
-    /*String URL= "http://8music.ddns.net/modelo/login.php";
-    JSONParser jsonParser=new JSONParser();
-*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
