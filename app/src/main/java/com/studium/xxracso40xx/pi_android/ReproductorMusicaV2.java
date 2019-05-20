@@ -212,7 +212,6 @@ public class ReproductorMusicaV2 extends AppCompatActivity
     @Override
     public void onPause() {
         super.onPause();
-        App.reproductorPausa=true;
        //mServ.mPlayer.reset();
         //mServ.mPlayer.release();
     }
@@ -228,7 +227,6 @@ public class ReproductorMusicaV2 extends AppCompatActivity
     @Override
     public void onResume() {
         super.onResume();
-        App.reproductorPausa=false;
         if(App.contadorReproductorMusica==1)
         {
             botonIniciar.setBackgroundResource(R.drawable.stop);
