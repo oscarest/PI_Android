@@ -57,7 +57,6 @@ public class ReproductorMusicaV2 extends AppCompatActivity
         nombreCancion.setText(App.nombreCancionSeleccionada);
         autorCancion = findViewById(R.id.textViewArtistaCancion);
         autorCancion.setText(App.artistaCancionSeleccionada);
-
         new ReproductorMusicaV2.DownLoadImageTask(imagenCancion).execute(App.urlImagenCancionSeleccionada);
         music = new Intent();
     }
@@ -122,23 +121,25 @@ public class ReproductorMusicaV2 extends AppCompatActivity
     public void BotonIniciar(View view) {
         if(App.contadorReproductorMusica==1)
         {
-            music.setClass(this,MusicService.class);
-            botonIniciar.setBackgroundResource(R.drawable.play);
-            if(mServ.mPlayer.isPlaying()==true)
-            {
-                mServ.mPlayer.pause();
+          //  music.setClass(this,MusicService.class);
+
                 //mServ.mPlayer.release();
-                stopService(music);
-            }
-            App.contadorReproductorMusica++;
+                //stopService(music);
+                botonIniciar.setBackgroundResource(R.drawable.play);
+                App.contadorReproductorMusica=2;
+
         }
         else if(App.contadorReproductorMusica==2)
         {
-            music.setClass(this,MusicService.class);
+            /*music.setClass(this,MusicService.class);
             startService(music);
             botonIniciar.setBackgroundResource(R.drawable.stop);
             mServ.mPlayer.start();
+
             App.contadorReproductorMusica=1;
+            */
+                App.contadorReproductorMusica=1;
+                botonIniciar.setBackgroundResource(R.drawable.stop);
         }
 
     }
@@ -211,6 +212,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
     @Override
     public void onPause() {
         super.onPause();
+        App.reproductorPausa=true;
        //mServ.mPlayer.reset();
         //mServ.mPlayer.release();
     }
@@ -226,6 +228,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
     @Override
     public void onResume() {
         super.onResume();
+        App.reproductorPausa=false;
         if(App.contadorReproductorMusica==1)
         {
             botonIniciar.setBackgroundResource(R.drawable.stop);
@@ -282,11 +285,6 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                             Message msg = new Message();
                             msg.what = posicionActual;
                             handler.sendMessage(msg);
-                            //Si la variable "REPETICION" es true, habrá modo repetición. falta añadir el botón para que si el botón está pulsado, se ponga
-                            //REPETICION como true
-                            if (App.REPETICION == true) {
-                                mServ.mPlayer.setLooping(true);
-                            }
                             //MÉTODO SIN REPETICIÓN
                             if(App.REPETICION==false && mServ.mPlayer.isPlaying()==false && App.contadorReproductorMusica==1)
                             {

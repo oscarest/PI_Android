@@ -38,17 +38,16 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
 
         try {
             mPlayer = MediaPlayer.create(this, Uri.parse(App.urlCancionActual));
+           // mPlayer.seekTo(App.tiempoActualCancionActual);
             mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp)
             {
-                mPlayer.start();
-                mPlayer.pause();
                 new Thread(new Runnable() {
                     @Override
-                    public void run()
-                    {
-                            if(App.REPETICION==true)
+                    public void run() {
+                        while (true) {
+                            /*if(App.REPETICION==true)
                             {
                                 mPlayer.setLooping(true);
                             }
@@ -65,6 +64,21 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
                                     mPlayer.pause();
                                 }
                             }
+                            */
+                            if (App.contadorReproductorMusica == 1) {
+
+                                    if (!mPlayer.isPlaying()) {
+                                            mPlayer.start();
+                                    }
+                                }
+
+                             else if (App.contadorReproductorMusica == 2) {
+                                if (mPlayer.isPlaying()) {
+                                    App.tiempoActualCancionActual = mPlayer.getCurrentPosition();
+                                    mPlayer.pause();
+                                }
+                            }
+                        }
                     }
 
                 }

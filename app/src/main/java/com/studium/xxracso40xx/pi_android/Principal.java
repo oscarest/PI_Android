@@ -1,6 +1,10 @@
 package com.studium.xxracso40xx.pi_android;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,6 +28,8 @@ public class Principal extends AppCompatActivity
     Intent intentCanciones;
     Intent intentPerfil;
     Intent music;
+    private boolean mIsBound = false;
+    private MusicService mServ;
     public ListView listviewPrincipal;
     float x1,x2,y1,y2;
     private List<CancionObject> canciones;
@@ -74,17 +80,14 @@ public class Principal extends AppCompatActivity
                 music = new Intent();
                 if(App.contadorReproductorMusica==1)
                 {
-
-                    App.pararCancion=1;
                     playMiniReproductor.setBackgroundResource(R.drawable.play);
-                    App.contadorReproductorMusica++;
+                    App.contadorReproductorMusica=2;
                 }
                 else if(App.contadorReproductorMusica==2)
                 {
                     /*music.setClass(Principal.this,MusicService.class);
                     startService(music);
                     */
-                    App.pararCancion=2;
                     playMiniReproductor.setBackgroundResource(R.drawable.stop);
                     App.contadorReproductorMusica=1;
                 }
@@ -107,6 +110,32 @@ public class Principal extends AppCompatActivity
 
 
     }
+    private ServiceConnection Scon =new ServiceConnection(){
+
+        public void onServiceConnected(ComponentName name, IBinder
+                binder) {
+            mServ = ((MusicService.ServiceBinder)binder).getService();
+        }
+
+        public void onServiceDisconnected(ComponentName name) {
+            mServ = null;
+        }
+    };
+
+    void doBindService(){
+        bindService(new Intent(this,MusicService.class),
+                Scon, Context.BIND_AUTO_CREATE);
+        mIsBound = true;
+    }
+
+    void doUnbindService()
+    {
+        if(mIsBound)
+        {
+            unbindService(Scon);
+            mIsBound = false;
+        }
+    }
     @Override
     public void onResume() {
         if(App.contadorReproductorMusica==1)
@@ -117,6 +146,11 @@ public class Principal extends AppCompatActivity
         {
             playMiniReproductor.setBackgroundResource(R.drawable.play);
         }
+        if(App.urlCancionActual!=null)
+        {
+            doBindService();
+        }
+
         super.onResume();
 
     }
@@ -140,7 +174,13 @@ public class Principal extends AppCompatActivity
             allSampleData.add(dm);
         }
     }
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+        doUnbindService();
 
+    }
     //CAMBIAR EL CÓDIGO DE ABAJO PARA QUE SE PUEDA HACER MEDIANTE LISTVIEW, HORIZONTAL SCROLL O HACERLO MEDIANTE DOS SCROLLS
     /*
     public void mostrarTodo()
