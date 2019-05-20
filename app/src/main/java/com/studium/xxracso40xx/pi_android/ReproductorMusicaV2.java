@@ -35,6 +35,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
     TextView tiempoTranscurrido;
     TextView tiempoRestante;
     Intent music;
+    int posicionFinal;
     int tiempoTotal;
     ImageView imagenCancion;
     TextView nombreCancion;
@@ -63,7 +64,10 @@ public class ReproductorMusicaV2 extends AppCompatActivity
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            int posicionFinal=  mServ.posicionFinal();
+            if(App.resetearCancion==false)
+            {
+                posicionFinal=  mServ.posicionFinal();
+            }
             int posicionActual = msg.what;
             // Update BarraPosicion.
             BarraPosicion.setProgress(posicionActual);

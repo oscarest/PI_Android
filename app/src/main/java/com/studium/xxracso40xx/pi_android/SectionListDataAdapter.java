@@ -58,17 +58,28 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
        holder.itemImage.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               if(App.urlCancionSeleccionada!=singleItem.getUrlCancion() && App.urlCancionSeleccionada!=null)
-               {
-                   music.setClass(v.getContext(),MusicService.class);
-                   v.getContext().stopService(music);
-                   App.tiempoActualCancionActual=0;
-               }
-               //Falta pasar todos los datos aquí a las variables previamente antes de entrar en el reproductor de musica.
                App.urlCancionSeleccionada= singleItem.getUrlCancion();
                App.urlImagenCancionSeleccionada = singleItem.getUrlImagenCancion();
-               Intent intent = new Intent (v.getContext(), ReproductorMusicaV2.class);
-               v.getContext().startActivity(intent);
+               if(App.urlCancionSeleccionada!=App.urlCancionActual && App.urlCancionActual!=null)
+               {
+                   App.resetearCancion=true;
+                  /* App.resetearCancion=true;
+                   music.setClass(v.getContext(),MusicService.class);
+                   v.getContext().stopService(music);
+                   App.urlCancionSeleccionada= singleItem.getUrlCancion();
+                   App.urlImagenCancionSeleccionada = singleItem.getUrlImagenCancion();
+                   App.tiempoActualCancionActual=0;
+                   v.getContext().startService(music);
+                   */
+               }
+               else
+               {
+                   Intent intent = new Intent (v.getContext(), ReproductorMusicaV2.class);
+                   v.getContext().startActivity(intent);
+               }
+               //Falta pasar todos los datos aquí a las variables previamente antes de entrar en el reproductor de musica.
+              // Intent intent = new Intent (v.getContext(), ReproductorMusicaV2.class);
+               //v.getContext().startActivity(intent);
            }
        });
     }

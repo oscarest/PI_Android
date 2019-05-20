@@ -17,6 +17,7 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
     private final IBinder mBinder = new ServiceBinder();
     MediaPlayer mPlayer;
     private int length = 0;
+    Boolean esperarResetearCancion=false;
 
     public MusicService() {
     }
@@ -41,7 +42,7 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
            // mPlayer.seekTo(App.tiempoActualCancionActual);
             mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
-            public void onPrepared(MediaPlayer mp)
+            public void onPrepared(final MediaPlayer mp)
             {
                 new Thread(new Runnable() {
                     @Override
@@ -78,6 +79,24 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
                                     mPlayer.pause();
                                 }
                             }
+                             if(App.resetearCancion==true)
+                             {
+                                 esperarResetearCancion=true;
+                                 App.urlCancionActual=App.urlCancionSeleccionada;
+                                /* mPlayer.release();
+                                 mPlayer = MediaPlayer.create(MusicService.this, Uri.parse(App.urlCancionActual));
+                                */
+                                 App.resetearCancion=false;
+                                mp.reset();
+                                mPlayer = MediaPlayer.create(MusicService.this, Uri.parse(App.urlCancionActual));
+                                 mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                                     @Override
+                                     public void onPrepared(final MediaPlayer mp)
+                                     {
+                                         startActivity(new Intent(MusicService.this, ReproductorMusicaV2.class));
+                                         esperarResetearCancion=false;
+                                     }});
+                             }
                         }
                     }
 
@@ -127,11 +146,24 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
     }
     public int PosicionActual()
     {
+        if(esperarResetearCancion==true)
+        {
+            return 0;
+        }
+        else
+        {
             return mPlayer.getCurrentPosition();
+        }
     }
     public int posicionFinal()
     {
-        return mPlayer.getDuration();
+        if(esperarResetearCancion==true)
+        {
+            return 0;
+        }
+        else {
+            return mPlayer.getDuration();
+        }
     }
     public void resumeMusic() {
             if(mPlayer.isPlaying())

@@ -166,8 +166,10 @@ public class Principal extends AppCompatActivity
             //  Aquí se introducirá las diferentes canciones que haya en cada genero.
             //  Cabe destacar que la lista variará dependiendo de los que haya en cada genero.
             //  También es posible recibir muchos y limitarlo al número de elementos que deseemos.
-            for (int j = 0; j <= 5; j++) {
+            for (int j = 0; j <= 3; j++) {
                 singleItem.add(new CancionObject("Buenas", "Adolf", "https://ccrma.stanford.edu/~jos/mp3/trumpet.mp3", "https://www.dhresource.com/100x100s/f2-albu-g5-M01-54-A1-rBVaJFngIveAC1bUAAI1p63w2TE474.jpg/puntas-de-prueba-de-prueba-universales-de.jpg"));
+                singleItem.add(new CancionObject("asdfBuenas", "xdAcvxvdsadfa", "http://www.hochmuth.com/mp3/Tchaikovsky_Nocturne__orch.mp3 ", "https://timedotcom.files.wordpress.com/2014/12/spotify.jpg"));
+
             }
 
             dm.setAllItemsInSection(singleItem);

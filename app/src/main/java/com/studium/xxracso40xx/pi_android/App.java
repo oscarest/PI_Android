@@ -27,6 +27,7 @@ public class App
     public static String direccionUsuario="";
 
     public static int pararCancion=0;
+    public static Boolean resetearCancion=false;
 
     //CREAR OBJETO DEBAJO PARA LAS CANCIONES DE LAS CUALES PODAMOS REVISIR TODOS LOS ELEMTOS TIPO DURACIÓN, NOMBRE, ETC.
 
