@@ -131,8 +131,6 @@ public class Canciones extends AppCompatActivity {
                 }
             }
         });
-
-
     }
     private ServiceConnection Scon =new ServiceConnection(){
 

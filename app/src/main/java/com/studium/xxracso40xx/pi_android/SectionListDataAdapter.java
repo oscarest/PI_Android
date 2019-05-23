@@ -2,10 +2,12 @@ package com.studium.xxracso40xx.pi_android;
 
 
 
+import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -27,7 +29,6 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
     private ArrayList<CancionObject> itemsList;
     private Context mContext;
     Intent music;
-
     public SectionListDataAdapter(Context context, ArrayList<CancionObject> itemsList) {
         this.itemsList = itemsList;
         this.mContext = context;
@@ -107,11 +108,9 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
                 @Override
                 public void onClick(View v) {
 
-
-                    Toast.makeText(v.getContext(), tvTitle.getText(), Toast.LENGTH_SHORT).show();
-
                 }
             });
+
 
 
         }

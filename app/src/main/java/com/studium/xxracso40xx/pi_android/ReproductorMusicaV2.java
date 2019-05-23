@@ -1,5 +1,6 @@
 package com.studium.xxracso40xx.pi_android;
 
+import android.app.DownloadManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -30,7 +31,7 @@ import java.net.URL;
 
 public class ReproductorMusicaV2 extends AppCompatActivity
 {
-    Button botonIniciar;
+    Button botonIniciar, botonDescarga;
     SeekBar BarraPosicion;
     TextView tiempoTranscurrido;
     TextView tiempoRestante;
@@ -40,6 +41,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
     ImageView imagenCancion;
     TextView nombreCancion;
     TextView autorCancion;
+    DownloadManager downloadManager;
     private boolean mIsBound = false;
     private MusicService mServ;
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -55,11 +57,25 @@ public class ReproductorMusicaV2 extends AppCompatActivity
         imagenCancion = findViewById(R.id.profile_image);
         nombreCancion = findViewById(R.id.textViewNombreCancion);
         autorCancion = findViewById(R.id.textViewArtistaCancion);
+        botonDescarga = findViewById(R.id.buttonDescaga);
         nombreCancion.setText(App.nombreCancionSeleccionada);
         autorCancion = findViewById(R.id.textViewArtistaCancion);
         autorCancion.setText(App.artistaCancionSeleccionada);
         new ReproductorMusicaV2.DownLoadImageTask(imagenCancion).execute(App.urlImagenCancionSeleccionada);
         music = new Intent();
+        botonDescarga.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(App.urlCancionActual!=null)
+                {
+                    downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+                Uri uri = Uri.parse(App.urlCancionActual);
+                DownloadManager.Request request =  new DownloadManager.Request(uri);
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                Long reference = downloadManager.enqueue(request);
+                }
+            }
+        });
     }
     private Handler handler = new Handler() {
         @Override

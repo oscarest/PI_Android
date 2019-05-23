@@ -53,7 +53,6 @@ public class RecyclerViewDataAdapter extends RecyclerView.Adapter<RecyclerViewDa
 
         itemRowHolder.recycler_view_list.setNestedScrollingEnabled(false);
 
-
        /*  itemRowHolder.recycler_view_list.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
