@@ -39,6 +39,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
     Intent music;
     int posicionFinal;
     int tiempoTotal;
+    Boolean dobleClickForward=false;
     ImageView imagenCancion;
     TextView nombreCancion;
     TextView autorCancion;
@@ -76,7 +77,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                 Uri uri = Uri.parse(App.urlCancionActual);
                 DownloadManager.Request request =  new DownloadManager.Request(uri);
                 request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                Long reference = downloadManager.enqueue(request);
+                downloadManager.enqueue(request);
                 }
             }
         });
@@ -103,19 +104,35 @@ public class ReproductorMusicaV2 extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 posicionActual = App.posicionListaCanciones+1;
-                if(posicionActual!=-1)
+                if(posicionActual<App.listaCanciones.size())
                 {
-                    App.posicionListaCanciones = posicionActual;
-                    Log.i("posicion", "" + posicionActual);
-                    App.nombreCancionSeleccionada = App.listaCanciones.get(posicionActual).getNombreCancion();
-                    App.artistaCancionSeleccionada = App.listaCanciones.get(posicionActual).getAutorCancion();
-                    App.urlImagenCancionSeleccionada = App.listaCanciones.get(posicionActual).getUrlImagenCancion();
-                    App.urlCancionSeleccionada = App.listaCanciones.get(posicionActual).getUrlCancion();
-                    autorCancion.setText(App.artistaCancionSeleccionada);
-                    new ReproductorMusicaV2.DownLoadImageTask(imagenCancion).execute(App.urlImagenCancionSeleccionada);
-                    nombreCancion.setText(App.nombreCancionSeleccionada);
-                    App.saltarBotonCancion = true;
-                    App.resetearCancion = true;
+                    if(dobleClickForward==true)
+                    {
+                        dobleClickForward=false;
+
+                    }
+                    else {
+
+                        App.posicionListaCanciones = posicionActual;
+                        Log.i("posicion", "" + posicionActual);
+                        App.nombreCancionSeleccionada = App.listaCanciones.get(posicionActual).getNombreCancion();
+                        App.artistaCancionSeleccionada = App.listaCanciones.get(posicionActual).getAutorCancion();
+                        App.urlImagenCancionSeleccionada = App.listaCanciones.get(posicionActual).getUrlImagenCancion();
+                        App.urlCancionSeleccionada = App.listaCanciones.get(posicionActual).getUrlCancion();
+                        autorCancion.setText(App.artistaCancionSeleccionada);
+                        new ReproductorMusicaV2.DownLoadImageTask(imagenCancion).execute(App.urlImagenCancionSeleccionada);
+                        nombreCancion.setText(App.nombreCancionSeleccionada);
+                        App.saltarBotonCancion = true;
+                        App.resetearCancion = true;
+                    }
+                }
+                else
+                {
+                    if(App.listaCanciones.size()==posicionActual)
+                    {
+                        App.posicionListaCanciones--;
+                        dobleClickForward=true;
+                    }
                 }
             }
         });
