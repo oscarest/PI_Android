@@ -58,7 +58,7 @@ public class Canciones extends AppCompatActivity {
         intentReproductorMusica = new Intent(this, ReproductorMusicaV2.class);
         list = findViewById(R.id.list_view);
         music = new Intent();
-        //mostrarList();
+        mostrarList();
         //DE AQUÍ LEEREMOS LOS DATOS PERSONALES DEL USUARIO QUE ESTÁ LOGUEADO PARA PODER SACAR LAS CANCIONES QUE ESTA PERSONA TIENE EN SU BIBLIOTECA.
         //LO MEJOR SERÍA INTRODUCIR EL ID DEL USUARIO QUE ESTA LOGUEADO PARA PODER SACAR ESTAS CANCIONES.
         //COMENTADO HASTA QUE SE HAGA EL ARCHIVO .PHP
@@ -120,6 +120,8 @@ public class Canciones extends AppCompatActivity {
                 App.urlCancionSeleccionada = canciones.get(position).getUrlCancion();
                 App.urlImagenCancionSeleccionada = canciones.get(position).getUrlImagenCancion();
                 App.artistaCancionSeleccionada = canciones.get(position).getAutorCancion();
+                App.posicionListaCanciones = position;
+                App.listaCanciones = canciones;
                 if(App.urlCancionSeleccionada!=App.urlCancionActual && App.urlCancionActual!=null)
                 {
                     App.contadorReproductorMusica=2;
