@@ -1,5 +1,9 @@
 package com.studium.xxracso40xx.pi_android;
 
+import com.studium.xxracso40xx.pi_android.model.CancionObject;
+
+import java.util.ArrayList;
+
 public class App
 {
     public static String urlCancionActual=null;
@@ -29,6 +33,9 @@ public class App
     public static int pararCancion=0;
     public static Boolean resetearCancion=false;
 
+    public static Boolean saltarBotonCancion = false;
+    public static ArrayList<CancionObject> listaCanciones = new ArrayList<>();
+    public static int posicionListaCanciones;
     //CREAR OBJETO DEBAJO PARA LAS CANCIONES DE LAS CUALES PODAMOS REVISIR TODOS LOS ELEMTOS TIPO DURACIÓN, NOMBRE, ETC.
 
 }
