@@ -19,6 +19,7 @@ import android.os.IBinder;
 import android.os.Message;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -31,7 +32,7 @@ import java.net.URL;
 
 public class ReproductorMusicaV2 extends AppCompatActivity
 {
-    Button botonIniciar, botonDescarga;
+    Button botonIniciar, botonDescarga, botonBack, botonForward;
     SeekBar BarraPosicion;
     TextView tiempoTranscurrido;
     TextView tiempoRestante;
@@ -41,6 +42,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
     ImageView imagenCancion;
     TextView nombreCancion;
     TextView autorCancion;
+    int posicionActual;
     DownloadManager downloadManager;
     private boolean mIsBound = false;
     private MusicService mServ;
@@ -61,6 +63,8 @@ public class ReproductorMusicaV2 extends AppCompatActivity
         nombreCancion.setText(App.nombreCancionSeleccionada);
         autorCancion = findViewById(R.id.textViewArtistaCancion);
         autorCancion.setText(App.artistaCancionSeleccionada);
+        botonBack=findViewById(R.id.buttonBack);
+        botonForward = findViewById(R.id.buttonForward);
         new ReproductorMusicaV2.DownLoadImageTask(imagenCancion).execute(App.urlImagenCancionSeleccionada);
         music = new Intent();
         botonDescarga.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +80,46 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                 }
             }
         });
+        botonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               posicionActual = App.posicionListaCanciones-1;
+               if(posicionActual!=-1) {
+                   App.posicionListaCanciones = posicionActual;
+                   Log.i("posicion", "" + posicionActual);
+                   App.nombreCancionSeleccionada = App.listaCanciones.get(posicionActual).getNombreCancion();
+                   App.artistaCancionSeleccionada = App.listaCanciones.get(posicionActual).getAutorCancion();
+                   App.urlImagenCancionSeleccionada = App.listaCanciones.get(posicionActual).getUrlImagenCancion();
+                   App.urlCancionSeleccionada = App.listaCanciones.get(posicionActual).getUrlCancion();
+                   autorCancion.setText(App.artistaCancionSeleccionada);
+                   new ReproductorMusicaV2.DownLoadImageTask(imagenCancion).execute(App.urlImagenCancionSeleccionada);
+                   nombreCancion.setText(App.nombreCancionSeleccionada);
+                   App.saltarBotonCancion = true;
+                   App.resetearCancion = true;
+               }
+            }
+        });
+        botonForward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                posicionActual = App.posicionListaCanciones+1;
+                if(posicionActual!=-1)
+                {
+                    App.posicionListaCanciones = posicionActual;
+                    Log.i("posicion", "" + posicionActual);
+                    App.nombreCancionSeleccionada = App.listaCanciones.get(posicionActual).getNombreCancion();
+                    App.artistaCancionSeleccionada = App.listaCanciones.get(posicionActual).getAutorCancion();
+                    App.urlImagenCancionSeleccionada = App.listaCanciones.get(posicionActual).getUrlImagenCancion();
+                    App.urlCancionSeleccionada = App.listaCanciones.get(posicionActual).getUrlCancion();
+                    autorCancion.setText(App.artistaCancionSeleccionada);
+                    new ReproductorMusicaV2.DownLoadImageTask(imagenCancion).execute(App.urlImagenCancionSeleccionada);
+                    nombreCancion.setText(App.nombreCancionSeleccionada);
+                    App.saltarBotonCancion = true;
+                    App.resetearCancion = true;
+                }
+            }
+        });
+        //
     }
     private Handler handler = new Handler() {
         @Override
@@ -114,7 +158,6 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                             BarraPosicion.setProgress(App.tiempoActualCancionActual);
                         }
                     }
-
                     @Override
                     public void onStartTrackingTouch(SeekBar seekBar) {
 
