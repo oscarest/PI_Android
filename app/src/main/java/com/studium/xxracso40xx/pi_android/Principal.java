@@ -102,7 +102,7 @@ public class Principal extends AppCompatActivity
 
         my_recycler_view.setHasFixedSize(true);
 
-        RecyclerViewDataAdapter adapter = new RecyclerViewDataAdapter(this, allSampleData);
+            RecyclerViewDataAdapter adapter = new RecyclerViewDataAdapter(this, allSampleData);
 
         my_recycler_view.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 

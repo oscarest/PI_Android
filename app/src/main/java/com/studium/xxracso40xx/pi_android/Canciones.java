@@ -1,17 +1,21 @@
 package com.studium.xxracso40xx.pi_android;
 
+import android.app.DownloadManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 //HttpClientBuilder
 
@@ -40,6 +44,7 @@ public class Canciones extends AppCompatActivity {
     Intent intentReproductorMusica;
     ListView list;
     Intent music;
+    DownloadManager downloadManager;
     private boolean mIsBound = false;
     private MusicService mServ;
     private String APIserver = "http://8music.ddns.net/webserviceAndroid/";
@@ -58,12 +63,12 @@ public class Canciones extends AppCompatActivity {
         intentReproductorMusica = new Intent(this, ReproductorMusicaV2.class);
         list = findViewById(R.id.list_view);
         music = new Intent();
-        //mostrarList();
+        mostrarList();
         //DE AQUÍ LEEREMOS LOS DATOS PERSONALES DEL USUARIO QUE ESTÁ LOGUEADO PARA PODER SACAR LAS CANCIONES QUE ESTA PERSONA TIENE EN SU BIBLIOTECA.
         //LO MEJOR SERÍA INTRODUCIR EL ID DEL USUARIO QUE ESTA LOGUEADO PARA PODER SACAR ESTAS CANCIONES.
         //COMENTADO HASTA QUE SE HAGA EL ARCHIVO .PHP
         //new Canciones.DB_Apache().execute("get-product.php?idUsuario=" + App.ID_USUARIO);
-        new Canciones.DB_Apache().execute("get-canciones.php?");
+        //new Canciones.DB_Apache().execute("get-canciones.php?");
         buttonCancionesPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,8 +112,8 @@ public class Canciones extends AppCompatActivity {
         //TAMBIÉN CABE DESTACAR QUE SE DEBE OPTIMIZAR LA DESCARGA DE FOTOS E INTRODUCIR LAS MISMAS EN EL CACHE
         //Hacer un for que recibe vaya añadiendo uno a uno todos los elementos que se reciban de la base de datos.
 
-        //canciones.add(new CancionObject("Buenas", "asd","https://ccrma.stanford.edu/~jos/mp3/viola.mp3", "https://www.absaonline.mx/pub/media/catalog/product/cache/1/image/500x608/e9c3970ab036de70892d86c6d221abfe/2/0/20812_TL222.png"));
-        //canciones.add(new CancionObject("Buenasaasdas", "asd", "https://ccrma.stanford.edu/~jos/mp3/gtr-wah.mp3", "https://image.made-in-china.com/3f2j10wdqTSaMRhGri/Accurate-One-Step-Pregnancy-Te.jpg"));
+        canciones.add(new CancionObject("Buenas", "asd","https://ccrma.stanford.edu/~jos/mp3/viola.mp3", "https://www.absaonline.mx/pub/media/catalog/product/cache/1/image/500x608/e9c3970ab036de70892d86c6d221abfe/2/0/20812_TL222.png"));
+        canciones.add(new CancionObject("Buenasaasdas", "asd", "https://ccrma.stanford.edu/~jos/mp3/gtr-wah.mp3", "https://image.made-in-china.com/3f2j10wdqTSaMRhGri/Accurate-One-Step-Pregnancy-Te.jpg"));
 
         adapter = new ListAdapter(this, canciones);
         list.setAdapter(adapter);
@@ -116,6 +121,22 @@ public class Canciones extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
+
+               /* Button botonCancion = view.findViewById(R.id.buttonDescargaLista);
+                botonCancion.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(App.urlCancionActual!=null)
+                        {
+                            downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+                            Uri uri = Uri.parse(App.urlCancionActual);
+                            DownloadManager.Request request =  new DownloadManager.Request(uri);
+                            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                            Long reference = downloadManager.enqueue(request);
+                        }
+                    }
+                });
+                */
                 App.nombreCancionSeleccionada = canciones.get(position).getNombreCancion();
                 App.urlCancionSeleccionada = canciones.get(position).getUrlCancion();
                 App.urlImagenCancionSeleccionada = canciones.get(position).getUrlImagenCancion();

@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
 import com.studium.xxracso40xx.pi_android.model.CancionObject;
 
 import java.io.InputStream;
@@ -44,8 +45,11 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
 
     @Override
     public void onBindViewHolder(SingleItemRowHolder holder, int i) {
-
-        new SectionListDataAdapter.DownLoadImageTask(holder.itemImage).execute(itemsList.get(i).getUrlImagenCancion());
+        Picasso
+                .with(holder.itemImage.getContext())
+                .load(itemsList.get(i).getUrlImagenCancion())
+                .into(holder.itemImage);
+        //new SectionListDataAdapter.DownLoadImageTask(holder.itemImage).execute(itemsList.get(i).getUrlImagenCancion());
         final CancionObject singleItem = itemsList.get(i);
         holder.tvTitle.setText(singleItem.getNombreCancion());
 

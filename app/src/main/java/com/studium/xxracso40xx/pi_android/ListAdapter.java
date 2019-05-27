@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.studium.xxracso40xx.pi_android.model.CancionObject;
 
 import java.io.InputStream;
@@ -55,7 +56,11 @@ public class ListAdapter extends BaseAdapter
         Button botonCancion = itemView.findViewById(R.id.buttonDescargaLista);
         CancionObject cancionSeleccionada = canciones.get(position);
         nombreCancion.setText(cancionSeleccionada.getNombreCancion());
-        new DownLoadImageTask(imagenCancion).execute(cancionSeleccionada.getUrlImagenCancion());
+        //new DownLoadImageTask(imagenCancion).execute(cancionSeleccionada.getUrlImagenCancion());
+        Picasso
+                .with(context)
+                .load(cancionSeleccionada.getUrlImagenCancion())
+                .into(imagenCancion);
         return itemView;
     }
     private class DownLoadImageTask extends AsyncTask<String,Void, Bitmap> {

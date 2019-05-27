@@ -26,6 +26,8 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -66,7 +68,11 @@ public class ReproductorMusicaV2 extends AppCompatActivity
         autorCancion.setText(App.artistaCancionSeleccionada);
         botonBack=findViewById(R.id.buttonBack);
         botonForward = findViewById(R.id.buttonForward);
-        new ReproductorMusicaV2.DownLoadImageTask(imagenCancion).execute(App.urlImagenCancionSeleccionada);
+        //new ReproductorMusicaV2.DownLoadImageTask(imagenCancion).execute(App.urlImagenCancionSeleccionada);
+        Picasso
+                .with(this)
+                .load(App.urlImagenCancionSeleccionada)
+                .into(imagenCancion);
         music = new Intent();
         botonDescarga.setOnClickListener(new View.OnClickListener() {
             @Override
