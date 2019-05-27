@@ -33,9 +33,16 @@ public class App
     public static int pararCancion=0;
     public static Boolean resetearCancion=false;
 
+    public static Boolean pulsarBotonRepetir=false;
+
     public static Boolean saltarBotonCancion = false;
     public static ArrayList<CancionObject> listaCanciones = new ArrayList<>();
     public static int posicionListaCanciones;
+    public static Boolean contadorcontador1=true;
+    public static Boolean cancionTerminada=false;
+
+    public static int contadorRepetir=0
+            ;
     //CREAR OBJETO DEBAJO PARA LAS CANCIONES DE LAS CUALES PODAMOS REVISIR TODOS LOS ELEMTOS TIPO DURACIÓN, NOMBRE, ETC.
 
 }

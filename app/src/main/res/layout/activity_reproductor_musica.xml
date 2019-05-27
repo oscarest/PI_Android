@@ -151,6 +151,23 @@
         app:layout_constraintStart_toEndOf="@+id/textViewNombreCancion"
         app:layout_constraintTop_toBottomOf="@+id/profile_image" />
 
+    <Button
+        android:id="@+id/buttonRepetir"
+        android:layout_width="39dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="318dp"
+        android:layout_marginLeft="318dp"
+        android:layout_marginTop="127dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginRight="54dp"
+        android:layout_marginBottom="9dp"
+        android:background="@drawable/botonrepetir"
+        app:layout_constraintBottom_toTopOf="@+id/BarraPosicion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonDescaga"
+        tools:ignore="MissingConstraints" />
+
     <!-- <ImageView
          android:layout_width="18dp"
          android:layout_height="18dp"

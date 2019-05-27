@@ -9,7 +9,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -28,13 +27,12 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
 public class ReproductorMusicaV2 extends AppCompatActivity
 {
-    Button botonIniciar, botonDescarga, botonBack, botonForward;
+    Button botonIniciar, botonDescarga, botonBack, botonForward, botonRepetir;
     SeekBar BarraPosicion;
     TextView tiempoTranscurrido;
     TextView tiempoRestante;
@@ -68,12 +66,33 @@ public class ReproductorMusicaV2 extends AppCompatActivity
         autorCancion.setText(App.artistaCancionSeleccionada);
         botonBack=findViewById(R.id.buttonBack);
         botonForward = findViewById(R.id.buttonForward);
+        botonRepetir = findViewById(R.id.buttonRepetir);
         //new ReproductorMusicaV2.DownLoadImageTask(imagenCancion).execute(App.urlImagenCancionSeleccionada);
         Picasso
                 .with(this)
                 .load(App.urlImagenCancionSeleccionada)
                 .into(imagenCancion);
+
         music = new Intent();
+        botonRepetir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(App.contadorRepetir==0)
+                {
+                    //REPETIR
+                    App.pulsarBotonRepetir=true;
+                    botonRepetir.setBackgroundResource(R.drawable.botonrepetirpulsado);
+                    App.contadorRepetir=1;
+                }
+                else
+                {
+                    //NO REPETIR
+                    App.pulsarBotonRepetir=false;
+                    botonRepetir.setBackgroundResource(R.drawable.botonrepetir);
+                    App.contadorRepetir=0;
+                }
+            }
+        });
         botonDescarga.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -144,6 +163,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
         });
         //
     }
+
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -224,8 +244,10 @@ public class ReproductorMusicaV2 extends AppCompatActivity
 
             App.contadorReproductorMusica=1;
             */
-                App.contadorReproductorMusica=1;
-                botonIniciar.setBackgroundResource(R.drawable.stop);
+            App.cancionTerminada=false;
+            App.contadorcontador1=true;
+            App.contadorReproductorMusica=1;
+            botonIniciar.setBackgroundResource(R.drawable.stop);
         }
 
     }
@@ -322,6 +344,14 @@ public class ReproductorMusicaV2 extends AppCompatActivity
         {
             botonIniciar.setBackgroundResource(R.drawable.play);
         }
+        if(App.contadorRepetir==1)
+        {
+        botonRepetir.setBackgroundResource(R.drawable.botonrepetirpulsado);
+        }
+        else if(App.contadorRepetir==2)
+        {
+            botonRepetir.setBackgroundResource(R.drawable.botonrepetir);
+        }
        /* new Thread(new Runnable() {
             @Override
             public void run() {
@@ -362,7 +392,6 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                     try {
                         if(mServ==null)
                         {
-
                         }
                         else if(mServ.mPlayer!=null)
                         {
@@ -370,6 +399,10 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                             Message msg = new Message();
                             msg.what = posicionActual;
                             handler.sendMessage(msg);
+                            if(App.cancionTerminada==true)
+                            {
+                                botonIniciar.setBackgroundResource(R.drawable.play);
+                            }
                             //MÉTODO SIN REPETICIÓN
                             if(App.REPETICION==false && mServ.mPlayer.isPlaying()==false && App.contadorReproductorMusica==1)
                             {

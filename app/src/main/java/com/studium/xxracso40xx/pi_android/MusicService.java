@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.Message;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -40,10 +41,29 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
         try {
             mPlayer = MediaPlayer.create(this, Uri.parse(App.urlCancionActual));
            // mPlayer.seekTo(App.tiempoActualCancionActual);
+            mPlayer.setLooping(false);
+            mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    if(App.pulsarBotonRepetir==false)
+                    {
+                        mPlayer.seekTo(0);
+                        App.cancionTerminada=true;
+                        App.contadorReproductorMusica=2;
+                    }
+                    else
+                    {
+                        mPlayer.seekTo(0);
+                        mPlayer.start();
+                    }
+
+                }
+            });
             mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(final MediaPlayer mp)
             {
+
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -66,11 +86,37 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
                                 }
                             }
                             */
-                            if (App.contadorReproductorMusica == 1) {
-
-                                    if (!mPlayer.isPlaying()) {
+                            /*if(App.pulsarBotonRepetir==true)
+                            {
+                                if(App.repeticCancion==true)
+                                {
+                                    mPlayer.setLooping(true);
+                                }
+                                else
+                                {
+                                    mPlayer.setLooping(false);
+                                }
+                            }
+                            */
+                            if (App.contadorReproductorMusica == 1)
+                            {
+                                if(App.contadorcontador1==true)
+                                {
+                                    mPlayer.start();
+                                    App.contadorcontador1=false;
+                                }
+                                    /*if (!mPlayer.isPlaying())
+                                    {
                                             mPlayer.start();
                                     }
+                                    if(mPlayer.isPlaying())
+                                    {
+                                        if(App.repeticCancion==2)
+                                        {
+                                        mPlayer.pause();
+                                        }
+                                    }
+                                    */
                                 }
 
                              else if (App.contadorReproductorMusica == 2) {
@@ -89,7 +135,7 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
                                 App.resetearCancion=false;
                                 mPlayer.reset();
                                 mPlayer = MediaPlayer.create(MusicService.this, Uri.parse(App.urlCancionActual));
-                                 mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                                mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                                      @Override
                                      public void onPrepared(final MediaPlayer mp)
                                      {
@@ -118,6 +164,7 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
         e.printStackTrace();
     }
     }
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -129,7 +176,6 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
             mPlayer.setLooping(false);
             mPlayer.setVolume(100, 100);
         }*/
-
         mPlayer.setOnErrorListener(new OnErrorListener() {
 
             public boolean onError(MediaPlayer mp, int what, int
@@ -145,7 +191,6 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
     public int onStartCommand(Intent intent, int flags, int startId) {
         return START_NOT_STICKY;
     }
-
     public void pauseMusic() {
         if (mPlayer.isPlaying()) {
             length = mPlayer.getCurrentPosition();
@@ -163,6 +208,7 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
             return mPlayer.getCurrentPosition();
         }
     }
+
     public int posicionFinal()
     {
         if(esperarResetearCancion==true)
@@ -171,6 +217,18 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
         }
         else {
             return mPlayer.getDuration();
+        }
+    }
+    private synchronized void pause() {
+        // Sometimes the call to isPlaying can throw an error "internal/external state mismatch corrected"
+        // When this happens, I think the player moves itself to "paused" even though it's still playing.
+        try{
+            // this is a hack, but it seems to be the most consistent way to address the problem
+            mPlayer.stop();
+            mPlayer.prepare();
+            mPlayer.seekTo(0);
+        } catch (Exception e){
+            Log.w("Error", "Caught exception while trying to pause ", e);
         }
     }
     public void resumeMusic() {
