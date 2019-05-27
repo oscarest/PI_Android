@@ -88,6 +88,8 @@ public class Principal extends AppCompatActivity
                     /*music.setClass(Principal.this,MusicService.class);
                     startService(music);
                     */
+                    App.cancionTerminada=false;
+                    App.contadorcontador1=true;
                     playMiniReproductor.setBackgroundResource(R.drawable.stop);
                     App.contadorReproductorMusica=1;
                 }
@@ -138,7 +140,11 @@ public class Principal extends AppCompatActivity
     }
     @Override
     public void onResume() {
-        if(App.contadorReproductorMusica==1)
+        if(App.cancionTerminada==true)
+        {
+            playMiniReproductor.setBackgroundResource(R.drawable.play);
+        }
+        else if(App.contadorReproductorMusica==1)
         {
             playMiniReproductor.setBackgroundResource(R.drawable.stop);
         }
@@ -150,7 +156,6 @@ public class Principal extends AppCompatActivity
         {
             doBindService();
         }
-
         super.onResume();
 
     }
