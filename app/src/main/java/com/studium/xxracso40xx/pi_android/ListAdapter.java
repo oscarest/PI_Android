@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.content.Context;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -51,6 +52,7 @@ public class ListAdapter extends BaseAdapter
     itemView = (itemView==null) ? inflater.inflate(R.layout.activity_list_canciones, null):itemView;
         TextView nombreCancion = itemView.findViewById(R.id.listCancionNombre);
         ImageView imagenCancion = itemView.findViewById(R.id.listCancionImagen);
+        Button botonCancion = itemView.findViewById(R.id.buttonDescargaLista);
         CancionObject cancionSeleccionada = canciones.get(position);
         nombreCancion.setText(cancionSeleccionada.getNombreCancion());
         new DownLoadImageTask(imagenCancion).execute(cancionSeleccionada.getUrlImagenCancion());
