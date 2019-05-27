@@ -47,6 +47,7 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
                 public void onCompletion(MediaPlayer mp) {
                     if(App.pulsarBotonRepetir==false)
                     {
+                        //PONER AQUÍ LO QUE SE DESEE REALIZAR CUANDO SE ACABE LA CANCIÓN SIN REPETICIÓN
                         mPlayer.seekTo(0);
                         App.cancionTerminada=true;
                         App.contadorReproductorMusica=2;
