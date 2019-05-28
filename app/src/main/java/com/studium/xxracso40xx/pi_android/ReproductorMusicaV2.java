@@ -134,12 +134,6 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                 posicionActual = App.posicionListaCanciones+1;
                 if(posicionActual<App.listaCanciones.size())
                 {
-                    if(dobleClickForward==true)
-                    {
-                        dobleClickForward=false;
-
-                    }
-                    else {
 
                         App.posicionListaCanciones = posicionActual;
                         Log.i("posicion", "" + posicionActual);
@@ -155,15 +149,11 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                         nombreCancion.setText(App.nombreCancionSeleccionada);
                         App.saltarBotonCancion = true;
                         App.resetearCancion = true;
-                    }
+
                 }
-                else
+                else if(App.listaCanciones.size()==posicionActual)
                 {
-                    if(App.listaCanciones.size()==posicionActual)
-                    {
-                        App.posicionListaCanciones--;
-                        dobleClickForward=true;
-                    }
+                    App.posicionListaCanciones= App.posicionListaCanciones-2;
                 }
             }
         });
