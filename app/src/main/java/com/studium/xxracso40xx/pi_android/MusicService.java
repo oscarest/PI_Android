@@ -164,6 +164,7 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
                                              if(App.contadorReproductorMusica==1)
                                              {
                                                  mPlayer.start();
+                                                 App.cambiarBotonInterfaz=true;
                                              }
                                          }
                                          else

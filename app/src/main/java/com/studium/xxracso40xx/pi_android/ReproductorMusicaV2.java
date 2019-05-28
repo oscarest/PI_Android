@@ -443,6 +443,11 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                                         App.cambiarInterfaz=false;
 
                                     }
+                                    if(App.cambiarBotonInterfaz==true)
+                                    {
+                                        botonIniciar.setBackgroundResource(R.drawable.stop);
+                                        App.cambiarBotonInterfaz=false;
+                                    }
                                     // Stuff that updates the UI
                                     positionBar();
                                 }
