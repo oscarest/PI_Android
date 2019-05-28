@@ -126,6 +126,23 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                    App.saltarBotonCancion = true;
                    App.resetearCancion = true;
                }
+               else if(posicionActual==-1)
+               {
+                   App.posicionListaCanciones=0;
+                   posicionActual=App.posicionListaCanciones;
+                   App.nombreCancionSeleccionada = App.listaCanciones.get(posicionActual).getNombreCancion();
+                   App.artistaCancionSeleccionada = App.listaCanciones.get(posicionActual).getAutorCancion();
+                   App.urlImagenCancionSeleccionada = App.listaCanciones.get(posicionActual).getUrlImagenCancion();
+                   App.urlCancionSeleccionada = App.listaCanciones.get(posicionActual).getUrlCancion();
+                   autorCancion.setText(App.artistaCancionSeleccionada);
+                   Picasso
+                           .with(ReproductorMusicaV2.this)
+                           .load(App.urlImagenCancionSeleccionada)
+                           .into(imagenCancion);
+                   nombreCancion.setText(App.nombreCancionSeleccionada);
+                   App.saltarBotonCancion = true;
+                   App.resetearCancion = true;
+               }
             }
         });
         botonForward.setOnClickListener(new View.OnClickListener() {
@@ -153,7 +170,8 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                 }
                 else if(App.listaCanciones.size()==posicionActual)
                 {
-                    App.posicionListaCanciones= App.posicionListaCanciones-2;
+                    //App.posicionListaCanciones = -1;
+                    App.posicionListaCanciones= App.posicionListaCanciones-1;
                 }
             }
         });
