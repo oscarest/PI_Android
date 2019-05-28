@@ -19,7 +19,7 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
     MediaPlayer mPlayer;
     private int length = 0;
     Boolean esperarResetearCancion=false;
-
+    Boolean esperarTiempo=false;
     public MusicService() {
     }
 
@@ -92,9 +92,9 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
                                            App.urlCancionSeleccionada = App.listaCanciones.get(App.posicionListaCanciones).getUrlCancion();
                                            App.urlCancionActual = App.urlCancionSeleccionada;
                                            App.artistaCancionSeleccionada = App.listaCanciones.get(App.posicionListaCanciones).getAutorCancion();
+                                           App.nombreCancionSeleccionada = App.listaCanciones.get(App.posicionListaCanciones).getNombreCancion();
                                            App.urlImagenCancionSeleccionada = App.listaCanciones.get(App.posicionListaCanciones).getUrlImagenCancion();
                                            mPlayer.seekTo(0);
-                                           mPlayer.reset();
                                            mPlayer = MediaPlayer.create(MusicService.this, Uri.parse(App.urlCancionActual));
                                            mPlayer.start();
                                            App.cambiarInterfaz=true;

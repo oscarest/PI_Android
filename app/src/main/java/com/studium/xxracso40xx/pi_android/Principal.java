@@ -32,8 +32,8 @@ public class Principal extends AppCompatActivity
     private MusicService mServ;
     public ListView listviewPrincipal;
     float x1,x2,y1,y2;
-    private List<CancionObject> canciones;
     ArrayList<SectionDataModel> allSampleData;
+    ArrayList<CancionObject> canciones = new ArrayList<>();
 
 
     @Override
@@ -104,7 +104,7 @@ public class Principal extends AppCompatActivity
 
         my_recycler_view.setHasFixedSize(true);
 
-            RecyclerViewDataAdapter adapter = new RecyclerViewDataAdapter(this, allSampleData);
+        RecyclerViewDataAdapter adapter = new RecyclerViewDataAdapter(this, allSampleData);
 
         my_recycler_view.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
@@ -157,6 +157,7 @@ public class Principal extends AppCompatActivity
             doBindService();
         }
         super.onResume();
+        App.listaCanciones = canciones;
 
     }
     public void createDummyData() {
@@ -172,12 +173,12 @@ public class Principal extends AppCompatActivity
             //  Cabe destacar que la lista variará dependiendo de los que haya en cada genero.
             //  También es posible recibir muchos y limitarlo al número de elementos que deseemos.
             for (int j = 0; j <= 3; j++) {
-                singleItem.add(new CancionObject("Buenas", "Adolf", "https://ccrma.stanford.edu/~jos/mp3/trumpet.mp3", "https://www.dhresource.com/100x100s/f2-albu-g5-M01-54-A1-rBVaJFngIveAC1bUAAI1p63w2TE474.jpg/puntas-de-prueba-de-prueba-universales-de.jpg"));
-                singleItem.add(new CancionObject("asdfBuenas", "xdAcvxvdsadfa", "http://www.hochmuth.com/mp3/Tchaikovsky_Nocturne__orch.mp3 ", "https://timedotcom.files.wordpress.com/2014/12/spotify.jpg"));
+                canciones.add(new CancionObject("Buenas", "Adolf", "https://ccrma.stanford.edu/~jos/mp3/trumpet.mp3", "https://www.dhresource.com/100x100s/f2-albu-g5-M01-54-A1-rBVaJFngIveAC1bUAAI1p63w2TE474.jpg/puntas-de-prueba-de-prueba-universales-de.jpg"));
+                canciones.add(new CancionObject("asdfBuenas", "xdAcvxvdsadfa", "http://www.hochmuth.com/mp3/Tchaikovsky_Nocturne__orch.mp3 ", "https://timedotcom.files.wordpress.com/2014/12/spotify.jpg"));
 
             }
 
-            dm.setAllItemsInSection(singleItem);
+            dm.setAllItemsInSection(canciones);
             allSampleData.add(dm);
         }
     }
@@ -207,5 +208,5 @@ public class Principal extends AppCompatActivity
 
     //}
     */
-    }
+}
 
