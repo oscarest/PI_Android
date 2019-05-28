@@ -435,6 +435,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                                                 .load(App.urlImagenCancionSeleccionada)
                                                 .into(imagenCancion);
                                         App.cambiarInterfaz=false;
+
                                     }
                                     // Stuff that updates the UI
                                     positionBar();
