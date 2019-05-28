@@ -118,7 +118,10 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                    App.urlImagenCancionSeleccionada = App.listaCanciones.get(posicionActual).getUrlImagenCancion();
                    App.urlCancionSeleccionada = App.listaCanciones.get(posicionActual).getUrlCancion();
                    autorCancion.setText(App.artistaCancionSeleccionada);
-                   new ReproductorMusicaV2.DownLoadImageTask(imagenCancion).execute(App.urlImagenCancionSeleccionada);
+                   Picasso
+                           .with(ReproductorMusicaV2.this)
+                           .load(App.urlImagenCancionSeleccionada)
+                           .into(imagenCancion);
                    nombreCancion.setText(App.nombreCancionSeleccionada);
                    App.saltarBotonCancion = true;
                    App.resetearCancion = true;
@@ -145,7 +148,10 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                         App.urlImagenCancionSeleccionada = App.listaCanciones.get(posicionActual).getUrlImagenCancion();
                         App.urlCancionSeleccionada = App.listaCanciones.get(posicionActual).getUrlCancion();
                         autorCancion.setText(App.artistaCancionSeleccionada);
-                        new ReproductorMusicaV2.DownLoadImageTask(imagenCancion).execute(App.urlImagenCancionSeleccionada);
+                        Picasso
+                                .with(ReproductorMusicaV2.this)
+                                .load(App.urlImagenCancionSeleccionada)
+                                .into(imagenCancion);
                         nombreCancion.setText(App.nombreCancionSeleccionada);
                         App.saltarBotonCancion = true;
                         App.resetearCancion = true;

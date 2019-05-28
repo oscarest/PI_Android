@@ -157,13 +157,16 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
                                      @Override
                                      public void onPrepared(final MediaPlayer mp)
                                      {
+                                         if(App.contadorReproductorMusica==1)
+                                         {
+                                             mPlayer.start();
+                                         }
                                          if(App.saltarBotonCancion==true)
                                          {
                                              App.saltarBotonCancion=false;
                                          }
                                          else
                                              {
-
                                              startActivity(new Intent(MusicService.this, ReproductorMusicaV2.class));
                                              }
                                          esperarResetearCancion=false;
