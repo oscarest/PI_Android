@@ -42,24 +42,7 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
             mPlayer = MediaPlayer.create(this, Uri.parse(App.urlCancionActual));
            // mPlayer.seekTo(App.tiempoActualCancionActual);
             mPlayer.setLooping(false);
-            mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mp) {
-                    if(App.pulsarBotonRepetir==false)
-                    {
-                        //PONER AQUÍ LO QUE SE DESEE REALIZAR CUANDO SE ACABE LA CANCIÓN SIN REPETICIÓN
-                        mPlayer.seekTo(0);
-                        App.cancionTerminada=true;
-                        App.contadorReproductorMusica=2;
-                    }
-                    else
-                    {
-                        mPlayer.seekTo(0);
-                        mPlayer.start();
-                    }
 
-                }
-            });
             mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(final MediaPlayer mp)
@@ -99,6 +82,37 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
                                 }
                             }
                             */
+                            mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                                @Override
+                                public void onCompletion(MediaPlayer mp) {
+                                    if(App.pulsarBotonRepetir==false)
+                                    {
+                                        App.posicionListaCanciones++;
+                                       if(App.listaCanciones.size()>App.posicionListaCanciones) {
+                                           App.urlCancionSeleccionada = App.listaCanciones.get(App.posicionListaCanciones).getUrlCancion();
+                                           App.urlCancionActual = App.urlCancionSeleccionada;
+                                           mPlayer.seekTo(0);
+                                           mPlayer.reset();
+                                           mPlayer = MediaPlayer.create(MusicService.this, Uri.parse(App.urlCancionActual));
+                                           mPlayer.start();
+                                       }
+                                       else
+                                       {
+                                           App.posicionListaCanciones--;
+                                       }
+                                        //PONER AQUÍ LO QUE SE DESEE REALIZAR CUANDO SE ACABE LA CANCIÓN SIN REPETICIÓN
+                                        //mPlayer.seekTo(0);
+                                        //App.cancionTerminada=true;
+                                        //App.contadorReproductorMusica=2;
+                                    }
+                                    else
+                                    {
+                                        mPlayer.seekTo(0);
+                                        mPlayer.start();
+                                    }
+
+                                }
+                            });
                             if (App.contadorReproductorMusica == 1)
                             {
                                 if(App.contadorcontador1==true)
