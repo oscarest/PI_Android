@@ -41,8 +41,8 @@ public class App
     public static Boolean contadorcontador1=true;
     public static Boolean cancionTerminada=false;
 
-    public static int contadorRepetir=0
-            ;
+    public static int contadorRepetir=0;
+    public static Boolean cambiarInterfaz=false;
     //CREAR OBJETO DEBAJO PARA LAS CANCIONES DE LAS CUALES PODAMOS REVISIR TODOS LOS ELEMTOS TIPO DURACIÓN, NOMBRE, ETC.
 
 }

@@ -91,10 +91,13 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
                                        if(App.listaCanciones.size()>App.posicionListaCanciones) {
                                            App.urlCancionSeleccionada = App.listaCanciones.get(App.posicionListaCanciones).getUrlCancion();
                                            App.urlCancionActual = App.urlCancionSeleccionada;
+                                           App.artistaCancionSeleccionada = App.listaCanciones.get(App.posicionListaCanciones).getAutorCancion();
+                                           App.urlImagenCancionSeleccionada = App.listaCanciones.get(App.posicionListaCanciones).getUrlImagenCancion();
                                            mPlayer.seekTo(0);
                                            mPlayer.reset();
                                            mPlayer = MediaPlayer.create(MusicService.this, Uri.parse(App.urlCancionActual));
                                            mPlayer.start();
+                                           App.cambiarInterfaz=true;
                                        }
                                        else
                                        {

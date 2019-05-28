@@ -395,6 +395,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                         }
                         else if(mServ.mPlayer!=null)
                         {
+
                             int posicionActual = mServ.PosicionActual();
                             Message msg = new Message();
                             msg.what = posicionActual;
@@ -425,12 +426,22 @@ public class ReproductorMusicaV2 extends AppCompatActivity
 
                                 @Override
                                 public void run() {
-
+                                    if(App.cambiarInterfaz==true)
+                                    {
+                                        autorCancion.setText(App.artistaCancionSeleccionada);
+                                        nombreCancion.setText(App.nombreCancionSeleccionada);
+                                        Picasso
+                                                .with(ReproductorMusicaV2.this)
+                                                .load(App.urlImagenCancionSeleccionada)
+                                                .into(imagenCancion);
+                                        App.cambiarInterfaz=false;
+                                    }
                                     // Stuff that updates the UI
                                     positionBar();
                                 }
                             });
                         }
+
                         Thread.sleep(250);
                     } catch (InterruptedException e) {}
                 }
