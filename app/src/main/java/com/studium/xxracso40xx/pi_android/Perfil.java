@@ -1,6 +1,10 @@
 package com.studium.xxracso40xx.pi_android;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,10 +16,13 @@ public class Perfil extends AppCompatActivity {
     Button boton4;
     Intent intent;
     Intent intent3;
+    private boolean mIsBound = false;
+    private MusicService mServ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
+        doBindService();
         //overridePendingTransition(android.R.anim.replace, android.R.anim.replaceto);
         boton1 = findViewById(R.id.buttonPerfilCanciones);
         boton4 = findViewById(R.id.buttonPrincipalInicio);
@@ -40,5 +47,37 @@ public class Perfil extends AppCompatActivity {
 
             }
         });
+    }
+    private ServiceConnection Scon =new ServiceConnection(){
+
+        public void onServiceConnected(ComponentName name, IBinder
+                binder) {
+            mServ = ((MusicService.ServiceBinder)binder).getService();
+        }
+
+        public void onServiceDisconnected(ComponentName name) {
+            mServ = null;
+        }
+    };
+
+    void doBindService(){
+        bindService(new Intent(this,MusicService.class),
+                Scon, Context.BIND_AUTO_CREATE);
+        mIsBound = true;
+    }
+
+    void doUnbindService()
+    {
+        if(mIsBound)
+        {
+            unbindService(Scon);
+            mIsBound = false;
+        }
+    }
+    @Override
+    public void onDestroy() {
+
+        super.onDestroy();
+        doUnbindService();
     }
 }

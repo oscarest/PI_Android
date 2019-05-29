@@ -65,6 +65,7 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
            public void onClick(View v) {
                App.urlCancionSeleccionada= singleItem.getUrlCancion();
                App.urlImagenCancionSeleccionada = singleItem.getUrlImagenCancion();
+               App.listaCanciones = App.listaCancionesPrincipal;
                if(App.urlCancionSeleccionada!=App.urlCancionActual && App.urlCancionActual!=null)
                {
                    App.resetearCancion=true;
@@ -106,16 +107,6 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
 
             this.tvTitle = (TextView) view.findViewById(R.id.tvTitle);
             this.itemImage = (ImageView) view.findViewById(R.id.itemImage);
-
-
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
-
-
 
         }
 

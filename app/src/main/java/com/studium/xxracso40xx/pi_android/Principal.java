@@ -181,7 +181,7 @@ public class Principal extends AppCompatActivity
             doBindService();
         }
         super.onResume();
-        App.listaCanciones = canciones;
+        App.listaCancionesPrincipal = canciones;
     }
     public void createDummyData() {
         //Cambiar esto para crear tantas secciones como se hayan recogido de la base de datos.
