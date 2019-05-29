@@ -109,7 +109,10 @@ public class ReproductorMusicaV2 extends AppCompatActivity
         botonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               posicionActual = App.posicionListaCanciones-1;
+               if(App.posicionListaCanciones!=0)
+               {
+                   posicionActual = App.posicionListaCanciones-1;
+               }
                if(posicionActual!=-1) {
                    App.posicionListaCanciones = posicionActual;
                    Log.i("posicion", "" + posicionActual);
@@ -129,19 +132,6 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                else if(posicionActual==-1)
                {
                    App.posicionListaCanciones=0;
-                   posicionActual=App.posicionListaCanciones;
-                   App.nombreCancionSeleccionada = App.listaCanciones.get(posicionActual).getNombreCancion();
-                   App.artistaCancionSeleccionada = App.listaCanciones.get(posicionActual).getAutorCancion();
-                   App.urlImagenCancionSeleccionada = App.listaCanciones.get(posicionActual).getUrlImagenCancion();
-                   App.urlCancionSeleccionada = App.listaCanciones.get(posicionActual).getUrlCancion();
-                   autorCancion.setText(App.artistaCancionSeleccionada);
-                   Picasso
-                           .with(ReproductorMusicaV2.this)
-                           .load(App.urlImagenCancionSeleccionada)
-                           .into(imagenCancion);
-                   nombreCancion.setText(App.nombreCancionSeleccionada);
-                   App.saltarBotonCancion = true;
-                   App.resetearCancion = true;
                }
             }
         });
@@ -171,7 +161,20 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                 else if(App.listaCanciones.size()==posicionActual)
                 {
                     //App.posicionListaCanciones = -1;
-                    App.posicionListaCanciones= App.posicionListaCanciones-1;
+                    App.posicionListaCanciones=0;
+                    posicionActual = App.posicionListaCanciones;
+                    App.nombreCancionSeleccionada = App.listaCanciones.get(posicionActual).getNombreCancion();
+                    App.artistaCancionSeleccionada = App.listaCanciones.get(posicionActual).getAutorCancion();
+                    App.urlImagenCancionSeleccionada = App.listaCanciones.get(posicionActual).getUrlImagenCancion();
+                    App.urlCancionSeleccionada = App.listaCanciones.get(posicionActual).getUrlCancion();
+                    autorCancion.setText(App.artistaCancionSeleccionada);
+                    Picasso
+                            .with(ReproductorMusicaV2.this)
+                            .load(App.urlImagenCancionSeleccionada)
+                            .into(imagenCancion);
+                    nombreCancion.setText(App.nombreCancionSeleccionada);
+                    App.saltarBotonCancion = true;
+                    App.resetearCancion = true;
                 }
             }
         });
