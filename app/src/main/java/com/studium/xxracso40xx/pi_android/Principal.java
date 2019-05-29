@@ -12,8 +12,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.studium.xxracso40xx.pi_android.model.CancionObject;
 import com.studium.xxracso40xx.pi_android.model.SectionDataModel;
@@ -32,6 +34,7 @@ public class Principal extends AppCompatActivity
     Intent music;
     TextView cancionNombre, cancionAutor;
     ImageView imagenCancion;
+    LinearLayout layoutTouch;
     private boolean mIsBound = false;
     private MusicService mServ;
     public ListView listviewPrincipal;
@@ -54,6 +57,7 @@ public class Principal extends AppCompatActivity
         buttonPrincipalCanciones = findViewById(R.id.buttonPrincipalCanciones);
         buttonPrincipalPerfil = findViewById(R.id.buttonPrincipalPerfil);
         playMiniReproductor = findViewById(R.id.play_button);
+        layoutTouch = findViewById(R.id.layoutTouch);
         intentCanciones = new Intent(this, Canciones.class);
         intentPerfil = new Intent(this, Perfil.class);
         //listviewPrincipal = findViewById(R.id.listviewPrincipal);
@@ -79,6 +83,19 @@ public class Principal extends AppCompatActivity
                 startActivity(intentPerfil);
                 overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
 
+            }
+        });
+        layoutTouch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(App.urlCancionActual!=null)
+                {
+                    startActivity(new Intent(Principal.this, ReproductorMusicaV2.class));
+                }
+                else
+                {
+                    Toast.makeText(Principal.this, "Reproduzca una canción primero", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         playMiniReproductor.setOnClickListener(new View.OnClickListener() {
