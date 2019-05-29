@@ -102,6 +102,11 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
                                        }
                                        else
                                        {
+                                           //ESTO ES EN EL CASO DE LA ÚLTIMA CANCIÓN DE LA LISTA DE REPRODUCCIÓN
+                                           App.cancionTerminada=true;
+                                           App.contadorReproductorMusica=2;
+
+                                           mPlayer.seekTo(0);
                                            App.posicionListaCanciones--;
                                        }
                                         //PONER AQUÍ LO QUE SE DESEE REALIZAR CUANDO SE ACABE LA CANCIÓN SIN REPETICIÓN
