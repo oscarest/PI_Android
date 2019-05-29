@@ -11,7 +11,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.studium.xxracso40xx.pi_android.model.CancionObject;
 import com.studium.xxracso40xx.pi_android.model.SectionDataModel;
@@ -28,6 +30,8 @@ public class Principal extends AppCompatActivity
     Intent intentCanciones;
     Intent intentPerfil;
     Intent music;
+    TextView cancionNombre, cancionAutor;
+    ImageView imagenCancion;
     private boolean mIsBound = false;
     private MusicService mServ;
     public ListView listviewPrincipal;
@@ -53,6 +57,9 @@ public class Principal extends AppCompatActivity
         intentCanciones = new Intent(this, Canciones.class);
         intentPerfil = new Intent(this, Perfil.class);
         //listviewPrincipal = findViewById(R.id.listviewPrincipal);
+        cancionNombre = findViewById(R.id.songs_title);
+        cancionAutor = findViewById(R.id.songs_artist_name);
+        imagenCancion = findViewById(R.id.songs_cover_one);
         allSampleData = new ArrayList<SectionDataModel>();
         buttonPrincipalCanciones.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,7 +165,6 @@ public class Principal extends AppCompatActivity
         }
         super.onResume();
         App.listaCanciones = canciones;
-
     }
     public void createDummyData() {
         //Cambiar esto para crear tantas secciones como se hayan recogido de la base de datos.

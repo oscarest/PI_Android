@@ -85,16 +85,17 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
                             mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                                 @Override
                                 public void onCompletion(MediaPlayer mp) {
+                                    App.cambiarReproductorMini=true;
                                     if(App.pulsarBotonRepetir==false)
                                     {
                                         App.posicionListaCanciones++;
-                                       if(App.listaCanciones.size()>App.posicionListaCanciones) {
+                                       if(App.listaCanciones.size()>App.posicionListaCanciones)
+                                       {
                                            App.urlCancionSeleccionada = App.listaCanciones.get(App.posicionListaCanciones).getUrlCancion();
                                            App.urlCancionActual = App.urlCancionSeleccionada;
                                            App.artistaCancionSeleccionada = App.listaCanciones.get(App.posicionListaCanciones).getAutorCancion();
                                            App.nombreCancionSeleccionada = App.listaCanciones.get(App.posicionListaCanciones).getNombreCancion();
                                            App.urlImagenCancionSeleccionada = App.listaCanciones.get(App.posicionListaCanciones).getUrlImagenCancion();
-                                           mPlayer.seekTo(0);
                                            mPlayer = MediaPlayer.create(MusicService.this, Uri.parse(App.urlCancionActual));
                                            mPlayer.start();
                                            App.cambiarInterfaz=true;
@@ -151,7 +152,7 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
                                  mPlayer = MediaPlayer.create(MusicService.this, Uri.parse(App.urlCancionActual));
                                 */
                                 App.resetearCancion=false;
-                                mPlayer.reset();
+                                mPlayer.release();
                                 mPlayer = MediaPlayer.create(MusicService.this, Uri.parse(App.urlCancionActual));
                                 mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                                      @Override

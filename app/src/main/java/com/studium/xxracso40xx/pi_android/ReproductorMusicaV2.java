@@ -114,6 +114,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                    posicionActual = App.posicionListaCanciones-1;
                }
                if(posicionActual!=-1) {
+                   App.cambiarReproductorMini=true;
                    App.posicionListaCanciones = posicionActual;
                    Log.i("posicion", "" + posicionActual);
                    App.nombreCancionSeleccionada = App.listaCanciones.get(posicionActual).getNombreCancion();
@@ -422,7 +423,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                                 botonIniciar.setBackgroundResource(R.drawable.play);
                             }
                             //MÉTODO SIN REPETICIÓN
-                            if(App.REPETICION==false && mServ.mPlayer.isPlaying()==false && App.contadorReproductorMusica==1)
+                            /*if(App.REPETICION==false && mServ.mPlayer.isPlaying()==false && App.contadorReproductorMusica==1)
                             {
 
                                 runOnUiThread(new Runnable() {
@@ -439,6 +440,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                                 BarraPosicion.setProgress(0);
                                 App.contadorReproductorMusica++;
                             }
+                            */
                             runOnUiThread(new Runnable() {
 
                                 @Override
@@ -459,10 +461,11 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                                         botonIniciar.setBackgroundResource(R.drawable.stop);
                                         App.cambiarBotonInterfaz=false;
                                     }
+
                                     // Stuff that updates the UI
-                                    positionBar();
                                 }
                             });
+                            positionBar();
                         }
 
                         Thread.sleep(100);

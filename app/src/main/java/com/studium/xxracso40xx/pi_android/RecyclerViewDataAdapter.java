@@ -1,9 +1,5 @@
 package com.studium.xxracso40xx.pi_android;
 
-/**
- * Created by pratap.kesaboyina on 24-12-2014.
- */
-
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -109,7 +105,8 @@ public class RecyclerViewDataAdapter extends RecyclerView.Adapter<RecyclerViewDa
 
 
 
-        public ItemRowHolder(View view) {
+        public ItemRowHolder(View view)
+        {
             super(view);
 
             this.itemTitle = (TextView) view.findViewById(R.id.itemTitle);
