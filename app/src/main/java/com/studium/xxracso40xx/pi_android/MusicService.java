@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnErrorListener;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.Message;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 public class MusicService extends Service  implements MediaPlayer.OnErrorListener {
 
@@ -34,7 +36,6 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
     public IBinder onBind(Intent arg0) {
         return mBinder;
     }
-
     public void crearCancion()
     {
         App.urlCancionActual=App.urlCancionSeleccionada;
