@@ -5,6 +5,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.media.Image;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.IBinder;
@@ -14,6 +15,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,6 +47,8 @@ public class Canciones extends AppCompatActivity {
     Intent intentReproductorMusica;
     ListView list;
     Intent music;
+    EditText editTextBusqueda;
+    ImageView imagenBusqueda;
     DownloadManager downloadManager;
     private boolean mIsBound = false;
     private MusicService mServ;
@@ -61,6 +66,8 @@ public class Canciones extends AppCompatActivity {
         intentPrincipal = new Intent(this, Principal.class);
         intentPerfil = new Intent(this, Perfil.class);
         intentReproductorMusica = new Intent(this, ReproductorMusicaV2.class);
+        editTextBusqueda = findViewById(R.id.editTextBusqueda);
+        imagenBusqueda = findViewById(R.id.imageViewBusqueda);
         list = findViewById(R.id.list_view);
         music = new Intent();
         mostrarList();
@@ -84,6 +91,14 @@ public class Canciones extends AppCompatActivity {
                 startActivity(intentPrincipal);
                 overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
 
+            }
+        });
+        imagenBusqueda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Falta por crear el archivo php, pero esto debería funcionar correctamente de esta forma
+                canciones= new ArrayList<>();
+                new Canciones.DB_Apache().execute("get-canciones.php?nombreCancion="+editTextBusqueda.getText().toString());
             }
         });
 
@@ -244,6 +259,7 @@ public class Canciones extends AppCompatActivity {
 
         }
     }
+
     @Override
     public void onResume() {
         super.onResume();
