@@ -70,6 +70,7 @@ public class Canciones extends AppCompatActivity {
         imagenBusqueda = findViewById(R.id.imageViewBusqueda);
         list = findViewById(R.id.list_view);
         music = new Intent();
+        //quitar este mostrarList cuando se vaya a cambiar a funcionalidad real con servidor.
         mostrarList();
         //DE AQUÍ LEEREMOS LOS DATOS PERSONALES DEL USUARIO QUE ESTÁ LOGUEADO PARA PODER SACAR LAS CANCIONES QUE ESTA PERSONA TIENE EN SU BIBLIOTECA.
         //LO MEJOR SERÍA INTRODUCIR EL ID DEL USUARIO QUE ESTA LOGUEADO PARA PODER SACAR ESTAS CANCIONES.
