@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,6 +18,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
 import com.studium.xxracso40xx.pi_android.model.CancionObject;
 import com.studium.xxracso40xx.pi_android.model.SectionDataModel;
 
@@ -180,8 +182,54 @@ public class Principal extends AppCompatActivity
         {
             doBindService();
         }
+        if(App.urlCancionActualMini!=App.urlCancionActual)
+        {
+            App.urlCancionActualMini = App.urlCancionActual;
+            cancionNombre.setText(App.nombreCancionSeleccionada);
+            cancionAutor.setText(App.artistaCancionSeleccionada);
+            Picasso
+                    .with(Principal.this)
+                    .load(App.urlImagenCancionSeleccionada)
+                    .into(imagenCancion);
+        }
         super.onResume();
         App.listaCancionesPrincipal = canciones;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true)
+                {
+
+                    try {
+                        if(App.urlCancionActualMini==null && App.urlCancionActual!=null)
+                        {
+                         App.urlCancionActualMini=App.urlCancionActual;
+                        }
+                        else if(App.urlCancionActualMini!=null && App.urlCancionActual!=null && App.urlCancionActualMini!=App.urlCancionActual)
+                        {
+                            App.urlCancionActualMini=App.urlCancionActual;
+                            runOnUiThread(new Runnable() {
+
+                                @Override
+                                public void run()
+                                {
+                                    cancionNombre.setText(App.nombreCancionSeleccionada);
+                                    cancionNombre.setText(App.nombreCancionSeleccionada);
+                                    cancionAutor.setText(App.artistaCancionSeleccionada);
+                                    Picasso
+                                            .with(Principal.this)
+                                            .load(App.urlImagenCancionSeleccionada)
+                                            .into(imagenCancion);
+                                }
+                            });
+                        }
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
     }
     public void createDummyData() {
         //Cambiar esto para crear tantas secciones como se hayan recogido de la base de datos.

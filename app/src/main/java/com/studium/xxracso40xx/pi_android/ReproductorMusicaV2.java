@@ -357,6 +357,8 @@ public class ReproductorMusicaV2 extends AppCompatActivity
         if(App.contadorReproductorMusica==1)
         {
             botonIniciar.setBackgroundResource(R.drawable.stop);
+            BarraPosicion.setProgress(App.tiempoActualCancionActual);
+
         }
         else if(App.contadorReproductorMusica==2)
         {

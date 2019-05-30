@@ -11,6 +11,7 @@ import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.io.File;
 import java.io.IOException;
 
 public class MusicService extends Service  implements MediaPlayer.OnErrorListener {
@@ -39,10 +40,11 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
         App.urlCancionActual=App.urlCancionSeleccionada;
 
         try {
+            //mPlayer.setDataSource(App.urlCancionActual);
             mPlayer = MediaPlayer.create(this, Uri.parse(App.urlCancionActual));
+            //mPlayer.setDataSource(this, Uri.parse(App.urlCancionActual));
            // mPlayer.seekTo(App.tiempoActualCancionActual);
-            mPlayer.setLooping(false);
-
+           // mPlayer.setLooping(false);
             mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(final MediaPlayer mp)
@@ -109,7 +111,6 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
                                            mPlayer.seekTo(0);
                                            App.posicionListaCanciones--;
                                        }
-                                        //PONER AQUÍ LO QUE SE DESEE REALIZAR CUANDO SE ACABE LA CANCIÓN SIN REPETICIÓN
                                         //mPlayer.seekTo(0);
                                         //App.cancionTerminada=true;
                                         //App.contadorReproductorMusica=2;
@@ -219,6 +220,7 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        mPlayer = new MediaPlayer();
         return START_NOT_STICKY;
     }
     public void pauseMusic() {

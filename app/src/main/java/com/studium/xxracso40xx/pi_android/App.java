@@ -46,6 +46,8 @@ public class App
     public static Boolean cambiarBotonInterfaz=false;
     public static Boolean cambiarReproductorMini=false;
     public static ArrayList<CancionObject> listaCancionesPrincipal= new ArrayList<>();;
+
+    public static String urlCancionActualMini =null;
     //CREAR OBJETO DEBAJO PARA LAS CANCIONES DE LAS CUALES PODAMOS REVISIR TODOS LOS ELEMTOS TIPO DURACIÓN, NOMBRE, ETC.
 
 }
