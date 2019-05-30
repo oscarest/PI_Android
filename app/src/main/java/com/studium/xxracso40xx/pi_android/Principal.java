@@ -171,14 +171,41 @@ public class Principal extends AppCompatActivity
         if(App.cancionTerminada==true)
         {
             playMiniReproductor.setBackgroundResource(R.drawable.play);
+            App.urlCancionActualMini=App.urlCancionActual;
+
+            cancionNombre.setText(App.nombreCancionSeleccionada);
+            cancionNombre.setText(App.nombreCancionSeleccionada);
+            cancionAutor.setText(App.artistaCancionSeleccionada);
+            Picasso
+                    .with(Principal.this)
+                    .load(App.urlImagenCancionSeleccionada)
+                    .into(imagenCancion);
         }
         else if(App.contadorReproductorMusica==1)
         {
             playMiniReproductor.setBackgroundResource(R.drawable.stop);
+            App.urlCancionActualMini=App.urlCancionActual;
+
+            cancionNombre.setText(App.nombreCancionSeleccionada);
+            cancionNombre.setText(App.nombreCancionSeleccionada);
+            cancionAutor.setText(App.artistaCancionSeleccionada);
+            Picasso
+                    .with(Principal.this)
+                    .load(App.urlImagenCancionSeleccionada)
+                    .into(imagenCancion);
         }
         else if(App.contadorReproductorMusica==2)
         {
             playMiniReproductor.setBackgroundResource(R.drawable.play);
+            App.urlCancionActualMini=App.urlCancionActual;
+
+            cancionNombre.setText(App.nombreCancionSeleccionada);
+            cancionNombre.setText(App.nombreCancionSeleccionada);
+            cancionAutor.setText(App.artistaCancionSeleccionada);
+            Picasso
+                    .with(Principal.this)
+                    .load(App.urlImagenCancionSeleccionada)
+                    .into(imagenCancion);
         }
         if(App.urlCancionActual!=null)
         {
