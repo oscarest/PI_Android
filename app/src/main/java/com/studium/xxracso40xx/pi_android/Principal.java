@@ -37,6 +37,7 @@ public class Principal extends AppCompatActivity
     TextView cancionNombre, cancionAutor;
     ImageView imagenCancion;
     LinearLayout layoutTouch;
+    LinearLayout toolbar_layout;
     private boolean mIsBound = false;
     private MusicService mServ;
     public ListView listviewPrincipal;
@@ -66,6 +67,7 @@ public class Principal extends AppCompatActivity
         cancionNombre = findViewById(R.id.songs_title);
         cancionAutor = findViewById(R.id.songs_artist_name);
         imagenCancion = findViewById(R.id.songs_cover_one);
+        toolbar_layout = findViewById(R.id.toolbar_layout);
         allSampleData = new ArrayList<SectionDataModel>();
         buttonPrincipalCanciones.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -191,6 +193,10 @@ public class Principal extends AppCompatActivity
                     .with(Principal.this)
                     .load(App.urlImagenCancionSeleccionada)
                     .into(imagenCancion);
+            if(toolbar_layout.getVisibility()== View.INVISIBLE)
+            {
+                toolbar_layout.setVisibility(View.VISIBLE);
+            }
         }
         super.onResume();
         App.listaCancionesPrincipal = canciones;
