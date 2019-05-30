@@ -35,7 +35,8 @@
         android:layout_above="@+id/buttonCancionesCanciones"
         android:layout_marginTop="55dp"
         android:layout_marginBottom="22dp"
-        android:descendantFocusability="blocksDescendants" />
+        android:descendantFocusability="blocksDescendants"
+        android:scrollbars="none" />
 
     <Button
         android:id="@+id/buttonCancionesInicio"
