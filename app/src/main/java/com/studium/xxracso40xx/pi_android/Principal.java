@@ -206,22 +206,30 @@ public class Principal extends AppCompatActivity
                     try {
                         if(App.urlCancionActual!=null)
                         {
-                            App.urlCancionActualMini=App.urlCancionActual;
                             runOnUiThread(new Runnable() {
 
                                 @Override
                                 public void run()
                                 {
-                                    cancionNombre.setText(App.nombreCancionSeleccionada);
-                                    cancionNombre.setText(App.nombreCancionSeleccionada);
-                                    cancionAutor.setText(App.artistaCancionSeleccionada);
-                                    Picasso
-                                            .with(Principal.this)
-                                            .load(App.urlImagenCancionSeleccionada)
-                                            .into(imagenCancion);
+                                    if(App.urlCancionActualMini!=App.urlCancionActual)
+                                    {
+                                        App.urlCancionActualMini=App.urlCancionActual;
+
+                                        cancionNombre.setText(App.nombreCancionSeleccionada);
+                                        cancionNombre.setText(App.nombreCancionSeleccionada);
+                                        cancionAutor.setText(App.artistaCancionSeleccionada);
+                                        Picasso
+                                                .with(Principal.this)
+                                                .load(App.urlImagenCancionSeleccionada)
+                                                .into(imagenCancion);
+                                    }
                                     if(toolbar_layout.getVisibility()== View.INVISIBLE)
                                     {
                                         toolbar_layout.setVisibility(View.VISIBLE);
+                                    }
+                                    if(App.cancionTerminada==true)
+                                    {
+                                        playMiniReproductor.setBackgroundResource(R.drawable.play);
                                     }
                                 }
                             });
