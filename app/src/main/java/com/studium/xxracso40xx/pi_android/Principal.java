@@ -182,7 +182,7 @@ public class Principal extends AppCompatActivity
         {
             doBindService();
         }
-        if(App.urlCancionActualMini!=App.urlCancionActual)
+        if(App.urlCancionActual!=null)
         {
             App.urlCancionActualMini = App.urlCancionActual;
             cancionNombre.setText(App.nombreCancionSeleccionada);
@@ -199,13 +199,12 @@ public class Principal extends AppCompatActivity
             public void run() {
                 while (true)
                 {
-
                     try {
-                        if(App.urlCancionActualMini==null && App.urlCancionActual!=null)
+                        if(App.urlCancionActual!=null)
                         {
                          App.urlCancionActualMini=App.urlCancionActual;
                         }
-                        else if(App.urlCancionActualMini!=null && App.urlCancionActual!=null && App.urlCancionActualMini!=App.urlCancionActual)
+                        else if(App.urlCancionActualMini!=null && App.urlCancionActual!=null)
                         {
                             App.urlCancionActualMini=App.urlCancionActual;
                             runOnUiThread(new Runnable() {

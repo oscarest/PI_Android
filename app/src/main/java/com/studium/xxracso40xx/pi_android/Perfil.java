@@ -22,7 +22,6 @@ public class Perfil extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
-        doBindService();
         //overridePendingTransition(android.R.anim.replace, android.R.anim.replaceto);
         boton1 = findViewById(R.id.buttonPerfilCanciones);
         boton4 = findViewById(R.id.buttonPrincipalInicio);
@@ -48,6 +47,7 @@ public class Perfil extends AppCompatActivity {
             }
         });
     }
+
     private ServiceConnection Scon =new ServiceConnection(){
 
         public void onServiceConnected(ComponentName name, IBinder
@@ -79,5 +79,12 @@ public class Perfil extends AppCompatActivity {
 
         super.onDestroy();
         doUnbindService();
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (App.urlCancionActual != null) {
+            doBindService();
+        }
     }
 }

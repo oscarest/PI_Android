@@ -65,6 +65,8 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
            public void onClick(View v) {
                App.urlCancionSeleccionada= singleItem.getUrlCancion();
                App.urlImagenCancionSeleccionada = singleItem.getUrlImagenCancion();
+               App.nombreCancionSeleccionada = singleItem.getNombreCancion();
+               App.artistaCancionSeleccionada = singleItem.getAutorCancion();
                App.listaCanciones = App.listaCancionesPrincipal;
                if(App.urlCancionSeleccionada!=App.urlCancionActual && App.urlCancionActual!=null)
                {
