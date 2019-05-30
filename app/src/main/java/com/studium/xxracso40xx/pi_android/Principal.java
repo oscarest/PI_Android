@@ -184,7 +184,7 @@ public class Principal extends AppCompatActivity
         {
             doBindService();
         }
-        if(App.urlCancionActual!=null)
+        /*if(App.urlCancionActual!=null)
         {
             App.urlCancionActualMini = App.urlCancionActual;
             cancionNombre.setText(App.nombreCancionSeleccionada);
@@ -193,11 +193,9 @@ public class Principal extends AppCompatActivity
                     .with(Principal.this)
                     .load(App.urlImagenCancionSeleccionada)
                     .into(imagenCancion);
-            if(toolbar_layout.getVisibility()== View.INVISIBLE)
-            {
-                toolbar_layout.setVisibility(View.VISIBLE);
-            }
+
         }
+        */
         super.onResume();
         App.listaCancionesPrincipal = canciones;
         new Thread(new Runnable() {
@@ -207,10 +205,6 @@ public class Principal extends AppCompatActivity
                 {
                     try {
                         if(App.urlCancionActual!=null)
-                        {
-                         App.urlCancionActualMini=App.urlCancionActual;
-                        }
-                        else if(App.urlCancionActualMini!=null && App.urlCancionActual!=null)
                         {
                             App.urlCancionActualMini=App.urlCancionActual;
                             runOnUiThread(new Runnable() {
@@ -225,6 +219,10 @@ public class Principal extends AppCompatActivity
                                             .with(Principal.this)
                                             .load(App.urlImagenCancionSeleccionada)
                                             .into(imagenCancion);
+                                    if(toolbar_layout.getVisibility()== View.INVISIBLE)
+                                    {
+                                        toolbar_layout.setVisibility(View.VISIBLE);
+                                    }
                                 }
                             });
                         }
