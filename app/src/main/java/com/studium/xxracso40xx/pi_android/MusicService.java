@@ -42,6 +42,7 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
 
         try {
             //mPlayer.setDataSource(App.urlCancionActual);
+
             mPlayer = MediaPlayer.create(this, Uri.parse(App.urlCancionActual));
             //mPlayer.setDataSource(this, Uri.parse(App.urlCancionActual));
            // mPlayer.seekTo(App.tiempoActualCancionActual);
@@ -99,9 +100,20 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
                                            App.artistaCancionSeleccionada = App.listaCanciones.get(App.posicionListaCanciones).getAutorCancion();
                                            App.nombreCancionSeleccionada = App.listaCanciones.get(App.posicionListaCanciones).getNombreCancion();
                                            App.urlImagenCancionSeleccionada = App.listaCanciones.get(App.posicionListaCanciones).getUrlImagenCancion();
-                                           mPlayer = MediaPlayer.create(MusicService.this, Uri.parse(App.urlCancionActual));
-                                           mPlayer.start();
-                                           App.cambiarInterfaz=true;
+                                           mPlayer.reset();
+                                           try {
+                                               mPlayer.setDataSource(App.urlCancionActual);
+                                               mPlayer.prepare();
+                                           } catch (IOException e) {
+                                               e.printStackTrace();
+                                           }
+                                           mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                                               @Override
+                                               public void onPrepared(MediaPlayer mp) {
+                                                   mPlayer.start();
+                                                   App.cambiarInterfaz=true;
+                                               }
+                                           });
                                        }
                                        else
                                        {
@@ -159,9 +171,17 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
                                  mPlayer = MediaPlayer.create(MusicService.this, Uri.parse(App.urlCancionActual));
                                 */
                                 App.resetearCancion=false;
-                                mPlayer.release();
-                                mPlayer = MediaPlayer.create(MusicService.this, Uri.parse(App.urlCancionActual));
-                                mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                                mPlayer.reset();
+                                //mPlayer = MediaPlayer.create(MusicService.this, Uri.parse(App.urlCancionActual));
+                                 try {
+                                     mPlayer.setDataSource(App.urlCancionActual);
+                                     mPlayer.prepare();
+                                 } catch (IOException e) {
+                                     e.printStackTrace();
+                                 }
+
+
+                                 mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                                      @Override
                                      public void onPrepared(final MediaPlayer mp)
                                      {
@@ -218,7 +238,6 @@ public class MusicService extends Service  implements MediaPlayer.OnErrorListene
             }
         });
     }
-
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         mPlayer = new MediaPlayer();

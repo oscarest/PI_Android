@@ -5,24 +5,30 @@ public class Usuarios {
         private Long idUsuario;
         private String nickUsuario;
         private String nombre;
-        private Integer cantidad;
-        private Integer idSeccion;
+        private Integer tipoUsuario;
+        private Integer algunaSuscripcion;
 
         public Usuarios() {
             this.idUsuario = null;
             this.nickUsuario="";
             this.nombre = "";
-            this.cantidad = 0;
-            this.idSeccion = null;
+            this.tipoUsuario = 0;
+            this.algunaSuscripcion = null;
         }
 
-        public Usuarios(Long idUsuario, String nickUsuario, String nombre, Integer cantidad, Integer idSeccion) {
+        public Usuarios(Long idUsuario, String nickUsuario, String nombre, Integer tipoUsuario, Integer algunaSuscripcion) {
             this.idUsuario = idUsuario;
             this.nickUsuario = nickUsuario;
             this.nombre = nombre;
-            this.cantidad = cantidad;
-            this.idSeccion = idSeccion;
+            this.tipoUsuario = tipoUsuario;
+            this.algunaSuscripcion = algunaSuscripcion;
         }
+        public Usuarios(Long idUsuario, String nickUsuario, String nombre) {
+        this.idUsuario = idUsuario;
+        this.nickUsuario = nickUsuario;
+        this.nombre = nombre;
+        }
+
         public Usuarios(Long idUsuario)
         {
         this.idUsuario = idUsuario;
@@ -53,20 +59,20 @@ public class Usuarios {
         }
 
 
-        public Integer getCantidad() {
-            return cantidad;
+        public Integer getTipoUsuario() {
+            return tipoUsuario;
         }
 
-        public void setCantidad(Integer cantidad) {
-            this.cantidad = cantidad;
+        public void setTipoUsuario(Integer tipoUsuario) {
+            this.tipoUsuario = tipoUsuario;
         }
 
-        public Integer getIdSeccion() {
-            return idSeccion;
+        public Integer getAlgunaSuscripcion() {
+            return algunaSuscripcion;
         }
 
-        public void setIdSeccion(Integer idSeccion) {
-            this.idSeccion = idSeccion;
+        public void setAlgunaSuscripcion(Integer algunaSuscripcion) {
+            this.algunaSuscripcion = algunaSuscripcion;
         }
 
         @Override
@@ -75,8 +81,8 @@ public class Usuarios {
                     "idUsuario=" + idUsuario +
                     ", nickUsuario='" + nickUsuario + '\''  +
                     ", nombre='" + nombre +
-                    ", cantidad=" + cantidad + '\'' +
-                    ", idseccion='" + idSeccion +
+                    ", cantidad=" + tipoUsuario + '\'' +
+                    ", idseccion='" + algunaSuscripcion +
                     '}';
         }
 }

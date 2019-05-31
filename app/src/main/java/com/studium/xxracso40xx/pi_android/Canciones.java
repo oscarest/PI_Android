@@ -79,12 +79,12 @@ public class Canciones extends AppCompatActivity implements NavigationView.OnNav
         drawerLayout = findViewById(R.id.drawer_layout);
         music = new Intent();
         //quitar este mostrarList cuando se vaya a cambiar a funcionalidad real con servidor.
-        mostrarList();
+        //mostrarList();
         //DE AQUÍ LEEREMOS LOS DATOS PERSONALES DEL USUARIO QUE ESTÁ LOGUEADO PARA PODER SACAR LAS CANCIONES QUE ESTA PERSONA TIENE EN SU BIBLIOTECA.
         //LO MEJOR SERÍA INTRODUCIR EL ID DEL USUARIO QUE ESTA LOGUEADO PARA PODER SACAR ESTAS CANCIONES.
         //COMENTADO HASTA QUE SE HAGA EL ARCHIVO .PHP
         //new Canciones.DB_Apache().execute("get-product.php?idUsuario=" + App.ID_USUARIO);
-        //new Canciones.DB_Apache().execute("get-canciones.php?");
+        new Canciones.DB_Apache().execute("get-canciones.php?");
         buttonCancionesPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -155,7 +155,7 @@ public class Canciones extends AppCompatActivity implements NavigationView.OnNav
         //TAMBIÉN CABE DESTACAR QUE SE DEBE OPTIMIZAR LA DESCARGA DE FOTOS E INTRODUCIR LAS MISMAS EN EL CACHE
         //Hacer un for que recibe vaya añadiendo uno a uno todos los elementos que se reciban de la base de datos.
 
-        canciones.add(new CancionObject("Buenas", "asd","https://ccrma.stanford.edu/~jos/mp3/viola.mp3", "https://www.absaonline.mx/pub/media/catalog/product/cache/1/image/500x608/e9c3970ab036de70892d86c6d221abfe/2/0/20812_TL222.png"));
+       /* canciones.add(new CancionObject("Buenas", "asd","https://ccrma.stanford.edu/~jos/mp3/viola.mp3", "https://www.absaonline.mx/pub/media/catalog/product/cache/1/image/500x608/e9c3970ab036de70892d86c6d221abfe/2/0/20812_TL222.png"));
         canciones.add(new CancionObject("Buenasaasdas", "asd", "https://ccrma.stanford.edu/~jos/mp3/gtr-wah.mp3", "https://image.made-in-china.com/3f2j10wdqTSaMRhGri/Accurate-One-Step-Pregnancy-Te.jpg"));
         canciones.add(new CancionObject("Buenasaasdas", "asd", "https://ccrma.stanford.edu/~jos/mp3/gtr-wah.mp3", "https://image.made-in-china.com/3f2j10wdqTSaMRhGri/Accurate-One-Step-Pregnancy-Te.jpg"));
         canciones.add(new CancionObject("Buenasaasdas", "asd", "https://ccrma.stanford.edu/~jos/mp3/gtr-wah.mp3", "https://image.made-in-china.com/3f2j10wdqTSaMRhGri/Accurate-One-Step-Pregnancy-Te.jpg"));
@@ -164,7 +164,7 @@ public class Canciones extends AppCompatActivity implements NavigationView.OnNav
         canciones.add(new CancionObject("Buenasaasdas", "asd", "https://ccrma.stanford.edu/~jos/mp3/gtr-wah.mp3", "https://image.made-in-china.com/3f2j10wdqTSaMRhGri/Accurate-One-Step-Pregnancy-Te.jpg"));
         canciones.add(new CancionObject("Buenasaasdas", "asd", "https://ccrma.stanford.edu/~jos/mp3/gtr-wah.mp3", "https://image.made-in-china.com/3f2j10wdqTSaMRhGri/Accurate-One-Step-Pregnancy-Te.jpg"));
         canciones.add(new CancionObject("Buenasaasdas", "asd", "https://ccrma.stanford.edu/~jos/mp3/gtr-wah.mp3", "https://image.made-in-china.com/3f2j10wdqTSaMRhGri/Accurate-One-Step-Pregnancy-Te.jpg"));
-
+        */
         adapter = new ListAdapter(this, canciones);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -2,7 +2,9 @@ package com.studium.xxracso40xx.pi_android;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -111,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.N)
         protected void onPostExecute(Boolean isOk) {
             try {
                 if (isOk) {
@@ -122,8 +125,6 @@ public class MainActivity extends AppCompatActivity {
                                 response.getJSONObject(i).getLong("idUsuario")
                                 , response.getJSONObject(i).getString("nickUsuario")
                                 , response.getJSONObject(i).getString("claveUsuario")
-                                , response.getJSONObject(i).getInt("tipoUsuario")
-                                , response.getJSONObject(i).getInt("algunaSuscripcionUsuario")
                         ));
                     }
 
@@ -137,8 +138,9 @@ public class MainActivity extends AppCompatActivity {
                     {
                         //FALTA ENVIAR EL ID A "APP" PARA PODER UTLIZAR ESE ID PARA RECOGER TODAS LAS CANCIONES QUE ESTE USUARIO TIENE GUARDADAS
                         //JUNTO CON OTROS DATOS QUE DESEEMOS DEL USUARIO.
-                            int i=0;
-                            App.ID_USUARIO= lst.get(i).getIdSeccion();
+                        int i=0;
+                        long l = lst.get(i).getIdUsuario();
+                        App.ID_USUARIO= (int) l  ;
 
                         startActivity(intent);
                         finish();

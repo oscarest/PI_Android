@@ -109,7 +109,8 @@ public class ReproductorMusicaV2 extends AppCompatActivity
         botonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               if(App.posicionListaCanciones!=0)
+                botonBack.setEnabled(false);
+                if(App.posicionListaCanciones!=0)
                {
                    posicionActual = App.posicionListaCanciones-1;
                }
@@ -134,15 +135,24 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                {
                    App.posicionListaCanciones=0;
                }
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        // This method will be executed once the timer is over
+                        botonBack.setEnabled(true);
+                    }
+                },2000);// set time as per your requirement
+
             }
         });
         botonForward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                botonForward.setEnabled(false);
                 posicionActual = App.posicionListaCanciones+1;
                 if(posicionActual<App.listaCanciones.size())
                 {
-
                         App.posicionListaCanciones = posicionActual;
                         Log.i("posicion", "" + posicionActual);
                         App.nombreCancionSeleccionada = App.listaCanciones.get(posicionActual).getNombreCancion();
@@ -177,6 +187,14 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                     App.saltarBotonCancion = true;
                     App.resetearCancion = true;
                 }
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        // This method will be executed once the timer is over
+                        botonForward.setEnabled(true);
+                    }
+                },2000);// set time as per your requirement
             }
         });
         //
@@ -465,11 +483,11 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                                     }
 
                                     // Stuff that updates the UI
+                                    positionBar();
+
                                 }
                             });
-                            positionBar();
                         }
-
                         Thread.sleep(100);
                     } catch (InterruptedException e) {}
                 }
