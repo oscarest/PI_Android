@@ -9,9 +9,14 @@ import android.media.Image;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.IBinder;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -38,12 +43,13 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Canciones extends AppCompatActivity {
+public class Canciones extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     Button buttonCancionesCanciones;
     Button buttonCancionesPerfil;
     Button buttonCancionesInicio;
     Intent intentPrincipal;
     Intent intentPerfil;
+    DrawerLayout drawerLayout;
     Intent intentReproductorMusica;
     ListView list;
     Intent music;
@@ -60,6 +66,7 @@ public class Canciones extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_canciones);
+        setNavigationViewListener();
         //overridePendingTransition(R.anim.replace, R.anim.replaceto);
         buttonCancionesPerfil = findViewById(R.id.buttonCancionesPerfil);
         buttonCancionesInicio = findViewById(R.id.buttonCancionesInicio);
@@ -69,6 +76,7 @@ public class Canciones extends AppCompatActivity {
         editTextBusqueda = findViewById(R.id.editTextBusqueda);
         imagenBusqueda = findViewById(R.id.imageViewBusqueda);
         list = findViewById(R.id.list_view);
+        drawerLayout = findViewById(R.id.drawer_layout);
         music = new Intent();
         //quitar este mostrarList cuando se vaya a cambiar a funcionalidad real con servidor.
         mostrarList();
@@ -104,6 +112,24 @@ public class Canciones extends AppCompatActivity {
         });
 
     }
+    private void setNavigationViewListener() {
+        NavigationView navigationView = findViewById(R.id.navView);
+        navigationView.setNavigationItemSelectedListener(Canciones.this);
+    }
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        switch (menuItem.getItemId())
+        {
+            case R.id.op1:
+                startActivity(intentPrincipal);
+                break;
+            case R.id.op2:
+                break;
+        }
+        Log.i("datos", "funcionaPulso");
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
     /*public void mostrarList()
     {
         //Hacer un for que recibe vaya añadiendo uno a uno todos los elementos que se reciban de la base de datos.
@@ -122,6 +148,7 @@ public class Canciones extends AppCompatActivity {
 
     }
     */
+
     public void mostrarList()
     {
         //CABE DESTACAR QUE FUNCIONA CORRECTAMENTE LOS DATOS SI SE INTRODUCEN DE FORMA MANUAL
@@ -204,6 +231,9 @@ public class Canciones extends AppCompatActivity {
             mIsBound = false;
         }
     }
+
+
+
     private class DB_Apache extends AsyncTask<String, Void, Boolean> {
 
         private String json;
