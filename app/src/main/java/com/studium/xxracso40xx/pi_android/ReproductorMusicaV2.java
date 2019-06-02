@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -21,6 +22,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -33,6 +35,7 @@ import java.net.URL;
 public class ReproductorMusicaV2 extends AppCompatActivity
 {
     Button botonIniciar, botonDescarga, botonBack, botonForward, botonRepetir;
+    ImageButton imageButtonLike;
     SeekBar BarraPosicion;
     TextView tiempoTranscurrido;
     TextView tiempoRestante;
@@ -53,6 +56,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
         doBindService();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reproductor_musica);
+        imageButtonLike = findViewById(R.id.imageButtonLike);
         botonIniciar = findViewById(R.id.botonIniciar);
         tiempoTranscurrido = findViewById(R.id.tiempoTranscurrido);
         tiempoRestante = findViewById(R.id.tiempoRestante);
@@ -93,6 +97,16 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                 }
             }
         });
+        imageButtonLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                imageButtonLike.setImageResource(R.drawable.tickcancion);
+
+            }
+        });
+
         botonDescarga.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

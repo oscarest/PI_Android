@@ -9,7 +9,7 @@ public class App
     public static String urlCancionActual=null;
     public static int tiempoActualCancionActual=0;
     public static Boolean REPETICION = true;
-    public static int ID_USUARIO;
+    public static int ID_USUARIO = 1;
     public static int contadorReproductorMusica=2;
 
     //ATRIBUTOS PARA SELECCIONAR CANCION EN LISTA DE CANCIONES

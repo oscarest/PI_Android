@@ -17,6 +17,10 @@ public class CancionObject {
         this.urlImagenCancion="";
     }
 
+    public CancionObject(String idCancion){
+        this.idCancion = null;
+    }
+
     public CancionObject(Long idUsuario, String nombreCancion, String urlCancion, String urlImagenCancion) {
         this.idCancion = idUsuario;
         this.nombreCancion = nombreCancion;

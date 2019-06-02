@@ -43,11 +43,10 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Canciones extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class CancionesGuardadas extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     Button buttonCancionesCanciones;
     Button buttonCancionesPerfil;
     Button buttonCancionesInicio;
-    Intent intentCancionesGuardadas;
     Intent intentPrincipal;
     Intent intentPerfil;
     DrawerLayout drawerLayout;
@@ -74,7 +73,6 @@ public class Canciones extends AppCompatActivity implements NavigationView.OnNav
         intentPrincipal = new Intent(this, Principal.class);
         intentPerfil = new Intent(this, Perfil.class);
         intentReproductorMusica = new Intent(this, ReproductorMusicaV2.class);
-        intentCancionesGuardadas = new Intent(this, CancionesGuardadas.class);
         editTextBusqueda = findViewById(R.id.editTextBusqueda);
         imagenBusqueda = findViewById(R.id.imageViewBusqueda);
         list = findViewById(R.id.list_view);
@@ -86,7 +84,7 @@ public class Canciones extends AppCompatActivity implements NavigationView.OnNav
         //LO MEJOR SERÍA INTRODUCIR EL ID DEL USUARIO QUE ESTA LOGUEADO PARA PODER SACAR ESTAS CANCIONES.
         //COMENTADO HASTA QUE SE HAGA EL ARCHIVO .PHP
         //new Canciones.DB_Apache().execute("get-product.php?idUsuario=" + App.ID_USUARIO);
-        new Canciones.DB_Apache().execute("get-canciones.php?");
+        new DB_Apache().execute("get-cancionesGuardadas.php?idUsuario=" + App.ID_USUARIO);
         buttonCancionesPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,32 +102,21 @@ public class Canciones extends AppCompatActivity implements NavigationView.OnNav
 
             }
         });
-        imagenBusqueda.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Falta por crear el archivo php, pero esto debería funcionar correctamente de esta forma
-                canciones= new ArrayList<>();
-                //new Canciones.DB_Apache().execute("get-canciones.php?nombreCancion="+editTextBusqueda.getText().toString());
-                new Canciones.DB_Apache().execute("get-cancionesGuardadas.php?idUsuarioFK=" + App.ID_USUARIO);
-            }
-        });
 
     }
     private void setNavigationViewListener() {
         NavigationView navigationView = findViewById(R.id.navView);
-        navigationView.setNavigationItemSelectedListener(Canciones.this);
+        navigationView.setNavigationItemSelectedListener(CancionesGuardadas.this);
     }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId())
         {
             case R.id.op1:
-                canciones= new ArrayList<>();
-                //new Canciones.DB_Apache().execute("get-canciones.php?nombreCancion="+editTextBusqueda.getText().toString());
-                new Canciones.DB_Apache().execute("get-cancionesGuardadas.php?idUsuarioFK=" + App.ID_USUARIO);
+               // startActivity(intentPrincipal);
                 break;
             case R.id.op2:
-              //  startActivity;
                 break;
         }
         Log.i("datos", "funcionaPulso");
@@ -205,7 +192,7 @@ public class Canciones extends AppCompatActivity implements NavigationView.OnNav
                     App.resetearCancion=true;
                 }
                 else
-                    {
+                {
                     startActivity(intentReproductorMusica);
                 }
             }
@@ -273,17 +260,17 @@ public class Canciones extends AppCompatActivity implements NavigationView.OnNav
                     for (int i = 0; i < response.length(); i++) {
                         canciones.add(new CancionObject
                                 (
-                                response.getJSONObject(i).getString("nombreCancion"),
-                                response.getJSONObject(i).getString("autorCancion"),
-                                response.getJSONObject(i).getString("urlCancion"),
-                                response.getJSONObject(i).getString("urlImagenCancion")
+                                        response.getJSONObject(i).getString("nombreCancion"),
+                                        response.getJSONObject(i).getString("autorCancion"),
+                                        response.getJSONObject(i).getString("urlCancion"),
+                                        response.getJSONObject(i).getString("urlImagenCancion")
 
                                /* , response.getJSONObject(i).getString("nickUsuario")
                                 , response.getJSONObject(i).getString("claveUsuario")
                                 , response.getJSONObject(i).getInt("tipoUsuario")
                                 , response.getJSONObject(i).getInt("algunaSuscripcionUsuario")*/
 
-                        ));
+                                ));
                     }
 
                     //SE PUEDE HACER CON EL OBJETO DEL MODELO COMO PODEMOS OBSERVAR PREVIAMENTE
@@ -303,7 +290,6 @@ public class Canciones extends AppCompatActivity implements NavigationView.OnNav
 
         }
     }
-
 
     @Override
     public void onResume() {
