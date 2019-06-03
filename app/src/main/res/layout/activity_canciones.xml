@@ -20,7 +20,7 @@
 
         <EditText
             android:id="@+id/editTextBusqueda"
-            android:layout_width="354dp"
+            android:layout_width="259dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName" />

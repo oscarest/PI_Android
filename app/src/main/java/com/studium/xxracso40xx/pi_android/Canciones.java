@@ -50,6 +50,7 @@ public class Canciones extends AppCompatActivity implements NavigationView.OnNav
     Intent intentCancionesGuardadas;
     Intent intentPrincipal;
     Intent intentPerfil;
+    String textoBusqueda;
     DrawerLayout drawerLayout;
     Intent intentReproductorMusica;
     ListView list;
@@ -109,8 +110,8 @@ public class Canciones extends AppCompatActivity implements NavigationView.OnNav
             public void onClick(View v) {
                 //Falta por crear el archivo php, pero esto debería funcionar correctamente de esta forma
                 canciones= new ArrayList<>();
-                //new Canciones.DB_Apache().execute("get-canciones.php?nombreCancion="+editTextBusqueda.getText().toString());
-                new Canciones.DB_Apache().execute("get-cancionesGuardadas.php?idUsuarioFK=" + App.ID_USUARIO);
+                textoBusqueda = editTextBusqueda.getText().toString().replace(" ", "+");
+                new Canciones.DB_Apache().execute("get-cancionesBusqueda.php?stringBusqueda="+ textoBusqueda);
             }
         });
 
