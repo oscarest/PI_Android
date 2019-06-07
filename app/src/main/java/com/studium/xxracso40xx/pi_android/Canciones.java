@@ -22,11 +22,13 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 //HttpClientBuilder
 
+import com.squareup.picasso.Picasso;
 import com.studium.xxracso40xx.pi_android.model.CancionObject;
 import com.studium.xxracso40xx.pi_android.model.Usuarios;
 
@@ -50,14 +52,19 @@ public class Canciones extends AppCompatActivity implements NavigationView.OnNav
     Intent intentCancionesGuardadas;
     Intent intentPrincipal;
     Intent intentPerfil;
+    Button playMiniReproductor;
     String textoBusqueda;
     DrawerLayout drawerLayout;
     Intent intentReproductorMusica;
     Intent intentInicio;
     ListView list;
+    TextView cancionNombre, cancionAutor;
+    ImageView imagenCancion;
     Intent music;
     EditText editTextBusqueda;
     ImageView imagenBusqueda;
+    LinearLayout layoutTouch;
+    LinearLayout toolbar_layout;
     DownloadManager downloadManager;
     private boolean mIsBound = false;
     private MusicService mServ;
@@ -80,7 +87,13 @@ public class Canciones extends AppCompatActivity implements NavigationView.OnNav
         intentCancionesGuardadas = new Intent(this, CancionesGuardadas.class);
         editTextBusqueda = findViewById(R.id.editTextBusqueda);
         imagenBusqueda = findViewById(R.id.imageViewBusqueda);
+        layoutTouch = findViewById(R.id.layoutTouch_canciones);
+        toolbar_layout = findViewById(R.id.toolbar_layout_canciones);
+        cancionNombre = findViewById(R.id.songs_title_canciones);
+        cancionAutor = findViewById(R.id.songs_artist_name_canciones);
+        imagenCancion = findViewById(R.id.songs_cover_one_canciones);
         list = findViewById(R.id.list_view);
+        playMiniReproductor = findViewById(R.id.play_button_canciones);
         drawerLayout = findViewById(R.id.drawer_layout);
         music = new Intent();
         //quitar este mostrarList cuando se vaya a cambiar a funcionalidad real con servidor.
@@ -105,6 +118,40 @@ public class Canciones extends AppCompatActivity implements NavigationView.OnNav
                 startActivity(intentPrincipal);
                 overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
 
+            }
+        });
+        playMiniReproductor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                music = new Intent();
+                if(App.contadorReproductorMusica==1)
+                {
+                    playMiniReproductor.setBackgroundResource(R.drawable.play);
+                    App.contadorReproductorMusica=2;
+                }
+                else if(App.contadorReproductorMusica==2)
+                {
+                    /*music.setClass(Principal.this,MusicService.class);
+                    startService(music);
+                    */
+                    App.cancionTerminada=false;
+                    App.contadorcontador1=true;
+                    playMiniReproductor.setBackgroundResource(R.drawable.stop);
+                    App.contadorReproductorMusica=1;
+                }
+            }
+        });
+        layoutTouch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(App.urlCancionActual!=null)
+                {
+                    startActivity(new Intent(Canciones.this, ReproductorMusicaV2.class));
+                }
+                else
+                {
+                    Toast.makeText(Canciones.this, "Reproduzca una canción primero", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         imagenBusqueda.setOnClickListener(new View.OnClickListener() {
@@ -341,10 +388,106 @@ public class Canciones extends AppCompatActivity implements NavigationView.OnNav
 
     @Override
     public void onResume() {
-        super.onResume();
-        if (App.urlCancionActual != null) {
+        if(App.cancionTerminada==true)
+        {
+            playMiniReproductor.setBackgroundResource(R.drawable.play);
+            App.urlCancionActualMini=App.urlCancionActual;
+
+            cancionNombre.setText(App.nombreCancionSeleccionada);
+            cancionNombre.setText(App.nombreCancionSeleccionada);
+            cancionAutor.setText(App.artistaCancionSeleccionada);
+            Picasso
+                    .with(Canciones.this)
+                    .load(App.urlImagenCancionSeleccionada)
+                    .into(imagenCancion);
+        }
+        else if(App.contadorReproductorMusica==1)
+        {
+            playMiniReproductor.setBackgroundResource(R.drawable.stop);
+            App.urlCancionActualMini=App.urlCancionActual;
+
+            cancionNombre.setText(App.nombreCancionSeleccionada);
+            cancionNombre.setText(App.nombreCancionSeleccionada);
+            cancionAutor.setText(App.artistaCancionSeleccionada);
+            Picasso
+                    .with(Canciones.this)
+                    .load(App.urlImagenCancionSeleccionada)
+                    .into(imagenCancion);
+        }
+        else if(App.contadorReproductorMusica==2)
+        {
+            playMiniReproductor.setBackgroundResource(R.drawable.play);
+            App.urlCancionActualMini=App.urlCancionActual;
+
+            cancionNombre.setText(App.nombreCancionSeleccionada);
+            cancionNombre.setText(App.nombreCancionSeleccionada);
+            cancionAutor.setText(App.artistaCancionSeleccionada);
+            Picasso
+                    .with(Canciones.this)
+                    .load(App.urlImagenCancionSeleccionada)
+                    .into(imagenCancion);
+        }
+        if(App.urlCancionActual!=null)
+        {
             doBindService();
         }
+        /*if(App.urlCancionActual!=null)
+        {
+            App.urlCancionActualMini = App.urlCancionActual;
+            cancionNombre.setText(App.nombreCancionSeleccionada);
+            cancionAutor.setText(App.artistaCancionSeleccionada);
+            Picasso
+                    .with(Principal.this)
+                    .load(App.urlImagenCancionSeleccionada)
+                    .into(imagenCancion);
+
+        }
+        */
+        super.onResume();
+        App.listaCancionesPrincipal = canciones;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true)
+                {
+                    try {
+                        if(App.urlCancionActual!=null)
+                        {
+                            runOnUiThread(new Runnable() {
+
+                                @Override
+                                public void run()
+                                {
+                                    if(App.urlCancionActualMini!=App.urlCancionActual)
+                                    {
+                                        App.urlCancionActualMini=App.urlCancionActual;
+
+                                        cancionNombre.setText(App.nombreCancionSeleccionada);
+                                        cancionNombre.setText(App.nombreCancionSeleccionada);
+                                        cancionAutor.setText(App.artistaCancionSeleccionada);
+                                        Picasso
+                                                .with(Canciones.this)
+                                                .load(App.urlImagenCancionSeleccionada)
+                                                .into(imagenCancion);
+                                    }
+                                    if(toolbar_layout.getVisibility()== View.INVISIBLE)
+                                    {
+                                        toolbar_layout.setVisibility(View.VISIBLE);
+                                    }
+                                    if(App.cancionTerminada==true)
+                                    {
+                                        playMiniReproductor.setBackgroundResource(R.drawable.play);
+                                    }
+                                }
+                            });
+                        }
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
     }
     @Override
     public void onDestroy() {
