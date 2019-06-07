@@ -53,6 +53,7 @@ public class Canciones extends AppCompatActivity implements NavigationView.OnNav
     String textoBusqueda;
     DrawerLayout drawerLayout;
     Intent intentReproductorMusica;
+    Intent intentInicio;
     ListView list;
     Intent music;
     EditText editTextBusqueda;
@@ -75,6 +76,7 @@ public class Canciones extends AppCompatActivity implements NavigationView.OnNav
         intentPrincipal = new Intent(this, Principal.class);
         intentPerfil = new Intent(this, Perfil.class);
         intentReproductorMusica = new Intent(this, ReproductorMusicaV2.class);
+        intentInicio = new Intent(this, MainActivity.class);
         intentCancionesGuardadas = new Intent(this, CancionesGuardadas.class);
         editTextBusqueda = findViewById(R.id.editTextBusqueda);
         imagenBusqueda = findViewById(R.id.imageViewBusqueda);
@@ -112,10 +114,29 @@ public class Canciones extends AppCompatActivity implements NavigationView.OnNav
                 canciones= new ArrayList<>();
                 textoBusqueda = editTextBusqueda.getText().toString().replace(" ", "+");
                 new Canciones.DB_Apache().execute("get-cancionesBusqueda.php?stringBusqueda="+ textoBusqueda);
+
+
             }
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+// super.onBackPressed();
+// Not calling **super**, disables back button in current screen.
+        if(!editTextBusqueda.getText().toString().isEmpty()){
+
+            canciones= new ArrayList<>();
+            new Canciones.DB_Apache().execute("get-canciones.php?");
+
+        } else {
+            editTextBusqueda.setText("");
+            finish();
+        }
+
+    }
+
     private void setNavigationViewListener() {
         NavigationView navigationView = findViewById(R.id.navView);
         navigationView.setNavigationItemSelectedListener(Canciones.this);
@@ -132,6 +153,18 @@ public class Canciones extends AppCompatActivity implements NavigationView.OnNav
             case R.id.op2:
               //  startActivity;
                 break;
+
+            case R.id.op3:
+                startActivity(intentInicio);
+
+                App.ID_USUARIO = 0;
+                App.nickUsuario = "";
+                App.nombreUsuario = "";
+                App.apellidosUsuario = "";
+                App.emailUsuario = "";
+                App.direccionUsuario = "";
+                App.fechaNacimientoUsuario = "";
+
         }
         Log.i("datos", "funcionaPulso");
         drawerLayout.closeDrawer(GravityCompat.START);

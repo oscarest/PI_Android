@@ -2,16 +2,27 @@ package com.studium.xxracso40xx.pi_android.model;
 
 public class Usuarios {
 
-        private Long idUsuario;
-        private String nickUsuario;
-        private String nombre;
-        private Integer tipoUsuario;
-        private Integer algunaSuscripcion;
+    public Long idUsuario;
+    public String nickUsuario;
+    public String nombre;
+    public String ApellidoUsuario;
+    public String emailUsuario;
+    public String fechaNacimientoUsuario;
+    public String direccionUsuario;
+    public Integer tipoUsuario;
+    public Integer algunaSuscripcion;
 
-        public Usuarios() {
+
+
+
+    public Usuarios() {
             this.idUsuario = null;
             this.nickUsuario="";
             this.nombre = "";
+            this.ApellidoUsuario = "";
+            this.emailUsuario = "";
+            this.fechaNacimientoUsuario = "";
+            this.direccionUsuario = "";
             this.tipoUsuario = 0;
             this.algunaSuscripcion = null;
         }
@@ -27,6 +38,16 @@ public class Usuarios {
         this.idUsuario = idUsuario;
         this.nickUsuario = nickUsuario;
         this.nombre = nombre;
+        }
+
+        public Usuarios(Long idUsuario, String nickUsuario, String nombre, String apellidoUsuario, String emailUsuario, String fechaNacimientoUsuario, String direccionUsuario) {
+            this.idUsuario = idUsuario;
+            this.nickUsuario = nickUsuario;
+            this.nombre = nombre;
+            this.ApellidoUsuario = apellidoUsuario;
+            this.emailUsuario = emailUsuario ;
+            this.fechaNacimientoUsuario = fechaNacimientoUsuario;
+            this.direccionUsuario = direccionUsuario;
         }
 
         public Usuarios(Long idUsuario)
@@ -74,6 +95,37 @@ public class Usuarios {
         public void setAlgunaSuscripcion(Integer algunaSuscripcion) {
             this.algunaSuscripcion = algunaSuscripcion;
         }
+    public String getApellidoUsuario() {
+        return ApellidoUsuario;
+    }
+
+    public void setApellidoUsuario(String apellidoUsuario) {
+        ApellidoUsuario = apellidoUsuario;
+    }
+
+    public String getEmailUsuario() {
+        return emailUsuario;
+    }
+
+    public void setEmailUsuario(String emailUsuario) {
+        this.emailUsuario = emailUsuario;
+    }
+
+    public String getFechaNacimientoUsuario() {
+        return fechaNacimientoUsuario;
+    }
+
+    public void setFechaNacimientoUsuario(String fechaNacimientoUsuario) {
+        this.fechaNacimientoUsuario = fechaNacimientoUsuario;
+    }
+
+    public String getDireccionUsuario() {
+        return direccionUsuario;
+    }
+
+    public void setDireccionUsuario(String direccionUsuario) {
+        this.direccionUsuario = direccionUsuario;
+    }
 
         @Override
         public String toString() {

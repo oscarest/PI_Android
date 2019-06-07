@@ -36,7 +36,9 @@
         android:layout_below="@+id/editTextContrasenaCambioVerificacion"
         android:layout_alignStart="@+id/editTextContrasenaCambio"
         android:layout_marginTop="28dp"
-        android:text="Cancelar" />
+        android:background="#000000"
+        android:text="Cancelar"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/buttonContrasenaCambioAceptar"
@@ -45,5 +47,7 @@
         android:layout_below="@+id/editTextContrasenaCambioVerificacion"
         android:layout_alignEnd="@+id/editTextContrasenaCambio"
         android:layout_marginTop="28dp"
-        android:text="Confirmar" />
+        android:background="#000000"
+        android:text="Confirmar"
+        android:textColor="#FFFFFF" />
 </RelativeLayout>

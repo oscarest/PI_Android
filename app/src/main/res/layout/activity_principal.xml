@@ -29,75 +29,52 @@
       -->
     <android.support.v7.widget.RecyclerView
         android:id="@+id/my_recycler_view"
-        android:layout_width="411dp"
-        android:layout_height="550dp"
+        android:layout_width="393dp"
+        android:layout_height="506dp"
         android:layout_marginBottom="8dp"
         android:scrollbars="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/buttonPrincipalInicio"
+        app:layout_constraintBottom_toTopOf="@+id/toolbar_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+    </android.support.v7.widget.RecyclerView>
 
     <Button
         android:id="@+id/buttonPrincipalInicio"
-        android:layout_width="62dp"
-        android:layout_height="36dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="22dp"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="83dp"
-        android:layout_marginRight="83dp"
-        android:layout_marginBottom="84dp"
-        android:background="@android:color/transparent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#000000"
         android:text="Inicio"
+        android:textColor="#FFFFFF"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonCancionesCanciones"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_recycler_view" />
+        app:layout_constraintEnd_toStartOf="@+id/buttonPrincipalCanciones"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonPrincipalCanciones"
-        android:layout_width="87dp"
-        android:layout_height="34dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="69dp"
-        android:layout_marginLeft="69dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="68dp"
-        android:layout_marginRight="68dp"
-        android:layout_marginBottom="84dp"
-        android:background="@android:color/transparent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#000000"
         android:text="Canciones"
+        android:textColor="#FFFFFF"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonPrincipalPerfil"
-        app:layout_constraintStart_toEndOf="@+id/buttonPrincipalInicio"
-        app:layout_constraintTop_toBottomOf="@+id/my_recycler_view" />
+        app:layout_constraintStart_toEndOf="@+id/buttonPrincipalInicio" />
 
     <Button
         android:id="@+id/buttonPrincipalPerfil"
-        android:layout_width="62dp"
-        android:layout_height="36dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginRight="22dp"
-        android:layout_marginBottom="84dp"
-        android:background="@android:color/transparent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#000000"
         android:text="Perfil"
+        android:textColor="#FFFFFF"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonCancionesCanciones"
-        app:layout_constraintTop_toBottomOf="@+id/my_recycler_view" />
+        app:layout_constraintStart_toEndOf="@+id/buttonPrincipalCanciones" />
 
     <LinearLayout
         android:id="@+id/toolbar_layout"
@@ -106,16 +83,12 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="11dp"
         android:background="@android:color/transparent"
         android:clickable="true"
         android:gravity="center"
         android:orientation="horizontal"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonPrincipalInicio"
+        app:layout_constraintBottom_toTopOf="@+id/buttonPrincipalCanciones"
         tools:ignore="MissingConstraints">
 
         <android.support.constraint.ConstraintLayout
@@ -201,4 +174,5 @@
         </android.support.constraint.ConstraintLayout>
 
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

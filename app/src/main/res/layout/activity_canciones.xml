@@ -7,90 +7,198 @@
     android:layout_width="match_parent"
     android:fitsSystemWindows="true">
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Principal">
-
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/relativeLayout4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal">
+        tools:context=".Principal">
+
 
         <EditText
             android:id="@+id/editTextBusqueda"
-            android:layout_width="259dp"
-            android:layout_height="wrap_content"
+            android:layout_width="336dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/list_view"
+            app:layout_constraintEnd_toStartOf="@+id/imageViewBusqueda"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageViewBusqueda"
-            android:layout_width="wrap_content"
+            android:layout_width="27dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/glass" />
+
+
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="397dp"
+            android:layout_height="473dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="7dp"
+            android:layout_marginRight="7dp"
+            android:descendantFocusability="blocksDescendants"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewBusqueda" />
+
+        <Button
+            android:id="@+id/buttonCancionesInicio"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@android:drawable/ic_search_category_default" />
+            android:background="#000000"
+            android:text="Inicio"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonCancionesCanciones"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/buttonCancionesCanciones"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:text="Canciones"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonCancionesPerfil"
+            app:layout_constraintStart_toEndOf="@+id/buttonCancionesInicio" />
 
-    <ListView
-        android:id="@+id/list_view"
-        android:layout_width="match_parent"
-        android:layout_height="602dp"
-        android:layout_above="@+id/buttonCancionesCanciones"
-        android:layout_marginTop="55dp"
-        android:layout_marginBottom="22dp"
-        android:descendantFocusability="blocksDescendants"
-        android:scrollbars="none" />
+        <Button
+            android:id="@+id/buttonCancionesPerfil"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:text="Perfil"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/buttonCancionesCanciones" />
 
-    <Button
-        android:id="@+id/buttonCancionesInicio"
-        android:layout_width="62dp"
-        android:layout_height="36dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="22dp"
-        android:layout_marginLeft="22dp"
-        android:layout_marginBottom="54dp"
-        android:background="@android:color/transparent"
-        android:text="Inicio"
-        android:textSize="10sp" />
+        <LinearLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="11dp"
+            android:layout_marginBottom="8dp"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/buttonCancionesCanciones"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonPrincipalInicio"
+            tools:ignore="MissingConstraints">
 
-    <Button
-        android:id="@+id/buttonCancionesCanciones"
-        android:layout_width="wrap_content"
-        android:layout_height="36dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="67dp"
-        android:layout_marginLeft="67dp"
-        android:layout_marginEnd="69dp"
-        android:layout_marginRight="69dp"
-        android:layout_marginBottom="53dp"
-        android:layout_toStartOf="@+id/buttonCancionesPerfil"
-        android:layout_toLeftOf="@+id/buttonCancionesPerfil"
-        android:layout_toEndOf="@+id/buttonCancionesInicio"
-        android:layout_toRightOf="@+id/buttonCancionesInicio"
-        android:background="@android:color/transparent"
-        android:text="Canciones"
-        android:textSize="10sp" />
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/buttonCancionesPerfil"
-        android:layout_width="62dp"
-        android:layout_height="36dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="22dp"
-        android:layout_marginRight="22dp"
-        android:layout_marginBottom="53dp"
-        android:background="@android:color/transparent"
-        android:text="Perfil"
-        android:textSize="10sp" />
+                <LinearLayout
+                    android:id="@+id/layoutTouch"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="70dp"
+                    android:layout_marginRight="70dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-    <!--
+                    <ImageView
+                        android:id="@+id/songs_cover_one"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="10dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:src="@drawable/awar" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_width="202dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/songs_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-condensed"
+                            android:lines="1"
+                            android:text="Cancion Nombre"
+                            android:textColor="@color/cardview_dark_background"
+                            android:textSize="22dp" />
+
+                        <TextView
+                            android:id="@+id/songs_artist_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:lines="1"
+                            android:text="Autor Cancion" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout3"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.974"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <Button
+                        android:id="@+id/play_button"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/play"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:scaleType="centerInside" />
+                </LinearLayout>
+
+            </android.support.constraint.ConstraintLayout>
+
+        </LinearLayout>
+
+        <!--
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="109dp"
@@ -188,7 +296,7 @@
         </ScrollView>
         -->
 
-    <!--<android.support.v4.view.   ViewPager
+        <!--<android.support.v4.view.   ViewPager
         android:id="@+id/view_pager"
         android:layout_width="200dp"
         android:layout_height="200dp"
@@ -201,7 +309,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" /> -->
 
-</RelativeLayout>
+    </android.support.constraint.ConstraintLayout>
     <android.support.design.widget.NavigationView
 
         android:id="@+id/navView"

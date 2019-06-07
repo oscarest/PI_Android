@@ -122,9 +122,14 @@ public class MainActivity extends AppCompatActivity {
                     List<Usuarios> lst = new ArrayList<Usuarios>();
                     for (int i = 0; i < response.length(); i++) {
                         lst.add(new Usuarios(
+
                                 response.getJSONObject(i).getLong("idUsuario")
                                 , response.getJSONObject(i).getString("nickUsuario")
-                                , response.getJSONObject(i).getString("claveUsuario")
+                                , response.getJSONObject(i).getString("nombreUsuario")
+                                , response.getJSONObject(i).getString("apellidoUsuario")
+                                , response.getJSONObject(i).getString("emailUsuario")
+                                , response.getJSONObject(i).getString("direccionUsuario")
+                                , response.getJSONObject(i).getString("fechaNacimientoUsuario")
                         ));
                     }
 
@@ -139,8 +144,17 @@ public class MainActivity extends AppCompatActivity {
                         //FALTA ENVIAR EL ID A "APP" PARA PODER UTLIZAR ESE ID PARA RECOGER TODAS LAS CANCIONES QUE ESTE USUARIO TIENE GUARDADAS
                         //JUNTO CON OTROS DATOS QUE DESEEMOS DEL USUARIO.
                         int i=0;
-                        long l = lst.get(i).getIdUsuario();
-                        App.ID_USUARIO= (int) l  ;
+                        //long l = lst.get(i).getIdUsuario();
+                        //App.ID_USUARIO= (int) l  ;
+
+                        App.ID_USUARIO = response.getJSONObject(i).getInt("idUsuario");
+                        App.nickUsuario = response.getJSONObject(i).getString("nickUsuario");
+                        App.nombreUsuario = response.getJSONObject(i).getString("nombreUsuario");
+                        App.apellidosUsuario = response.getJSONObject(i).getString("apellidoUsuario");
+                        App.emailUsuario = response.getJSONObject(i).getString("emailUsuario");
+                        App.direccionUsuario = response.getJSONObject(i).getString("direccionUsuario");
+                        App.fechaNacimientoUsuario = response.getJSONObject(i).getString("fechaNacimientoUsuario");
+
 
                         startActivity(intent);
                         finish();

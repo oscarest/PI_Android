@@ -36,10 +36,10 @@
             android:name=".list_card"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Canciones"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Canciones"
+            android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

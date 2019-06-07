@@ -44,7 +44,9 @@
         android:layout_marginTop="36dp"
         android:layout_marginEnd="13dp"
         android:layout_marginRight="13dp"
+        android:background="#000000"
         android:text="Cancelar"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toStartOf="@+id/buttonContrasenaSeguridadAceptar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextContrasenaSeguridad" />
@@ -56,7 +58,9 @@
         android:layout_marginTop="36dp"
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
+        android:background="#000000"
         android:text="Aceptar"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonContrasenaSeguridadCancelar"
         app:layout_constraintTop_toBottomOf="@+id/editTextContrasenaSeguridad" />

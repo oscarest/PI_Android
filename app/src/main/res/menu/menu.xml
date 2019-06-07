@@ -40,13 +40,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/op1"
-        android:icon="@android:drawable/ic_menu_search"
+
         android:title="Canciones Guardadas"></item>
     <item
         android:id="@+id/op2"
-        android:icon="@android:drawable/ic_menu_search"></item>
+
+        android:title=""></item>
+    <item android:title="" />
+    <item android:title="" />
+    <item android:title="" />
     <item
         android:id="@+id/op3"
-        android:icon="@android:drawable/ic_menu_search"
+
         android:title="Cerrar sesión"></item>
 </menu>

@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class Perfil extends AppCompatActivity {
     Button boton1;
@@ -16,6 +17,7 @@ public class Perfil extends AppCompatActivity {
     Button boton4;
     Intent intent;
     Intent intent3;
+    TextView editTextPerfilNombre, editTextPerfilApellidos, editTextPerfilNombreUsuario, editTextPerfilEmail, editTextPerfilFechaDeNacimiento, editTextPerfilDireccion;
     private boolean mIsBound = false;
     private MusicService mServ;
     @Override
@@ -25,7 +27,23 @@ public class Perfil extends AppCompatActivity {
         //overridePendingTransition(android.R.anim.replace, android.R.anim.replaceto);
         boton1 = findViewById(R.id.buttonPerfilCanciones);
         boton4 = findViewById(R.id.buttonPrincipalInicio);
-        intent = new Intent(this, Canciones.class);
+        editTextPerfilNombre = findViewById(R.id.editTextPerfilNombre);
+        editTextPerfilApellidos = findViewById(R.id.editTextPerfilApellidos);
+        editTextPerfilNombreUsuario = findViewById(R.id.editTextPerfilNombreUsuario);
+        editTextPerfilEmail = findViewById(R.id.editTextPerfilEmail);
+        editTextPerfilFechaDeNacimiento = findViewById(R.id.editTextPerfilFechaDeNacimiento);
+        editTextPerfilDireccion = findViewById(R.id.editTextPerfilDireccion);
+
+        editTextPerfilNombre.setText(App.nombreUsuario);
+        editTextPerfilApellidos.setText(App.apellidosUsuario);
+        editTextPerfilNombreUsuario.setText(App.nickUsuario);
+        editTextPerfilEmail.setText(App.emailUsuario);
+        editTextPerfilFechaDeNacimiento.setText(App.fechaNacimientoUsuario);
+        editTextPerfilDireccion.setText(App.direccionUsuario);
+
+
+
+;        intent = new Intent(this, Canciones.class);
         intent3 = new Intent(this, Principal.class);
         boton1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +64,8 @@ public class Perfil extends AppCompatActivity {
 
             }
         });
+
+
     }
 
     private ServiceConnection Scon =new ServiceConnection(){

@@ -92,7 +92,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                 {
                     //NO REPETIR
                     App.pulsarBotonRepetir=false;
-                    botonRepetir.setBackgroundResource(R.drawable.botonrepetir);
+                    botonRepetir.setBackgroundResource(R.drawable.repeat);
                     App.contadorRepetir=0;
                 }
             }
@@ -102,7 +102,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
             public void onClick(View v) {
 
 
-                imageButtonLike.setImageResource(R.drawable.tickcancion);
+                imageButtonLike.setBackgroundResource(R.drawable.tick);
 
             }
         });
