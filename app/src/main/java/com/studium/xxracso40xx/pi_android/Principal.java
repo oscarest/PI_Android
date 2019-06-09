@@ -36,6 +36,9 @@ public class Principal extends AppCompatActivity
     Intent music;
     TextView cancionNombre, cancionAutor;
     ImageView imageRap;
+    ImageView imageAnime;
+    ImageView imageKpop;
+    ImageView imagePop;
     ImageView imagenCancion;
     LinearLayout layoutTouch;
     LinearLayout toolbar_layout;
@@ -59,7 +62,12 @@ public class Principal extends AppCompatActivity
         setContentView(R.layout.activity_principal);
         //overridePendingTransition(R.anim.replace, R.anim.replaceto);
         buttonPrincipalCanciones = findViewById(R.id.buttonPrincipalCanciones);
+
         imageRap = findViewById(R.id.imageRap);
+        imageAnime = findViewById(R.id.imageAnime);
+        imageKpop = findViewById(R.id.imageKpop);
+        imagePop = findViewById(R.id.imagePop);
+
         buttonPrincipalPerfil = findViewById(R.id.buttonPrincipalPerfil);
         playMiniReproductor = findViewById(R.id.play_button);
         layoutTouch = findViewById(R.id.layoutTouch);
@@ -86,6 +94,36 @@ public class Principal extends AppCompatActivity
             public void onClick(View v) {
 
                 App.imageRap = true;
+                startActivity(intentCanciones);
+
+            }
+        });
+
+        imageAnime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                App.imageAnime = true;
+                startActivity(intentCanciones);
+
+            }
+        });
+
+        imageKpop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                App.imageKpop = true;
+                startActivity(intentCanciones);
+
+            }
+        });
+
+        imagePop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                App.imagePop = true;
                 startActivity(intentCanciones);
 
             }

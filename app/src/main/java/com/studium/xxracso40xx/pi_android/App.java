@@ -12,6 +12,9 @@ public class App
     public static int ID_USUARIO = 1;
     public static int contadorReproductorMusica=2;
     public static boolean imageRap = false;
+    public static boolean imageAnime = false;
+    public static boolean imageKpop = false;
+    public static boolean imagePop = false;
 
     //ATRIBUTOS PARA SELECCIONAR CANCION EN LISTA DE CANCIONES
     public static String nombreCancionSeleccionada=null;

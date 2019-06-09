@@ -107,7 +107,28 @@ public class Canciones extends AppCompatActivity implements NavigationView.OnNav
             new Canciones.DB_Apache().execute("get-cancionesBusqueda.php?stringBusqueda=Rap");
             App.imageRap = false;
 
-        }else{
+        } else if (App.imageAnime == true){
+
+
+            new Canciones.DB_Apache().execute("get-cancionesBusqueda.php?stringBusqueda=Anime");
+            App.imageAnime = false;
+
+
+        } else if(App.imageKpop == true){
+
+
+            new Canciones.DB_Apache().execute("get-cancionesBusqueda.php?stringBusqueda=KPop");
+            App.imageKpop = false;
+
+
+        } else if(App.imagePop == true){
+
+
+            new Canciones.DB_Apache().execute("get-cancionesBusqueda.php?stringBusqueda=Pop");
+            App.imagePop = false;
+
+
+        } else {
 
             new Canciones.DB_Apache().execute("get-canciones.php?");
 
@@ -182,7 +203,7 @@ public class Canciones extends AppCompatActivity implements NavigationView.OnNav
     public void onBackPressed() {
 // super.onBackPressed();
 // Not calling **super**, disables back button in current screen.
-        if(!editTextBusqueda.getText().toString().isEmpty()){
+        if(!editTextBusqueda.getText().toString().isEmpty() || App.imageRap == false || App.imageAnime == false || App.imageKpop == false || App.imagePop == false){
 
             canciones= new ArrayList<>();
             new Canciones.DB_Apache().execute("get-canciones.php?");
