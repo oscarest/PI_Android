@@ -102,7 +102,17 @@ public class Canciones extends AppCompatActivity implements NavigationView.OnNav
         //LO MEJOR SERÍA INTRODUCIR EL ID DEL USUARIO QUE ESTA LOGUEADO PARA PODER SACAR ESTAS CANCIONES.
         //COMENTADO HASTA QUE SE HAGA EL ARCHIVO .PHP
         //new Canciones.DB_Apache().execute("get-product.php?idUsuario=" + App.ID_USUARIO);
-        new Canciones.DB_Apache().execute("get-canciones.php?");
+        if (App.imageRap == true){
+
+            new Canciones.DB_Apache().execute("get-cancionesBusqueda.php?stringBusqueda=Rap");
+            App.imageRap = false;
+
+        }else{
+
+            new Canciones.DB_Apache().execute("get-canciones.php?");
+
+        }
+
         buttonCancionesPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

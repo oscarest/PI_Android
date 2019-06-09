@@ -35,6 +35,7 @@ public class Principal extends AppCompatActivity
     Intent intentPerfil;
     Intent music;
     TextView cancionNombre, cancionAutor;
+    ImageView imageRap;
     ImageView imagenCancion;
     LinearLayout layoutTouch;
     LinearLayout toolbar_layout;
@@ -58,6 +59,7 @@ public class Principal extends AppCompatActivity
         setContentView(R.layout.activity_principal);
         //overridePendingTransition(R.anim.replace, R.anim.replaceto);
         buttonPrincipalCanciones = findViewById(R.id.buttonPrincipalCanciones);
+        imageRap = findViewById(R.id.imageRap);
         buttonPrincipalPerfil = findViewById(R.id.buttonPrincipalPerfil);
         playMiniReproductor = findViewById(R.id.play_button);
         layoutTouch = findViewById(R.id.layoutTouch);
@@ -76,6 +78,16 @@ public class Principal extends AppCompatActivity
                 finish();
                 startActivity(intentCanciones);
                 overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+            }
+        });
+
+        imageRap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                App.imageRap = true;
+                startActivity(intentCanciones);
+
             }
         });
 
@@ -124,19 +136,7 @@ public class Principal extends AppCompatActivity
             }
         });
 
-        //TODA ESTA PARTE ES PRUEBA DE RECYCLEVIEW
-        createDummyData();
 
-
-        RecyclerView my_recycler_view = (RecyclerView) findViewById(R.id.my_recycler_view);
-
-        my_recycler_view.setHasFixedSize(true);
-
-        RecyclerViewDataAdapter adapter = new RecyclerViewDataAdapter(this, allSampleData);
-
-        my_recycler_view.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-
-        my_recycler_view.setAdapter(adapter);
 
 
     }
