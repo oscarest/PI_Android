@@ -84,7 +84,7 @@ public class Canciones extends AppCompatActivity implements NavigationView.OnNav
         intentPerfil = new Intent(this, Perfil.class);
         intentReproductorMusica = new Intent(this, ReproductorMusicaV2.class);
         intentInicio = new Intent(this, MainActivity.class);
-        intentCancionesGuardadas = new Intent(this, CancionesGuardadas.class);
+
         editTextBusqueda = findViewById(R.id.editTextBusqueda);
         imagenBusqueda = findViewById(R.id.imageViewBusqueda);
         layoutTouch = findViewById(R.id.layoutTouch_canciones);

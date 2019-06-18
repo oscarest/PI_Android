@@ -5,11 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,10 +17,8 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 import com.studium.xxracso40xx.pi_android.model.CancionObject;
-import com.studium.xxracso40xx.pi_android.model.SectionDataModel;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class Principal extends AppCompatActivity
@@ -46,7 +41,7 @@ public class Principal extends AppCompatActivity
     private MusicService mServ;
     public ListView listviewPrincipal;
     float x1,x2,y1,y2;
-    ArrayList<SectionDataModel> allSampleData;
+
     ArrayList<CancionObject> canciones = new ArrayList<>();
 
 
@@ -78,7 +73,7 @@ public class Principal extends AppCompatActivity
         cancionAutor = findViewById(R.id.songs_artist_name);
         imagenCancion = findViewById(R.id.songs_cover_one);
         toolbar_layout = findViewById(R.id.toolbar_layout);
-        allSampleData = new ArrayList<SectionDataModel>();
+
         buttonPrincipalCanciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -307,28 +302,7 @@ public class Principal extends AppCompatActivity
             }
         }).start();
     }
-    public void createDummyData() {
-        //Cambiar esto para crear tantas secciones como se hayan recogido de la base de datos.
-        for (int i = 1; i <= 5; i++) {
 
-            SectionDataModel dm = new SectionDataModel();
-
-            //Cambiar este header por el nombre del genero(recibido del servidor)
-            dm.setHeaderTitle("Género " + i);
-            ArrayList<CancionObject> singleItem = new ArrayList<CancionObject>();
-            //  Aquí se introducirá las diferentes canciones que haya en cada genero.
-            //  Cabe destacar que la lista variará dependiendo de los que haya en cada genero.
-            //  También es posible recibir muchos y limitarlo al número de elementos que deseemos.
-            for (int j = 0; j <= 3; j++) {
-                canciones.add(new CancionObject("Buenas", "Adolf", "https://ccrma.stanford.edu/~jos/mp3/trumpet.mp3", "https://www.dhresource.com/100x100s/f2-albu-g5-M01-54-A1-rBVaJFngIveAC1bUAAI1p63w2TE474.jpg/puntas-de-prueba-de-prueba-universales-de.jpg"));
-                canciones.add(new CancionObject("asdfBuenas", "xdAcvxvdsadfa", "http://www.hochmuth.com/mp3/Tchaikovsky_Nocturne__orch.mp3 ", "https://timedotcom.files.wordpress.com/2014/12/spotify.jpg"));
-
-            }
-
-            dm.setAllItemsInSection(canciones);
-            allSampleData.add(dm);
-        }
-    }
     @Override
     public void onDestroy()
     {
@@ -336,24 +310,6 @@ public class Principal extends AppCompatActivity
         doUnbindService();
 
     }
-    //CAMBIAR EL CÓDIGO DE ABAJO PARA QUE SE PUEDA HACER MEDIANTE LISTVIEW, HORIZONTAL SCROLL O HACERLO MEDIANTE DOS SCROLLS
-    /*
-    public void mostrarTodo()
-    {
-        CardAdapter listadoDeCards = new CardAdapter(getApplicationContext(), R.layout.activity_list_card);
-        List prod = new ArrayList<>();
-        //prod.add("");
-        if (prod == null) {
-            listviewPrincipal.setAdapter(null);
-        } else {
-            for (Lugar p : lstProd) {
-                listadoDeCards.add(p);
-            }
 
-        listviewPrincipal.setAdapter(listadoDeCards);
-    }
-
-    //}
-    */
 }
 

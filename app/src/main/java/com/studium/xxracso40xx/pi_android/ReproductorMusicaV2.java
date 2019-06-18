@@ -97,15 +97,7 @@ public class ReproductorMusicaV2 extends AppCompatActivity
                 }
             }
         });
-        imageButtonLike.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-
-                imageButtonLike.setBackgroundResource(R.drawable.tick);
-
-            }
-        });
 
         botonDescarga.setOnClickListener(new View.OnClickListener() {
             @Override

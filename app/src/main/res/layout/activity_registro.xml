@@ -29,8 +29,8 @@
         android:id="@+id/scrollView2"
         android:layout_width="414dp"
         android:layout_height="500dp"
-        android:layout_marginTop="3dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewRegistroInfo">
 
@@ -156,6 +156,7 @@
                 android:layout_marginLeft="136dp"
                 android:layout_marginTop="30dp"
                 android:text="Pregunta de seguridad"
+                android:textColor="#00BCD4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextRegistroContrasena" />
 
@@ -168,8 +169,22 @@
                 android:ems="10"
                 android:hint="Nombre de tu primera mascota"
                 android:inputType="textPersonName"
+                android:textColorHint="#00BCD4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="178dp"
+                android:layout_marginLeft="178dp"
+                android:layout_marginTop="805dp"
+                android:layout_marginEnd="236dp"
+                android:layout_marginRight="236dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 
