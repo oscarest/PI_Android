@@ -15,7 +15,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="82dp"
         android:layout_marginLeft="82dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="83dp"
         android:layout_marginRight="83dp"
         android:text="Introduce los siguientes datos"
@@ -28,7 +28,7 @@
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="414dp"
-        android:layout_height="380dp"
+        android:layout_height="500dp"
         android:layout_marginTop="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
