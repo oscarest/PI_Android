@@ -15,8 +15,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".CancionesGuardadas"></activity>
-        <activity android:name=".headerlayout" />
+
+
         <activity
             android:name=".ListSingleCardActivity"
             android:screenOrientation="portrait" />
@@ -31,9 +31,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".PagerView"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".list_card"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Canciones"

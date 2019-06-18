@@ -157,7 +157,7 @@
                             android:fontFamily="sans-serif-condensed"
                             android:lines="1"
                             android:text="Cancion Nombre"
-                            android:textColor="@color/cardview_dark_background"
+                            android:textColor="#FFFFFF"
                             android:textSize="22dp" />
 
                         <TextView
@@ -165,7 +165,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:lines="1"
-                            android:text="Autor Cancion" />
+                            android:text="Autor Cancion"
+                            android:textColor="#FFFFFF" />
 
                     </LinearLayout>
                 </LinearLayout>
